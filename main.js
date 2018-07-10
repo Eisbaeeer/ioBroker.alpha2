@@ -71,6 +71,133 @@ adapter.on('ready', function () {
     main();
 });
 
+function getXMLcyclic() {
+    request('http://10.49.12.169/data/static.xml', function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            getTemp(body); 
+            } else { 
+        log("Fehler beim Herunterladen: " + error, 'error');
+            }
+            });
+}
+			
+function getTemp(xml) {
+    parser(xml, {explicitArray: false, mergeAttrs: true, explicitRoot: false}, function(err, obj) {
+        if(err) log('Fehler XML-Parsen: ' + err, 'error');
+        else {
+            //log("XMLcyclic: " + JSON.stringify(obj));
+                adapter.setState(adapter.namespace + '.' + 'DEVICE.ID', {val: obj.Device.ID, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'DEVICE.NAME', {val: obj.Device.NAME, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'DEVICE.TYPE', {val: obj.Device.TYPE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'DEVICE.DATETIME', {val: obj.Device.DATETIME, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'DEVICE.TIMEZONE', {val: obj.Device.TIMEZONE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'DEVICE.NTPSYNC', {val: Boolean(Number(obj.Device.NTPTIMESYNC)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'DEVICE.T_HEAT_VACATION', {val: parseFloat(obj.Device.T_HEAT_VACATION), ack: true});
+                
+                adapter.setState(adapter.namespace + '.' + 'VACATION.STATE', {val: Boolean(Number(obj.Device.VACATION.VACATION_STATE)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'VACATION.START_DATE', {val: obj.Device.VACATION.START_DATE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'VACATION.START_TIME', {val: obj.Device.VACATION.START_TIME, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'VACATION.END_DATE', {val: obj.Device.VACATION.END_DATE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'VACATION.END_TIME', {val: obj.Device.VACATION.END_TIME, ack: true});
+                
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[1].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.2.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[1].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.3.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[2].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.3.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[2].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.4.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[3].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[3].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[4].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[4].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[5].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.2.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[5].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.3.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[6].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.3.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[6].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.4.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[7].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[7].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[8].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[8].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[9].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.2.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[9].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.3.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[10].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.3.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[10].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.4.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[11].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[11].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[12].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[12].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[13].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.2.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[13].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.3.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[14].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.3.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[14].END, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.4.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[15].START , ack: true});
+                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[15].END, ack: true});
+                
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_NAME', {val: obj.Device.HEATAREA[0].HEATAREA_NAME, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_MODE', {val: obj.Device.HEATAREA[0].HEATAREA_MODE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[0].T_ACTUAL), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[0].T_TARGET), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEK', {val: obj.Device.HEATAREA[0].PROGRAM_WEEK, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[0].PROGRAM_WEEKEND, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[0].T_HEAT_DAY), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[0].T_HEAT_NIGHT), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.HEATAREA_NAME', {val: obj.Device.HEATAREA[1].HEATAREA_NAME, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.HEATAREA_MODE', {val: obj.Device.HEATAREA[1].HEATAREA_MODE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[1].T_ACTUAL), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[1].T_TARGET), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEK', {val: obj.Device.HEATAREA[1].PROGRAM_WEEK, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[1].PROGRAM_WEEKEND, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[1].T_HEAT_DAY), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[1].T_HEAT_NIGHT), ack: true});
+                
+                //adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.HEATAREA_NAME', {val: obj.Device.HEATAREA[2].HEATAREA_NAME, ack: true});
+                //adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.HEATAREA_MODE', {val: obj.Device.HEATAREA[2].HEATAREA_MODE, ack: true});
+                //adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[2].T_ACTUAL), ack: true});
+                //adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[2].T_TARGET), ack: true});
+                //adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.PROGRAM_WEEK', {val: obj.Device.HEATAREA[2].PROGRAM_WEEK, ack: true});
+                //adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[2].PROGRAM_WEEKEND, ack: true});
+                //adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[2].T_HEAT_DAY), {val: true);
+                //adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[2].T_HEAT_NIGHT), ack: true});
+                
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.0.INUSE', {val: obj.Device.HEATCTRL[0].INUSE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.0.HEATAREA_NR', {val: obj.Device.HEATCTRL[0].HEATAREA_NR, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.0.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[0].ACTOR)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.0.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[0].HEATCTRL_STATE)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.1.INUSE', {val: obj.Device.HEATCTRL[1].INUSE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.1.HEATAREA_NR', {val: obj.Device.HEATCTRL[1].HEATAREA_NR, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.1.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[1].ACTOR)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.1.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[1].HEATCTRL_STATE)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.2.INUSE', {val: obj.Device.HEATCTRL[2].INUSE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.2.HEATAREA_NR', {val: obj.Device.HEATCTRL[2].HEATAREA_NR, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.2.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[2].ACTOR)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.2.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[2].HEATCTRL_STATE)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.3.INUSE', {val: obj.Device.HEATCTRL[3].INUSE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.3.HEATAREA_NR', {val: obj.Device.HEATCTRL[3].HEATAREA_NR, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.3.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[3].ACTOR)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.3.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[3].HEATCTRL_STATE)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.4.INUSE', {val: obj.Device.HEATCTRL[4].INUSE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.4.HEATAREA_NR', {val: obj.Device.HEATCTRL[4].HEATAREA_NR, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.4.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[4].ACTOR)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.4.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[4].HEATCTRL_STATE)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.5.INUSE', {val: obj.Device.HEATCTRL[5].INUSE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.5.HEATAREA_NR', {val: obj.Device.HEATCTRL[5].HEATAREA_NR, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.5.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[5].ACTOR)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.5.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[5].HEATCTRL_STATE)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.6.INUSE', {val: obj.Device.HEATCTRL[6].INUSE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.6.HEATAREA_NR', {val: obj.Device.HEATCTRL[6].HEATAREA_NR, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.6.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[6].ACTOR)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.6.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[6].HEATCTRL_STATE)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.INUSE', {val: obj.Device.HEATCTRL[7].INUSE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.HEATAREA_NR', {val: obj.Device.HEATCTRL[7].HEATAREA_NR, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[7].ACTOR)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[7].HEATCTRL_STATE)), ack: true});
+                
+                
+                
+        }
+    });
+}
+		
 function main() {
 
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
@@ -78,6 +205,14 @@ function main() {
     adapter.log.info('config test1: '    + adapter.config.test1);
     adapter.log.info('config test1: '    + adapter.config.test2);
     adapter.log.info('config mySelect: ' + adapter.config.mySelect);
+	
+	/*
+	* Interval
+	* example 
+	* setInterval(pifaceread, adapter.config.piinterval);
+	*/
+	setInterval(getXMLcyclic, 6000);
+	
 
 
     /**
@@ -97,7 +232,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -108,7 +244,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -119,7 +256,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -130,7 +268,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -141,7 +280,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -152,7 +292,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -163,7 +304,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -174,7 +316,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -185,7 +328,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -196,7 +340,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -207,7 +352,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -218,7 +364,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -229,7 +376,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -240,7 +388,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -251,7 +400,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -262,7 +412,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -273,7 +424,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -284,7 +436,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -295,7 +448,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -306,7 +460,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -317,7 +472,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -328,7 +484,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -339,7 +496,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -350,7 +508,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -361,7 +520,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -372,7 +532,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });    
@@ -383,7 +544,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -394,7 +556,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -405,7 +568,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });	
@@ -416,7 +580,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -427,7 +592,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -438,7 +604,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -449,7 +616,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -460,7 +628,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -471,7 +640,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -482,7 +652,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -493,7 +664,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -504,7 +676,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -515,7 +688,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });    
@@ -526,7 +700,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -537,7 +712,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -548,7 +724,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });	
@@ -559,7 +736,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -570,7 +748,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -581,7 +760,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -592,7 +772,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -603,7 +784,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -614,7 +796,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -625,7 +808,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -636,7 +820,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -647,7 +832,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -658,7 +844,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });    
@@ -669,7 +856,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -680,7 +868,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -691,7 +880,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });	
@@ -702,7 +892,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -713,7 +904,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -724,7 +916,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -735,7 +928,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -746,7 +940,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -757,7 +952,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -768,7 +964,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -779,7 +976,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -790,7 +988,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -801,7 +1000,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });    
@@ -812,7 +1012,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -823,7 +1024,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -834,7 +1036,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -845,7 +1048,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -856,7 +1060,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -867,7 +1072,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -878,7 +1084,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -889,7 +1096,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -900,7 +1108,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -911,7 +1120,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -922,7 +1132,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -933,7 +1144,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -944,7 +1156,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -955,7 +1168,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -966,7 +1180,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -977,7 +1192,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -988,7 +1204,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -999,7 +1216,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1010,7 +1228,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1021,7 +1240,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1032,7 +1252,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1043,7 +1264,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1054,7 +1276,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1065,7 +1288,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1076,7 +1300,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1087,7 +1312,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1098,7 +1324,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1109,7 +1336,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1120,7 +1348,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1131,7 +1360,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1142,7 +1372,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1153,7 +1384,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1164,7 +1396,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1175,7 +1408,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1186,7 +1420,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1197,7 +1432,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1208,7 +1444,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1219,7 +1456,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1230,7 +1468,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1241,7 +1480,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1252,7 +1492,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1263,7 +1504,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1274,7 +1516,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1285,7 +1528,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1296,7 +1540,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1307,7 +1552,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1318,7 +1564,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1329,7 +1576,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1340,7 +1588,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1351,7 +1600,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1362,7 +1612,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1373,7 +1624,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1384,7 +1636,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1395,7 +1648,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1406,7 +1660,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1417,7 +1672,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1428,7 +1684,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1439,7 +1696,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1450,7 +1708,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1461,7 +1720,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1472,7 +1732,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1483,7 +1744,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1494,7 +1756,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1505,7 +1768,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1516,7 +1780,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1527,7 +1792,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1538,7 +1804,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1549,7 +1816,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1560,7 +1828,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1571,7 +1840,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1582,7 +1852,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1593,7 +1864,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1604,7 +1876,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1615,7 +1888,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1626,7 +1900,8 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1637,7 +1912,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1648,7 +1924,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1659,7 +1936,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1670,7 +1948,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1681,7 +1960,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1692,7 +1972,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1703,7 +1984,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1714,7 +1996,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1725,7 +2008,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1736,7 +2020,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1747,7 +2032,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1758,7 +2044,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1769,7 +2056,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1780,7 +2068,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1791,7 +2080,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1802,7 +2092,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1813,7 +2104,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1824,7 +2116,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1835,7 +2128,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1846,7 +2140,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1857,7 +2152,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1868,7 +2164,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1879,7 +2176,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1890,7 +2188,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1901,7 +2200,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1912,7 +2212,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1923,7 +2224,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1934,7 +2236,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1945,7 +2248,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1956,7 +2260,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1967,7 +2272,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1978,7 +2284,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -1989,7 +2296,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -2000,7 +2308,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -2011,7 +2320,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -2022,7 +2332,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -2033,7 +2344,8 @@ function main() {
             type: 'object',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -2044,7 +2356,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -2055,7 +2368,8 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -2066,7 +2380,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -2077,7 +2392,8 @@ function main() {
             type: 'boolean',
             unit: '',
             read: true,
-            write: false
+            write: false,
+			role: 'EZR'
         },   
         native: {}
     });
@@ -2095,7 +2411,7 @@ function main() {
      */
 
     // the variable testVariable is set to true as command (ack=false)
-   // adapter.setState('testVariable', true);
+   // adapter.setState('testVariable', ack: true});
 
     // same thing, but the value is flagged "ack"
     // ack should be always set to true if the value is received from or acknowledged from the target system
