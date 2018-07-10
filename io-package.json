@@ -1,0 +1,37 @@
+{
+  "common": {
+    "name": "Alpha2",
+    "version": "0.0.1",
+    "title": "Möhlenhoff Alpha2",
+    "desc": {
+      "en": "ioBroker Moehlenhoff Alpha2 Adapter",
+      "de": "ioBroker Moehlenhoff Alpha2 Adapter"
+    },
+    "authors": [
+      "Eisbaeeer <eisbaeeer@gmail.com>"
+    ],
+    "desc":         "Moehlenhoff Alpha2",
+    "platform": "Javascript/Node.js",
+    "mode": "daemon",
+    "materialize":  true,
+    "loglevel":     "info", 
+    "icon": "mh-logo.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/Eisbaeeer/ioBroker.alpha2/master/admin/mh-logo.png",
+    "keywords": [
+      "Möhlenhoff",
+      "Alpha2"
+    ],
+    "readme": "https://github.com/Eisbaeeer/ioBroker.alpha2/blob/master/README.md",
+    "loglevel": "info",
+    "type": "climate-control",
+    "restartAdapters": [
+      "vis"
+    ]
+  },
+  "native": {
+    "pollInterval": 60
+  },
+  "objects": [
+  ]
+}
