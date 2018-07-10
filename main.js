@@ -1132,7 +1132,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
