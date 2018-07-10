@@ -19,6 +19,8 @@ const utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 // name has to be set and has to be equal to adapters folder name and main file name excluding extension
 // adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.template.0
 const adapter = new utils.Adapter('alpha2');
+const request = require('request');
+const parser = require('xml2js').parseString;
 
 /*Variable declaration, since ES6 there are let to declare variables. Let has a more clearer definition where 
 it is available then var.The variable is available inside a block and it's childs, but not outside. 
