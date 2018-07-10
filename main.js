@@ -1935,7 +1935,7 @@ function main() {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
-            type: 'string',
+            type: 'boolean',
             unit: '',
             read: true,
             write: false,
@@ -1995,7 +1995,7 @@ function main() {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
-            type: 'string',
+            type: 'boolean',
             unit: '',
             read: true,
             write: false,
@@ -2055,7 +2055,7 @@ function main() {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
-            type: 'string',
+            type: 'boolean',
             unit: '',
             read: true,
             write: false,
@@ -2115,7 +2115,7 @@ function main() {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
-            type: 'string',
+            type: 'boolean',
             unit: '',
             read: true,
             write: false,
@@ -2175,7 +2175,7 @@ function main() {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
-            type: 'string',
+            type: 'boolean',
             unit: '',
             read: true,
             write: false,
@@ -2235,7 +2235,7 @@ function main() {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
-            type: 'string',
+            type: 'boolean',
             unit: '',
             read: true,
             write: false,
@@ -2295,7 +2295,7 @@ function main() {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
-            type: 'string',
+            type: 'boolean',
             unit: '',
             read: true,
             write: false,
@@ -2355,7 +2355,7 @@ function main() {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
-            type: 'string',
+            type: 'boolean',
             unit: '',
             read: true,
             write: false,
