@@ -57,13 +57,6 @@ adapter.on('stateChange', function (id, state) {
 		// Set values via XML
 		var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>Zentrale</ID> <HEATAREA nr="1"> <T_TARGET>20.6</T_TARGET> </HEATAREA> </Device> </Devices>';
 
-		// URL, die abgefragt, bzw. gesendet werden soll:
-		var options = {
-			host: '10.49.12.169',
-			path: '/data/changes.xml',
-			method: 'POST'                // in der Regel: "GET"
-			};
-
 		httpPost(data);
 	
 		}
@@ -91,6 +84,14 @@ adapter.on('ready', function () {
 
 // Post Data to XML-API
 function httpPost(data) {
+	
+		// URL, die abgefragt, bzw. gesendet werden soll:
+		var options = {
+			host: '10.49.12.169',
+			path: '/data/changes.xml',
+			method: 'POST'                // in der Regel: "GET"
+			};
+	
     var req = http.request(options, function(res) {
     log("http Status: " + res.statusCode);
     log('HEADERS: ' + JSON.stringify(res.headers), (res.statusCode != 200 ? "warn" : "info")); // Header (Rückmeldung vom Webserver)
