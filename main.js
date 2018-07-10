@@ -21,6 +21,7 @@ const utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 const adapter = new utils.Adapter('alpha2');
 const request = require('request');
 const parser = require('xml2js').parseString;
+const http = require('http');   
 
 /*Variable declaration, since ES6 there are let to declare variables. Let has a more clearer definition where 
 it is available then var.The variable is available inside a block and it's childs, but not outside. 
@@ -51,7 +52,22 @@ adapter.on('stateChange', function (id, state) {
     // you can use the ack flag to detect if it is status (true) or command (false)
     if (state && !state.ack) {
         adapter.log.info('ack is not set!');
-    }
+		
+		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
+		// Set values via XML
+		var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>Zentrale</ID> <HEATAREA nr="1"> <T_TARGET>20.6</T_TARGET> </HEATAREA> </Device> </Devices>';
+
+		// URL, die abgefragt, bzw. gesendet werden soll:
+		var options = {
+			host: '10.49.12.169',
+			path: '/data/changes.xml',
+			method: 'POST'                // in der Regel: "GET"
+			};
+
+		httpPost(data);
+	
+		}
+	}
 });
 
 // Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
@@ -73,6 +89,24 @@ adapter.on('ready', function () {
     main();
 });
 
+// Post Data to XML-API
+function httpPost(data) {
+    var req = http.request(options, function(res) {
+    log("http Status: " + res.statusCode);
+    log('HEADERS: ' + JSON.stringify(res.headers), (res.statusCode != 200 ? "warn" : "info")); // Header (Rückmeldung vom Webserver)
+    });
+    
+    req.on('error', function(e) { // Fehler abfangen
+        log('ERROR: ' + e.message,"warn");
+    });
+
+    log("Data to request body: " + data);
+    // write data to request body
+    (data ? req.write(data) : log("Daten: keine Daten angegeben"));
+    req.end();
+}
+
+// Get XML Data from API
 function getXMLcyclic() {
     request('http://10.49.12.169/data/static.xml', function (error, response, body) {
         if (!error && response.statusCode == 200) {
