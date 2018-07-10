@@ -178,7 +178,228 @@ function main() {
         },   
         native: {}
     });
-    
+    adapter.setObject('VACATION', {
+        type: 'object',
+        common: {
+            name: 'VACATION',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('VACATION.STATE', {
+        type: 'state',
+        common: {
+            name: 'VACATION STATE',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('VACATION.START_DATE', {
+        type: 'state',
+        common: {
+            name: 'VACATION START DATE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('VACATION.START_TIME', {
+        type: 'state',
+        common: {
+            name: 'VACATION START TIME',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('VACATION.END_DATE', {
+        type: 'state',
+        common: {
+            name: 'VACATION END DATE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('VACATION.END_TIME', {
+        type: 'state',
+        common: {
+            name: 'VACATION END TIME',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 0',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0.1', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 0 shift 1',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0.1.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 0 1 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0.1.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 0 1 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0.2', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 0 shift 2',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0.2.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 0 2 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0.2.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 0 2 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0.3', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 0 shift 3',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0.3.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 0 3 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0.3.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 0 3 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0.4', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 0 shift 4',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });    
+    adapter.setObject('PROGRAM.0.4.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 0 4 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.0.4.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 0 4 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+
+
 
 
     // in this template all states changes inside the adapters namespace are subscribed
