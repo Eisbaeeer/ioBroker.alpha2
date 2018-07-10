@@ -398,8 +398,1689 @@ function main() {
         },   
         native: {}
     });
-
-
+    adapter.setObject('PROGRAM.1', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 1',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });	
+	adapter.setObject('PROGRAM.1.1', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 1 shift 1',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.1.1.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 1 1 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.1.1.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 1 2 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.1.2', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 1 shift 2',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.1.2.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 1 2 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.1.2.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 1 2 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.1.3', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 1 shift 3',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.1.3.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 1 3 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.1.3.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 1 3 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.1.4', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 1 shift 4',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });    
+    adapter.setObject('PROGRAM.1.4.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 1 4 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.1.4.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 1 4 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('PROGRAM.2', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 2',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });	
+	adapter.setObject('PROGRAM.2.1', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 2 shift 1',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.2.1.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 2 1 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.2.1.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 2 2 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.2.2', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 2 shift 2',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.2.2.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 2 2 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.2.2.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 2 2 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.2.3', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 2 shift 3',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.2.3.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 2 3 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.2.3.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 2 3 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.2.4', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 2 shift 4',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });    
+    adapter.setObject('PROGRAM.2.4.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 2 4 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.2.4.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 2 4 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('PROGRAM.3', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 3',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });	
+	adapter.setObject('PROGRAM.3.1', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 3 shift 1',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.3.1.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 3 1 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.3.1.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 3 2 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.3.2', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 3 shift 2',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.3.2.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 3 2 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.3.2.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 3 2 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.3.3', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 3 shift 3',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.3.3.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 3 3 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.3.3.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 3 3 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.3.4', {
+        type: 'object',
+        common: {
+            name: 'PROGRAM 3 shift 4',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });    
+    adapter.setObject('PROGRAM.3.4.START', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 3 4 START',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+    adapter.setObject('PROGRAM.3.4.END', {
+        type: 'state',
+        common: {
+            name: 'PROGRAM 3 4 END',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA', {
+        type: 'object',
+        common: {
+            name: 'HEATAREA',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.0', {
+        type: 'object',
+        common: {
+            name: 'HEATAREA 0',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.0.HEATAREA_NAME', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 0 HEATAREA_NAME',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.0.HEATAREA_MODE', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 0 HEATAREA_MODE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.0.T_ACTUAL', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 0 T_ACTUAL',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.0.T_TARGET', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 0 T_TARGET',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.0.PROGRAM_WEEK', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 0 PROGRAMM_WEEK',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.0.PROGRAM_WEEKEND', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 0 PROGRAMM_WEEKEND',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.0.T_HEAT_DAY', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 0 T_HEAT_DAY',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.0.T_HEAT_NIGHT', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 0 T_HEAT_NIGHT',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.1', {
+        type: 'object',
+        common: {
+            name: 'HEATAREA 1',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.1.HEATAREA_NAME', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 1 HEATAREA_NAME',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.1.HEATAREA_MODE', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 1 HEATAREA_MODE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.1.T_ACTUAL', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 1 T_ACTUAL',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.1.T_TARGET', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 1 T_TARGET',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.1.PROGRAM_WEEK', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 1 PROGRAMM_WEEK',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.1.PROGRAM_WEEKEND', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 1 PROGRAMM_WEEKEND',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.1.T_HEAT_DAY', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 1 T_HEAT_DAY',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.1.T_HEAT_NIGHT', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 1 T_HEAT_NIGHT',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.2', {
+        type: 'object',
+        common: {
+            name: 'HEATAREA 2',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.2.HEATAREA_NAME', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 2 HEATAREA_NAME',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.2.HEATAREA_MODE', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 2 HEATAREA_MODE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.2.T_ACTUAL', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 2 T_ACTUAL',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.2.T_TARGET', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 2 T_TARGET',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.2.PROGRAM_WEEK', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 2 PROGRAMM_WEEK',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.2.PROGRAM_WEEKEND', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 2 PROGRAMM_WEEKEND',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.2.T_HEAT_DAY', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 2 T_HEAT_DAY',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.2.T_HEAT_NIGHT', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 2 T_HEAT_NIGHT',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.3', {
+        type: 'object',
+        common: {
+            name: 'HEATAREA 3',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.3.HEATAREA_NAME', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 3 HEATAREA_NAME',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.3.HEATAREA_MODE', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 3 HEATAREA_MODE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.3.T_ACTUAL', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 3 T_ACTUAL',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.3.T_TARGET', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 3 T_TARGET',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.3.PROGRAM_WEEK', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 3 PROGRAMM_WEEK',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.3.PROGRAM_WEEKEND', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 3 PROGRAMM_WEEKEND',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.3.T_HEAT_DAY', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 3 T_HEAT_DAY',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.3.T_HEAT_NIGHT', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 3 T_HEAT_NIGHT',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.4', {
+        type: 'object',
+        common: {
+            name: 'HEATAREA 4',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.4.HEATAREA_NAME', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 4 HEATAREA_NAME',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.4.HEATAREA_MODE', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 4 HEATAREA_MODE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.4.T_ACTUAL', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 4 T_ACTUAL',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.4.T_TARGET', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 4 T_TARGET',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.4.PROGRAM_WEEK', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 4 PROGRAMM_WEEK',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.4.PROGRAM_WEEKEND', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 4 PROGRAMM_WEEKEND',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.4.T_HEAT_DAY', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 4 T_HEAT_DAY',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.4.T_HEAT_NIGHT', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 0 T_HEAT_NIGHT',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.5', {
+        type: 'object',
+        common: {
+            name: 'HEATAREA 5',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.5.HEATAREA_NAME', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 5 HEATAREA_NAME',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.5.HEATAREA_MODE', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 5 HEATAREA_MODE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.5.T_ACTUAL', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 5 T_ACTUAL',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.5.T_TARGET', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 5 T_TARGET',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.5.PROGRAM_WEEK', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 5 PROGRAMM_WEEK',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.5.PROGRAM_WEEKEND', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 5 PROGRAMM_WEEKEND',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.5.T_HEAT_DAY', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 5 T_HEAT_DAY',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.5.T_HEAT_NIGHT', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 5 T_HEAT_NIGHT',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.6', {
+        type: 'object',
+        common: {
+            name: 'HEATAREA 6',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.6.HEATAREA_NAME', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 6 HEATAREA_NAME',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.6.HEATAREA_MODE', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 6 HEATAREA_MODE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.6.T_ACTUAL', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 6 T_ACTUAL',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.6.T_TARGET', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 6 T_TARGET',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.6.PROGRAM_WEEK', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 6 PROGRAMM_WEEK',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.6.PROGRAM_WEEKEND', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 6 PROGRAMM_WEEKEND',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.6.T_HEAT_DAY', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 6 T_HEAT_DAY',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.6.T_HEAT_NIGHT', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 6 T_HEAT_NIGHT',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.7', {
+        type: 'object',
+        common: {
+            name: 'HEATAREA 7',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.7.HEATAREA_NAME', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 7 HEATAREA_NAME',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.7.HEATAREA_MODE', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 7 HEATAREA_MODE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+	adapter.setObject('HEATAREA.7.T_ACTUAL', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 7 T_ACTUAL',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.7.T_TARGET', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 7 T_TARGET',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.7.PROGRAM_WEEK', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 7 PROGRAMM_WEEK',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.7.PROGRAM_WEEKEND', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 7 PROGRAMM_WEEKEND',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATAREA.7.T_HEAT_DAY', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 7 T_HEAT_DAY',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATAREA.7.T_HEAT_NIGHT', {
+        type: 'state',
+        common: {
+            name: 'HEATAREA 7 T_HEAT_NIGHT',
+            type: 'number',
+            unit: '°C',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+			adapter.setObject('HEATCTRL', {
+        type: 'object',
+        common: {
+            name: 'HEATCONTROL',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.0', {
+        type: 'object',
+        common: {
+            name: 'HEATCONTROL 0',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.0.INUSE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL INUSE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.0.HEATAREA_NR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.0.ACTOR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.0.HEATCTRL_STATE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL STATE',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.1', {
+        type: 'object',
+        common: {
+            name: 'HEATCONTROL 1',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.1.INUSE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL INUSE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.1.HEATAREA_NR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.1.ACTOR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.1.HEATCTRL_STATE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL STATE',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.2', {
+        type: 'object',
+        common: {
+            name: 'HEATCONTROL 2',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.2.INUSE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL INUSE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.2.HEATAREA_NR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.2.ACTOR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.2.HEATCTRL_STATE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL STATE',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.3', {
+        type: 'object',
+        common: {
+            name: 'HEATCONTROL 3',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.3.INUSE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL INUSE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.3.HEATAREA_NR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.3.ACTOR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.3.HEATCTRL_STATE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL STATE',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.4', {
+        type: 'object',
+        common: {
+            name: 'HEATCONTROL 4',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.4.INUSE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL INUSE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.4.HEATAREA_NR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.4.ACTOR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.4.HEATCTRL_STATE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL STATE',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.5', {
+        type: 'object',
+        common: {
+            name: 'HEATCONTROL 5',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.5.INUSE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL INUSE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.5.HEATAREA_NR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.5.ACTOR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.5.HEATCTRL_STATE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL STATE',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.6', {
+        type: 'object',
+        common: {
+            name: 'HEATCONTROL 6',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.6.INUSE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL INUSE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.6.HEATAREA_NR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.6.ACTOR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.6.HEATCTRL_STATE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL STATE',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.7', {
+        type: 'object',
+        common: {
+            name: 'HEATCONTROL 7',
+            type: 'object',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.7.INUSE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL INUSE',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.7.HEATAREA_NR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'string',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.7.ACTOR', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL HEATAREA',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
+		adapter.setObject('HEATCTRL.7.HEATCTRL_STATE', {
+        type: 'state',
+        common: {
+            name: 'HEATCONTROL STATE',
+            type: 'boolean',
+            unit: '',
+            read: true,
+            write: false
+        },   
+        native: {}
+    });
 
 
     // in this template all states changes inside the adapters namespace are subscribed
