@@ -53,13 +53,21 @@ adapter.on('stateChange', function (id, state) {
     if (state && !state.ack) {
         adapter.log.info('ack is not set!');
 		
+		// Set HEATAREA Target Temperatures
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
 		// Set values via XML
-		var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>Zentrale</ID> <HEATAREA nr="1"> <T_TARGET>20.6</T_TARGET> </HEATAREA> </Device> </Devices>';
-
-		httpPost(data);
-	
+		var heatarea = '0';
+		var newdata = HEATAREA.0.T_TARGET
 		}
+		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_TARGET') {		
+		// Set values via XML
+		var heatarea = '1';
+		var newdata = HEATAREA.1.T_TARGET
+		}
+		
+			// Post DATA to DEVICE
+			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'. + DEVICE.ID + .'</ID> <HEATAREA nr="'. + heatarea + .'"> <T_TARGET>'. + newdata + .'</T_TARGET> </HEATAREA> </Device> </Devices>';
+			httpPost(data);
 	}
 });
 
@@ -351,7 +359,7 @@ function main() {
         common: {
             name: 'VACATION_TEMP',
             type: 'number',
-            unit: '°C',
+            unit: "°C",
             read: true,
             write: false,
 			role: 'EZR'
