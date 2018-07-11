@@ -54,11 +54,13 @@ adapter.on('stateChange', function (id, state) {
         adapter.log.info('ack is not set!');
 		adapter.log.info('Value: ' + state.val);
 		
+		// get values from device_id
+		var device_id = getState(adapter.namespace + '.' + 'DEVICE.ID').val);
+		adapter.log.info('Device id: ' + device_id);
+		
 		// Set HEATAREA Target Temperatures
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
 		// Set values via XML
-		var device_id = adapter.namespace + '.' + 'DEVICE.ID' + state.val;
-		adapter.log.info('Device id: ' + device_id);
 		var heatarea = '0';
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_TARGET') {		
