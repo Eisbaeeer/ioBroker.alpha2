@@ -52,17 +52,18 @@ adapter.on('stateChange', function (id, state) {
     // you can use the ack flag to detect if it is status (true) or command (false)
     if (state && !state.ack) {
         adapter.log.info('ack is not set!');
+		adapter.log.info('Value: ' + id.val);
 		
 		// Set HEATAREA Target Temperatures
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
 		// Set values via XML
 		var heatarea = '0';
-		var newdata = HEATAREA.0.T_TARGET;
+		var newdata = id.val;
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_TARGET') {		
 		// Set values via XML
 		var heatarea = '1';
-		var newdata = HEATAREA.1.T_TARGET;
+		var newdata = id.val;
 		}
 		
 			// Post DATA to DEVICE
