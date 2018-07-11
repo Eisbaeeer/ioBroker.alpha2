@@ -63,52 +63,52 @@ adapter.on('stateChange', function (id, state) {
 		
 		// Set HEATAREA values
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
-		var heatarea = '0';
+		var heatarea = '1';
 		var new_target = 'T_TARGET';
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_DAY') {		
-		var heatarea = '0';
+		var heatarea = '1';
 		var new_target = 'T_HEAT_DAY';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_NIGHT') {		
-		var heatarea = '0';
+		var heatarea = '1';
 		var new_target = 'T_HEAT_NIGHT';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_MODE') {		
-		var heatarea = '0';
+		var heatarea = '1';
 		var new_target = 'HEATAREA_MODE';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEK') {		
-		var heatarea = '0';
+		var heatarea = '1';
 		var new_target = 'PROGRAM_WEEK';
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEKEND') {		
-		var heatarea = '0';
+		var heatarea = '1';
 		var new_target = 'PROGRAM_WEEKEND';
 		}
 		
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_TARGET') {		
-		var heatarea = '1';
+		var heatarea = "2";
 		var new_target = 'T_TARGET';
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_DAY') {		
-		var heatarea = '1';
+		var heatarea = '2';
 		var new_target = 'T_HEAT_DAY';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_NIGHT') {		
-		var heatarea = '1';
+		var heatarea = '2';
 		var new_target = 'T_HEAT_NIGHT';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.HEATAREA_MODE') {		
-		var heatarea = '1';
+		var heatarea = '2';
 		var new_target = 'HEATAREA_MODE';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEK') {		
-		var heatarea = '1';
+		var heatarea = '2';
 		var new_target = 'PROGRAM_WEEK';
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEKEND') {		
-		var heatarea = '1';
+		var heatarea = '2';
 		var new_target = 'PROGRAM_WEEKEND';
 		}
 		
