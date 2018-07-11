@@ -110,7 +110,8 @@ adapter.on('stateChange', function (id, state) {
 		if (id == adapter.namespace + '.' + 'HEATAREA.7.HEATAREA_MODE') {var heatarea = '8'; var new_target = 'HEATAREA_MODE'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.7.PROGRAM_WEEK') {var heatarea = '8';	var new_target = 'PROGRAM_WEEK'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
 		if (id == adapter.namespace + '.' + 'HEATAREA.7.PROGRAM_WEEKEND') {var heatarea = '8';var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-				
+
+		if (id == adapter.namespace + '.' + 'DEVICE.T_HEAT_VACATION') {var new_target = 'T_HEAT_VACATION';var xml_construct = '<'+ new_target +'>'+ new_val +'</'+ new_target +'>';}
 		
 			// Post DATA to DEVICE
 			var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID>'+ xml_construct +'</Device></Devices>';
