@@ -71,7 +71,7 @@ adapter.on('stateChange', function (id, state) {
 		}
 		
 			// Post DATA to DEVICE
-			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ obj.Device.ID +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ new_temp +'</T_TARGET> </HEATAREA> </Device> </Devices>';
+			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ device_id +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ new_temp +'</T_TARGET> </HEATAREA> </Device> </Devices>';
 			httpPost(data);
 	}
 });
@@ -243,7 +243,7 @@ function getTemp(xml) {
                 adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[7].HEATCTRL_STATE)), ack: true});
 			   
 			    // fill global vals
-				
+				device_id = obj.Device.ID;
 			   
         }
     });
