@@ -54,21 +54,11 @@ adapter.on('stateChange', function (id, state) {
         adapter.log.info('ack is not set!');
 		adapter.log.info('Value: ' + state.val);
 		
+		// save value in var
+		var new_temp = state.val;
+		
 		// get values from device_id
-			adapter.getState('DEVICE.ID', function (err, state) {
-    
-    adapter.log.info(
-          'State ' + adapter.namespace + '.DEVICE.ID -' + 
-          '  Value: '        + state.val + 
-          ', ack: '          + state.ack + 
-          ', time stamp: '   + state.ts  + 
-          ', last changed: ' + state.lc
-    ); 
-
-});
-			
-			adapter.getState(adapter.namespace + '.' + 'DEVICE.ID', state);
-			//adapter.getState(device.id, state);
+			adapter.getState('DEVICE.ID', function (err, state));
 			var device_id = state.val;	
 			adapter.log.info('Device id: ' + device_id);
 		
@@ -83,7 +73,7 @@ adapter.on('stateChange', function (id, state) {
 		}
 		
 			// Post DATA to DEVICE
-			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ device_id +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ state.val +'</T_TARGET> </HEATAREA> </Device> </Devices>';
+			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ device_id +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ new_temp +'</T_TARGET> </HEATAREA> </Device> </Devices>';
 			httpPost(data);
 	}
 });
