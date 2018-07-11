@@ -153,7 +153,7 @@ function httpPost(data) {
 	
 		// URL, die abgefragt, bzw. gesendet werden soll:
 		var options = {
-			host: '10.49.12.169',
+			host: adapter.config.host,
 			path: '/data/changes.xml',
 			method: 'POST'                // in der Regel: "GET"
 			};
@@ -175,7 +175,7 @@ function httpPost(data) {
 
 // Get XML Data from API
 function getXMLcyclic() {
-    request('http://10.49.12.169/data/static.xml', function (error, response, body) {
+    request('http://'+ adapter.config.host +'/data/static.xml', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             getTemp(body); 
             } else { 
@@ -324,7 +324,7 @@ function main() {
 	* example 
 	* setInterval(pifaceread, adapter.config.piinterval);
 	*/
-	setInterval(getXMLcyclic, 30000);
+	setInterval(getXMLcyclic, adapter.config.pollime);
 	
 
 

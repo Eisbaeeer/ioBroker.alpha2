@@ -72,15 +72,18 @@
 
 <!-- you have to put your config page in a div with id adapter-container -->
 <div id="adapter-container">
-
-    <table><tr>
-        <td><img src="template.png"/></td>
-        <td><h3 class="translate">template adapter settings</h3></td>
-    </tr></table>
-    <p>
-        <span><label for="test1" class="translate">test1</label></span><input class="value" id="test1"/><br>
-        <span><label for="test2" class="translate">test2</label></span><input class="value" id="test2"/><br>
-    </p>
+    <table><tr><td><img src="mh-logo.png" width=120></td><p><td><h3 class="translate">M&ouml;hlenhoff Alpha2 settings</h3></td></tr></table>
+    <hr>
+    <table>
+        <tr>
+            <td class="translate">IP address or hostname</td>
+            <td><input value="192.168.0.100" type="text" size="15" class="value" id="host"></td>
+        </tr>
+        <tr>
+            <td class="translate">Polling interval time in ms</td>
+            <td><input value="60000" type="text" size="15" class="value" id="polltime"></td>
+        </tr>
+    </table>
 
     <p class="translate">on save adapter restarts with new config immediately</p>
 
