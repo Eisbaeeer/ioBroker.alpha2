@@ -1284,7 +1284,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: treu,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
