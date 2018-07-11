@@ -175,7 +175,7 @@ function httpPost(data) {
 
 // Get XML Data from API
 function getXMLcyclic() {
-    request('http://'+ adapter.config.host +'/data/static.xml', function (error, response, body) {
+    request('http://'+adapter.config.host+'/data/static.xml', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             getTemp(body); 
             } else { 
