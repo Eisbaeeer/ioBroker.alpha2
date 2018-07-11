@@ -61,7 +61,7 @@ adapter.on('stateChange', function (id, state) {
 			adapter.getState('DEVICE.ID', function (err, state) {
 			var device_id = state.val;	
 			adapter.log.info('Device id: ' + device_id);
-			})
+			}
 		
 		// Set HEATAREA Target Temperatures
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
@@ -77,6 +77,7 @@ adapter.on('stateChange', function (id, state) {
 			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ device_id +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ new_temp +'</T_TARGET> </HEATAREA> </Device> </Devices>';
 			httpPost(data);
 	}
+	)
 });
 
 // Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
