@@ -57,12 +57,12 @@ adapter.on('stateChange', function (id, state) {
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
 		// Set values via XML
 		var heatarea = '0';
-		var newdata = HEATAREA.0.T_TARGET
+		var newdata = HEATAREA.0.T_TARGET;
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_TARGET') {		
 		// Set values via XML
 		var heatarea = '1';
-		var newdata = HEATAREA.1.T_TARGET
+		var newdata = HEATAREA.1.T_TARGET;
 		}
 		
 			// Post DATA to DEVICE
