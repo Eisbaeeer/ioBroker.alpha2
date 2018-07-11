@@ -113,6 +113,9 @@ adapter.on('stateChange', function (id, state) {
 
 		if (id == adapter.namespace + '.' + 'DEVICE.T_HEAT_VACATION') {var new_target = 'T_HEAT_VACATION';var xml_construct = '<'+ new_target +'>'+ new_val +'</'+ new_target +'>';}
 		
+		if (id == adapter.namespace + '.' + 'PROGRAM.0.1.END') {var nr = '1'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		
+		
 			// Post DATA to DEVICE
 			var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID>'+ xml_construct +'</Device></Devices>';
 			httpPost(data);
@@ -1147,7 +1150,7 @@ function main() {
 	adapter.setObject('HEATAREA.0', {
         type: 'object',
         common: {
-            name: 'HEATAREA 0',
+            name: 'HEATAREA NR 1',
             type: 'object',
             unit: '',
             read: true,
@@ -1255,7 +1258,7 @@ function main() {
 		adapter.setObject('HEATAREA.1', {
         type: 'object',
         common: {
-            name: 'HEATAREA 1',
+            name: 'HEATAREA NR 2',
             type: 'object',
             unit: '',
             read: true,
@@ -1363,7 +1366,7 @@ function main() {
 		adapter.setObject('HEATAREA.2', {
         type: 'object',
         common: {
-            name: 'HEATAREA 2',
+            name: 'HEATAREA NR 3',
             type: 'object',
             unit: '',
             read: true,
@@ -1471,7 +1474,7 @@ function main() {
 		adapter.setObject('HEATAREA.3', {
         type: 'object',
         common: {
-            name: 'HEATAREA 3',
+            name: 'HEATAREA NR 4',
             type: 'object',
             unit: '',
             read: true,
@@ -1579,7 +1582,7 @@ function main() {
 	adapter.setObject('HEATAREA.4', {
         type: 'object',
         common: {
-            name: 'HEATAREA 4',
+            name: 'HEATAREA NR 5',
             type: 'object',
             unit: '',
             read: true,
@@ -1687,7 +1690,7 @@ function main() {
 	adapter.setObject('HEATAREA.5', {
         type: 'object',
         common: {
-            name: 'HEATAREA 5',
+            name: 'HEATAREA NR 6',
             type: 'object',
             unit: '',
             read: true,
@@ -1795,7 +1798,7 @@ function main() {
 		adapter.setObject('HEATAREA.6', {
         type: 'object',
         common: {
-            name: 'HEATAREA 6',
+            name: 'HEATAREA NR 7',
             type: 'object',
             unit: '',
             read: true,
@@ -1903,7 +1906,7 @@ function main() {
 		adapter.setObject('HEATAREA.7', {
         type: 'object',
         common: {
-            name: 'HEATAREA 7',
+            name: 'HEATAREA NR 8',
             type: 'object',
             unit: '',
             read: true,
