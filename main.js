@@ -57,6 +57,9 @@ adapter.on('stateChange', function (id, state) {
         adapter.log.info('ack is not set!');
 		adapter.log.info('Value: ' + state.val);
 		adapter.log.info('id: ' + id);
+		adapter.log.info('array[0]: ' id[0]);
+		adapter.log.info('array[1]: ' id[1]);
+		adapter.log.info('array[2]: ' id[2]);
 		
 		// save value in var
 		var new_temp = state.val;
