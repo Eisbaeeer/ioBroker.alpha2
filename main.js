@@ -23,6 +23,9 @@ const request = require('request');
 const parser = require('xml2js').parseString;
 const http = require('http');   
 
+// define adapter wide vars
+var device_id;
+
 /*Variable declaration, since ES6 there are let to declare variables. Let has a more clearer definition where 
 it is available then var.The variable is available inside a block and it's childs, but not outside. 
 You can define the same variable name inside a child without produce a conflict with the variable of the parent block.*/
@@ -59,7 +62,7 @@ adapter.on('stateChange', function (id, state) {
 		
 		// get values from device_id
 			adapter.getState('DEVICE.ID', function (err, state) {
-			var device_id = state.val;	
+			device_id = state.val;	
 			adapter.log.info('Device id: ' + device_id);
 			});
 		
@@ -74,7 +77,7 @@ adapter.on('stateChange', function (id, state) {
 		}
 		
 			// Post DATA to DEVICE
-			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ state.val +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ new_temp +'</T_TARGET> </HEATAREA> </Device> </Devices>';
+			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ device_id +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ new_temp +'</T_TARGET> </HEATAREA> </Device> </Devices>';
 			httpPost(data);
 	}
 });
