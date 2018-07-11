@@ -64,18 +64,38 @@ adapter.on('stateChange', function (id, state) {
 		// Set HEATAREA Target Temperatures
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
 		var heatarea = '0';
+		var new_target = 'T_TARGET';
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_DAY') {		
 		var heatarea = '0';
+		var new_target = 'T_HEAT_DAY';
 		}		
+		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_NIGHT') {		
+		var heatarea = '0';
+		var new_target = 'T_HEAT_NIGHT';
+		}		
+		if (id == adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_MODE') {		
+		var heatarea = '0';
+		var new_target = 'HEATAREA_MODE';
+		}		
+		if (id == adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEK') {		
+		var heatarea = '0';
+		var new_target = 'PROGRAM_WEEK';
+		}
+		if (id == adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEKEND') {		
+		var heatarea = '0';
+		var new_target = 'PROGRAM_WEEKEND';
+		}
+		
 		
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_TARGET') {		
 		// Set values via XML
 		var heatarea = '1';
+		var new_target = 'T_TARGET';
 		}
 		
 			// Post DATA to DEVICE
-			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ device_id +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ new_temp +'</T_TARGET> </HEATAREA> </Device> </Devices>';
+			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ device_id +'</ID> <HEATAREA nr="'+ heatarea +'"> <'+ new_target +'>'+ new_temp +'</'+ new_target +'> </HEATAREA> </Device> </Devices>';
 			httpPost(data);
 	}
 });
