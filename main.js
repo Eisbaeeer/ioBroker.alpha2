@@ -112,10 +112,10 @@ adapter.on('stateChange', function (id, state) {
 		var new_target = 'PROGRAM_WEEKEND';
 		}
 		
-		//var xml-construct = ;
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		
 			// Post DATA to DEVICE
-			var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID><HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA></Device></Devices>';
+			var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID>'+ xml_construct +'</Device></Devices>';
 			httpPost(data);
 	}
 });
@@ -420,7 +420,7 @@ function main() {
             type: 'number',
             unit: "°C",
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -456,7 +456,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -468,7 +468,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1176,7 +1176,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1212,7 +1212,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1224,7 +1224,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1236,7 +1236,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1248,7 +1248,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1284,7 +1284,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: treu,
 			role: 'EZR'
         },   
         native: {}
@@ -1308,7 +1308,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1320,7 +1320,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1332,7 +1332,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1344,7 +1344,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1356,7 +1356,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1392,7 +1392,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1416,7 +1416,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1428,7 +1428,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1440,7 +1440,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1452,7 +1452,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1464,7 +1464,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1500,7 +1500,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1524,7 +1524,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1536,7 +1536,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1548,7 +1548,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1560,7 +1560,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1572,7 +1572,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1608,7 +1608,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1632,7 +1632,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1644,7 +1644,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1656,7 +1656,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1668,7 +1668,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1680,7 +1680,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1716,7 +1716,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1740,7 +1740,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1752,7 +1752,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1764,7 +1764,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1776,7 +1776,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1788,7 +1788,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1824,7 +1824,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1848,7 +1848,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1860,7 +1860,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1872,7 +1872,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1884,7 +1884,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1896,7 +1896,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1932,7 +1932,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1956,7 +1956,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1968,7 +1968,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1980,7 +1980,7 @@ function main() {
             type: 'string',
             unit: '',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -1992,7 +1992,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
@@ -2004,7 +2004,7 @@ function main() {
             type: 'number',
             unit: '°C',
             read: true,
-            write: false,
+            write: true,
 			role: 'EZR'
         },   
         native: {}
