@@ -62,57 +62,65 @@ adapter.on('stateChange', function (id, state) {
 		var new_val = state.val;
 		
 		// Set HEATAREA values
-		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
-		var heatarea = '1';
-		var new_target = 'T_TARGET';
-		}
+		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') { var heatarea = '1'; var new_target = 'T_TARGET'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_DAY') {		
 		var heatarea = '1';
 		var new_target = 'T_HEAT_DAY';
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_NIGHT') {		
 		var heatarea = '1';
 		var new_target = 'T_HEAT_NIGHT';
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_MODE') {		
 		var heatarea = '1';
 		var new_target = 'HEATAREA_MODE';
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEK') {		
 		var heatarea = '1';
 		var new_target = 'PROGRAM_WEEK';
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEKEND') {		
 		var heatarea = '1';
 		var new_target = 'PROGRAM_WEEKEND';
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		}
 		
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_TARGET') {		
 		var heatarea = "2";
 		var new_target = 'T_TARGET';
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_DAY') {		
 		var heatarea = '2';
 		var new_target = 'T_HEAT_DAY';
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_NIGHT') {		
 		var heatarea = '2';
 		var new_target = 'T_HEAT_NIGHT';
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.HEATAREA_MODE') {		
 		var heatarea = '2';
 		var new_target = 'HEATAREA_MODE';
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		}		
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEK') {		
 		var heatarea = '2';
 		var new_target = 'PROGRAM_WEEK';
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEKEND') {		
 		var heatarea = '2';
 		var new_target = 'PROGRAM_WEEKEND';
+		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
 		}
 		
-		var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
+		
 		
 			// Post DATA to DEVICE
 			var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID>'+ xml_construct +'</Device></Devices>';
