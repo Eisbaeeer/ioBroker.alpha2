@@ -58,9 +58,10 @@ adapter.on('stateChange', function (id, state) {
 		var new_temp = state.val;
 		
 		// get values from device_id
-			adapter.getState('DEVICE.ID', function (err, state));
+			adapter.getState('DEVICE.ID', function (err, state) {
 			var device_id = state.val;	
 			adapter.log.info('Device id: ' + device_id);
+			})
 		
 		// Set HEATAREA Target Temperatures
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
