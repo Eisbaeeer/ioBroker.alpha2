@@ -93,17 +93,17 @@ function httpPost(data) {
 			};
 	
     var req = http.request(options, function(res) {
-    log("http Status: " + res.statusCode);
-    log('HEADERS: ' + JSON.stringify(res.headers), (res.statusCode != 200 ? "warn" : "info")); // Header (Rückmeldung vom Webserver)
+    adapter.log.info("http Status: " + res.statusCode);
+    adapter.log.info('HEADERS: ' + JSON.stringify(res.headers), (res.statusCode != 200 ? "warn" : "info")); // Header (Rückmeldung vom Webserver)
     });
     
     req.on('error', function(e) { // Fehler abfangen
-        log('ERROR: ' + e.message,"warn");
+        adapter.log.info('ERROR: ' + e.message,"warn");
     });
 
-    log("Data to request body: " + data);
+    adapter.log.info("Data to request body: " + data);
     // write data to request body
-    (data ? req.write(data) : log("Daten: keine Daten angegeben"));
+    (data ? req.write(data) : adapter.log.info("Daten: keine Daten angegeben"));
     req.end();
 }
 
@@ -113,16 +113,16 @@ function getXMLcyclic() {
         if (!error && response.statusCode == 200) {
             getTemp(body); 
             } else { 
-        log("Fehler beim Herunterladen: " + error, 'error');
+        adapter.log.info("Fehler beim Herunterladen: " + error, 'error');
             }
             });
 }
 			
 function getTemp(xml) {
     parser(xml, {explicitArray: false, mergeAttrs: true, explicitRoot: false}, function(err, obj) {
-        if(err) log('Fehler XML-Parsen: ' + err, 'error');
+        if(err) adapter.log.info('Fehler XML-Parsen: ' + err, 'error');
         else {
-            //log("XMLcyclic: " + JSON.stringify(obj));
+            //adapter.log.info("XMLcyclic: " + JSON.stringify(obj));
                 adapter.setState(adapter.namespace + '.' + 'DEVICE.ID', {val: obj.Device.ID, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'DEVICE.NAME', {val: obj.Device.NAME, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'DEVICE.TYPE', {val: obj.Device.TYPE, ack: true});
