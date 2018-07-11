@@ -55,9 +55,8 @@ adapter.on('stateChange', function (id, state) {
 		adapter.log.info('Value: ' + state.val);
 		
 		// get values from device_id
-			adapter.getState(adapter.namespace + '.' + 'DEVICE.ID', state);
+			var device_id = adapter.getState(adapter.namespace + '.' + 'DEVICE.ID', state).val;
 			//adapter.getState(device.id, state);
-            var device_id = state.val;
 				
 		adapter.log.info('Device id: ' + device_id);
 		
