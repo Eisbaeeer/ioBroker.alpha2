@@ -57,12 +57,9 @@ adapter.on('stateChange', function (id, state) {
         adapter.log.info('ack is not set!');
 		adapter.log.info('Value: ' + state.val);
 		adapter.log.info('id: ' + id);
-		adapter.log.info('array[0]: ' id[0]);
-		adapter.log.info('array[1]: ' id[1]);
-		adapter.log.info('array[2]: ' id[2]);
 		
 		// save value in var
-		var new_temp = state.val;
+		var new_val = state.val;
 		
 		// Set HEATAREA values
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
@@ -115,8 +112,10 @@ adapter.on('stateChange', function (id, state) {
 		var new_target = 'PROGRAM_WEEKEND';
 		}
 		
+		var xml-construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';
+		
 			// Post DATA to DEVICE
-			var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID><HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_temp +'</'+ new_target +'></HEATAREA></Device></Devices>';
+			var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID>'+ xml-construct +'</Device></Devices>';
 			httpPost(data);
 	}
 });
