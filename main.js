@@ -55,10 +55,22 @@ adapter.on('stateChange', function (id, state) {
 		adapter.log.info('Value: ' + state.val);
 		
 		// get values from device_id
-			var device_id = adapter.getState(adapter.namespace + '.' + 'DEVICE.ID', state).val;
+			adapter.getState('myState', function (err, state) {
+    
+    adapter.log.info(
+          'State ' + adapter.namespace + '.myState -' + 
+          '  Value: '        + state.val + 
+          ', ack: '          + state.ack + 
+          ', time stamp: '   + state.ts  + 
+          ', last changed: ' + state.lc
+    ); 
+
+});
+			
+			adapter.getState(adapter.namespace + '.' + 'DEVICE.ID', state);
 			//adapter.getState(device.id, state);
-				
-		adapter.log.info('Device id: ' + device_id);
+			var device_id = state.val;	
+			adapter.log.info('Device id: ' + device_id);
 		
 		// Set HEATAREA Target Temperatures
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
