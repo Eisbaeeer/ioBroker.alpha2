@@ -225,7 +225,7 @@ function getTemp(xml) {
                 adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.4.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[15].START , ack: true});
                 adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[15].END, ack: true});
                 
-                if (typeof obj.Device.HEATAREA[0].HEATAREA_NAME === "undefined"){
+                if (typeof obj.Device.HEATAREA[0] === "undefined"){
 				} else {
 				adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_NAME', {val: obj.Device.HEATAREA[0].HEATAREA_NAME, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_MODE', {val: obj.Device.HEATAREA[0].HEATAREA_MODE, ack: true});
@@ -236,7 +236,7 @@ function getTemp(xml) {
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[0].T_HEAT_DAY), ack: true});
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[0].T_HEAT_NIGHT), ack: true});
                 }
-				if (typeof obj.Device.HEATAREA[1].HEATAREA_NAME === "undefined"){
+				if (typeof obj.Device.HEATAREA[1] === "undefined"){
 				} else {
 				adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.HEATAREA_NAME', {val: obj.Device.HEATAREA[1].HEATAREA_NAME, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.HEATAREA_MODE', {val: obj.Device.HEATAREA[1].HEATAREA_MODE, ack: true});
@@ -247,7 +247,7 @@ function getTemp(xml) {
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[1].T_HEAT_DAY), ack: true});
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[1].T_HEAT_NIGHT), ack: true});
                 }
-				if (typeof obj.Device.HEATAREA[2].HEATAREA_NAME === "undefined"){
+				if (typeof obj.Device.HEATAREA[2] === "undefined"){
 				} else {
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.HEATAREA_NAME', {val: obj.Device.HEATAREA[2].HEATAREA_NAME, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.HEATAREA_MODE', {val: obj.Device.HEATAREA[2].HEATAREA_MODE, ack: true});
