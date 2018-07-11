@@ -47,16 +47,18 @@ adapter.on('objectChange', function (id, obj) {
 // is called if a subscribed state changes
 adapter.on('stateChange', function (id, state) {
     // Warning, state can be null if it was deleted
-    adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
+    //adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
 
     // you can use the ack flag to detect if it is status (true) or command (false)
     if (state && !state.ack) {
         adapter.log.info('ack is not set!');
-		adapter.log.info('Value: ' + id.val);
+		adapter.log.info('Value: ' + state.val);
 		
 		// Set HEATAREA Target Temperatures
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
 		// Set values via XML
+		var device_id = adapter.namespace + '.' + 'DEVICE.ID.STATE';
+		adapter.log.info('Device id: ' + device_id);
 		var heatarea = '0';
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_TARGET') {		
@@ -65,7 +67,7 @@ adapter.on('stateChange', function (id, state) {
 		}
 		
 			// Post DATA to DEVICE
-			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>Zentrale</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ state.val +'</T_TARGET> </HEATAREA> </Device> </Devices>';
+			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ device_id +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ state.val +'</T_TARGET> </HEATAREA> </Device> </Devices>';
 			httpPost(data);
 	}
 });
@@ -255,7 +257,7 @@ function main() {
 	* example 
 	* setInterval(pifaceread, adapter.config.piinterval);
 	*/
-	setInterval(getXMLcyclic, 6000);
+	setInterval(getXMLcyclic, 30000);
 	
 
 
