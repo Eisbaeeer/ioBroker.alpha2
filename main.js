@@ -113,7 +113,7 @@ adapter.on('stateChange', function (id, state) {
 		}
 		
 			// Post DATA to DEVICE
-			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ device_id +'</ID> <HEATAREA nr="'+ heatarea +'"> <'+ new_target +'>'+ new_temp +'</'+ new_target +'> </HEATAREA> </Device> </Devices>';
+			var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID><HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_temp +'</'+ new_target +'></HEATAREA></Device></Devices>';
 			httpPost(data);
 	}
 });
