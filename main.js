@@ -57,7 +57,7 @@ adapter.on('stateChange', function (id, state) {
 		// Set HEATAREA Target Temperatures
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
 		// Set values via XML
-		var device_id = adapter.namespace + '.' + 'DEVICE.ID.STATE';
+		var device_id = adapter.namespace + '.' + 'DEVICE.ID' + state.val;
 		adapter.log.info('Device id: ' + device_id);
 		var heatarea = '0';
 		}
