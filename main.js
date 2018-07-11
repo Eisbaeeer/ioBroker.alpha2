@@ -60,12 +60,6 @@ adapter.on('stateChange', function (id, state) {
 		// save value in var
 		var new_temp = state.val;
 		
-		// get values from device_id
-			adapter.getState('DEVICE.ID', function (err, state) {
-			device_id = state.val;	
-			adapter.log.info('Device id: ' + device_id);
-			});
-		
 		// Set HEATAREA Target Temperatures
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
 		// Set values via XML
@@ -77,7 +71,7 @@ adapter.on('stateChange', function (id, state) {
 		}
 		
 			// Post DATA to DEVICE
-			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ device_id +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ new_temp +'</T_TARGET> </HEATAREA> </Device> </Devices>';
+			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ obj.Device.ID +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ new_temp +'</T_TARGET> </HEATAREA> </Device> </Devices>';
 			httpPost(data);
 	}
 });
@@ -247,11 +241,13 @@ function getTemp(xml) {
                 adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.HEATAREA_NR', {val: obj.Device.HEATCTRL[7].HEATAREA_NR, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[7].ACTOR)), ack: true});
                 adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[7].HEATCTRL_STATE)), ack: true});
-                
-                
-                
+			   
+			    // fill global vals
+				
+			   
         }
     });
+	
 }
 		
 function main() {
