@@ -58,16 +58,14 @@ adapter.on('stateChange', function (id, state) {
 		if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {		
 		// Set values via XML
 		var heatarea = '0';
-		var newdata = id.val;
 		}
 		if (id == adapter.namespace + '.' + 'HEATAREA.1.T_TARGET') {		
 		// Set values via XML
 		var heatarea = '1';
-		var newdata = id.val;
 		}
 		
 			// Post DATA to DEVICE
-			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ DEVICE.ID +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ newdata +'</T_TARGET> </HEATAREA> </Device> </Devices>';
+			var data = '<?xml version="1.0" encoding="UTF-8"?> <Devices> <Device> <ID>'+ adapter.namespace.DEVICE.ID +'</ID> <HEATAREA nr="'+ heatarea +'"> <T_TARGET>'+ id.val +'</T_TARGET> </HEATAREA> </Device> </Devices>';
 			httpPost(data);
 	}
 });
