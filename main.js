@@ -55,10 +55,10 @@ adapter.on('stateChange', function (id, state) {
 		adapter.log.info('Value: ' + state.val);
 		
 		// get values from device_id
-			adapter.getState('myState', function (err, state) {
+			adapter.getState('DEVICE.ID', function (err, state) {
     
     adapter.log.info(
-          'State ' + adapter.namespace + '.myState -' + 
+          'State ' + adapter.namespace + '.DEVICE.ID -' + 
           '  Value: '        + state.val + 
           ', ack: '          + state.ack + 
           ', time stamp: '   + state.ts  + 
