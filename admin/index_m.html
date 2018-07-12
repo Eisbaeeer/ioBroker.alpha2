@@ -1,31 +1,25 @@
 <html>
-<!-- This file is deprecated!!!!! Please use index_m.html -->
-<!-- This file is required only for backward compatibility and will be deleted soon -->
+<head>
 <!-- these 4 files always have to be included -->
-<link rel="stylesheet" type="text/css" href="../../lib/css/themes/jquery-ui/redmond/jquery-ui.min.css"/>
-<script type="text/javascript" src="../../lib/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
-<script type="text/javascript" src="../../lib/js/jquery-ui-1.10.3.full.min.js"></script>
-
-
-<!-- optional: use jqGrid
-<link rel="stylesheet" type="text/css" href="../../lib/css/jqGrid/ui.jqgrid-4.5.4.css"/>
-<script type="text/javascript" src="../../lib/js/jqGrid/jquery.jqGrid-4.5.4.min.js"></script>
-<script type="text/javascript" src="../../lib/js/jqGrid/i18n/grid.locale-all.js"></script>
--->
-
-<!-- optional: use multiselect
-<link rel="stylesheet" type="text/css" href="../../lib/css/jquery.multiselect-1.13.css"/>
-<script type="text/javascript" src="../../lib/js/jquery.multiselect-1.13.min.js"></script>
--->
-
-<!-- these two file always have to be included -->
+<link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css">
 <link rel="stylesheet" type="text/css" href="../../css/adapter.css"/>
+
+<script type="text/javascript" src="../../lib/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+
+<!-- these files always have to be included -->
 <script type="text/javascript" src="../../js/translate.js"></script>
+<script type="text/javascript" src="../../lib/js/materialize.js"></script>
 <script type="text/javascript" src="../../js/adapter-settings.js"></script>
 <script type="text/javascript" src="words.js"></script>
-
-
+ <style>
+  .m .col .select-wrapper+label {
+   top: -26px;  
+  }
+     .m span{
+         font-size: 0.9em;
+     }
+ </style>
 <!-- you have to define 2 functions in the global scope: -->
 <script type="text/javascript">
 
@@ -33,16 +27,16 @@
     function load(settings, onChange) {
         // example: select elements with id=key and class=value and insert value
        if (!settings) return;
-        $('.value').each(function () {
+        $('.value').each(function () {            
             var $key = $(this);
             var id = $key.attr('id');
             if ($key.attr('type') === 'checkbox') {
-		// do not call onChange direct, because onChange could expect some arguments
+		        // do not call onChange direct, because onChange could expect some arguments
                 $key.prop('checked', settings[id]).change(function() {
                     onChange();
                 });
             } else {
-		// do not call onChange direct, because onChange could expect some arguments
+		        // do not call onChange direct, because onChange could expect some arguments
                 $key.val(settings[id]).change(function() {
                     onChange();
                 }).keyup(function() {
@@ -51,6 +45,7 @@
             }
         });
         onChange(false);
+        M.updateTextFields();  // function Materialize.updateTextFields(); to reinitialize all the Materialize labels on the page if you are dynamically adding inputs.
     }
 
     // ... and the function save has to exist.
@@ -60,33 +55,74 @@
         var obj = {};
         $('.value').each(function () {
             var $this = $(this);
-			if ($this.attr('type') === 'checkbox') {
-				obj[$this.attr('id')] = $this.prop('checked');
-			} else {
-				obj[$this.attr('id')] = $this.val();
-			}
+            if ($this.attr('type') === 'checkbox') {
+                obj[$this.attr('id')] = $this.prop('checked');
+            } else {
+                obj[$this.attr('id')] = $this.val();
+            }
         });
         callback(obj);
     }
 </script>
-
-<!-- you have to put your config page in a div with id adapter-container -->
-<div id="adapter-container">
-    <table><tr><td><img src="mh-logo.png" width=120></td><p><td><h3 class="translate">M&ouml;hlenhoff Alpha2 settings</h3></td></tr></table>
-    <hr>
-    <table>
-        <tr>
-            <td class="translate">IP address or hostname</td>
-            <td><input value="192.168.0.100" type="text" size="15" class="value" id="host"></td>
-        </tr>
-        <tr>
-            <td class="translate">Polling interval time in ms</td>
-            <td><input value="60000" type="text" size="15" class="value" id="polltime"></td>
-        </tr>
-    </table>
-
-    <p class="translate">on save adapter restarts with new config immediately</p>
-
-</div>
+</head>
+<body>
+    <!-- you have to put your config page in a div with id adapter-container -->
+    <div class="m adapter-container">
+        <div class="row">
+            <!-- Forms are the standard way to receive user inputted data.
+         Learn more http://materializecss.com/forms.html-->
+            <div class="row">
+                <div class="input-field col s6">
+                    <img src="template.png" class="logo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s3">
+                    <input class="value" id="test1" type="checkbox" />
+                    <label for="test1" class="translate">test1</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6 l4">
+                    <input class="value" id="myText" type="text">
+                    <label for="myText">Text</label>
+                    <span class="translate">Descriptions of the input field</span>
+                </div>
+                <div class="input-field col s12 m6 l4">
+                    <input type="number" class="value" id="test2" />
+                    <label for="test2" class="translate">Number</label>
+                    <!-- Important: label must come directly after input. Label is important. -->
+                    <span class="translate">test2</span>
+                </div>
+                <div class="input-field col s12 m6 l4">
+                    <input id="email" type="email" class="value validate">
+                    <label for="email" data-error="wrong" data-success="right">Email</label>
+                    <!--  You can add custom validation messages by adding either data-error or data-success attributes to your input field labels.-->
+                    <span class="translate">Verification input</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m4">
+                    <select class="value" id="mySelect">
+                        <option value="auto" class="translate">Auto</option>
+                        <option value="manual" class="translate">Manual</option>
+                    </select>
+                    <label for="mySelect" class="translate">My select</label>
+                    <!-- Important: label must come directly after select. Label is important. -->
+                </div>
+                <div class="input-field col s12 m8">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="Textarea" class="value materialize-textarea"></textarea>
+                    <label for="Textarea">Message</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <p class="translate">on save adapter restarts with new config immediately</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
 </html>
