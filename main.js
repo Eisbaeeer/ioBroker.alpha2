@@ -326,9 +326,9 @@ function main() {
 	* example 
 	* setInterval(pifaceread, adapter.config.piinterval);
 	*/
-	//setInterval(getXMLcyclic, parseInt(adapter.config.pollime));
-	adapter.log.info('admin polltime: ' + adapter.config.myText);
-	setInterval(getXMLcyclic, 30000);
+	setInterval(getXMLcyclic, adapter.config.myText);
+	adapter.log.info('config admin polltime: ' + adapter.config.myText);
+	//setInterval(getXMLcyclic, 30000);
 
 
     /**
