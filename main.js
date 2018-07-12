@@ -231,12 +231,12 @@ function getTemp(xml) {
                 adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[11].END, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[12].START , ack: true});
                 adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[12].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[13].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.2.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[13].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.3.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[14].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.3.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[14].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.4.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[15].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[15].END, ack: true});
+        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[13].START , ack: true});
+        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.2.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[13].END, ack: true});
+        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.3.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[14].START , ack: true});
+        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.3.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[14].END, ack: true});
+        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.4.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[15].START , ack: true});
+        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[15].END, ack: true});
                 
                 if (typeof obj.Device.HEATAREA[0] === "undefined"){
 				} else {
