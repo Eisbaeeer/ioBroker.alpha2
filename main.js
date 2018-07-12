@@ -154,7 +154,7 @@ function httpPost(data) {
 		// URL, die abgefragt, bzw. gesendet werden soll:
 		var options = {
 			//host: adapter.config.host,
-			host: '10.49.12.169,
+			host: '10.49.12.169',
 			path: '/data/changes.xml',
 			method: 'POST'                // in der Regel: "GET"
 			};
