@@ -221,38 +221,7 @@ function getTemp(xml) {
 				adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[i].END , ack: true});
 				}				
 				
-				adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[1].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.2.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[1].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.3.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[2].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.3.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[2].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.4.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[3].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[3].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[4].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[4].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[5].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.2.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[5].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.3.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[6].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.3.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[6].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.4.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[7].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.1.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[7].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[8].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[8].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[9].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.2.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[9].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.3.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[10].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.3.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[10].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.4.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[11].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.2.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[11].END, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[12].START , ack: true});
-                adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[12].END, ack: true});
-        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[13].START , ack: true});
-        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.2.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[13].END, ack: true});
-        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.3.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[14].START , ack: true});
-        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.3.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[14].END, ack: true});
-        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.4.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[15].START , ack: true});
-        //        adapter.setState(adapter.namespace + '.' + 'PROGRAM.3.4.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[15].END, ack: true});
+				
                 
                 if (typeof obj.Device.HEATAREA[0] === "undefined"){
 				} else {
