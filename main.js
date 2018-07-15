@@ -206,11 +206,16 @@ function getTemp(xml) {
                 adapter.setState(adapter.namespace + '.' + 'VACATION.END_TIME', {val: obj.Device.VACATION.END_TIME, ack: true});
                 
                 adapter.log.debug("Program lenght 0: " + obj.Device.PROGRAM.SHIFT_PROGRAM.length);
+				
+				
 				for (var i = 0; i < obj.Device.PROGRAM.SHIFT_PROGRAM.length; i++) {
 				adapter.log.debug("--- for loop position: " + i);
-				adapter.log.debug("Program NR: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr);
+				adapter.log.debug("Program NR: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr);				
 				adapter.log.debug("Shiftingtime: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime);
+				adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].START , ack: true});
+				adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].END , ack: true});
 				}				
+				
 				adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].START , ack: true});
                 adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].END, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[1].START , ack: true});
@@ -527,10 +532,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0', {
+    adapter.setObject('PROGRAM.4', {
         type: 'object',
         common: {
-            name: 'PROGRAM 0',
+            name: 'PROGRAM 4',
             type: 'object',
             unit: '',
             read: true,
@@ -539,10 +544,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0.1', {
+    adapter.setObject('PROGRAM.4.1', {
         type: 'object',
         common: {
-            name: 'PROGRAM 0 shift 1',
+            name: 'PROGRAM 4 shift 1',
             type: 'object',
             unit: '',
             read: true,
@@ -551,10 +556,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0.1.START', {
+    adapter.setObject('PROGRAM.4.1.START', {
         type: 'state',
         common: {
-            name: 'PROGRAM 0 1 START',
+            name: 'PROGRAM 4 1 START',
             type: 'string',
             unit: '',
             read: true,
@@ -563,10 +568,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0.1.END', {
+    adapter.setObject('PROGRAM.4.1.END', {
         type: 'state',
         common: {
-            name: 'PROGRAM 0 1 END',
+            name: 'PROGRAM 4 1 END',
             type: 'string',
             unit: '',
             read: true,
@@ -575,10 +580,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0.2', {
+    adapter.setObject('PROGRAM.4.2', {
         type: 'object',
         common: {
-            name: 'PROGRAM 0 shift 2',
+            name: 'PROGRAM 4 shift 2',
             type: 'object',
             unit: '',
             read: true,
@@ -587,10 +592,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0.2.START', {
+    adapter.setObject('PROGRAM.4.2.START', {
         type: 'state',
         common: {
-            name: 'PROGRAM 0 2 START',
+            name: 'PROGRAM 4 2 START',
             type: 'string',
             unit: '',
             read: true,
@@ -599,10 +604,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0.2.END', {
+    adapter.setObject('PROGRAM.4.2.END', {
         type: 'state',
         common: {
-            name: 'PROGRAM 0 2 END',
+            name: 'PROGRAM 4 2 END',
             type: 'string',
             unit: '',
             read: true,
@@ -611,10 +616,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0.3', {
+    adapter.setObject('PROGRAM.4.3', {
         type: 'object',
         common: {
-            name: 'PROGRAM 0 shift 3',
+            name: 'PROGRAM 4 shift 3',
             type: 'object',
             unit: '',
             read: true,
@@ -623,10 +628,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0.3.START', {
+    adapter.setObject('PROGRAM.4.3.START', {
         type: 'state',
         common: {
-            name: 'PROGRAM 0 3 START',
+            name: 'PROGRAM 4 3 START',
             type: 'string',
             unit: '',
             read: true,
@@ -635,10 +640,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0.3.END', {
+    adapter.setObject('PROGRAM.4.3.END', {
         type: 'state',
         common: {
-            name: 'PROGRAM 0 3 END',
+            name: 'PROGRAM 4 3 END',
             type: 'string',
             unit: '',
             read: true,
@@ -647,10 +652,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0.4', {
+    adapter.setObject('PROGRAM.4.4', {
         type: 'object',
         common: {
-            name: 'PROGRAM 0 shift 4',
+            name: 'PROGRAM 4 shift 4',
             type: 'object',
             unit: '',
             read: true,
@@ -659,10 +664,10 @@ function main() {
         },   
         native: {}
     });    
-    adapter.setObject('PROGRAM.0.4.START', {
+    adapter.setObject('PROGRAM.4.4.START', {
         type: 'state',
         common: {
-            name: 'PROGRAM 0 4 START',
+            name: 'PROGRAM 4 4 START',
             type: 'string',
             unit: '',
             read: true,
@@ -671,10 +676,10 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.0.4.END', {
+    adapter.setObject('PROGRAM.4.4.END', {
         type: 'state',
         common: {
-            name: 'PROGRAM 0 4 END',
+            name: 'PROGRAM 4 4 END',
             type: 'string',
             unit: '',
             read: true,
