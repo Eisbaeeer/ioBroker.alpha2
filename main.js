@@ -208,6 +208,8 @@ function getTemp(xml) {
                 adapter.log.debug("Program lenght 0: " + obj.Device.PROGRAM.SHIFT_PROGRAM.length);
 				for (var i = 0; i < obj.Device.PROGRAM.SHIFT_PROGRAM.length; i++) {
 				adapter.log.debug("for loop position: " + i);
+				adapter.log.debug("Program NR: " + obj.Device.PROGRAM.SHIFT_PROGRAM[0].nr);
+				adapter.log.debug("Shiftingtime: " + obj.Device.PROGRAM.SHIFT_PROGRAM[0].shiftingtime);
 				}				
 				adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].START , ack: true});
                 adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].END, ack: true});
