@@ -212,8 +212,8 @@ function getTemp(xml) {
 				adapter.log.debug("--- for loop position: " + i);
 				adapter.log.debug("Program NR: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr);				
 				adapter.log.debug("Shiftingtime: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime);
-				adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].START , ack: true});
-				adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].END , ack: true});
+				adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[i].START , ack: true});
+				adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[i].END , ack: true});
 				}				
 				
 				adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].START , ack: true});
