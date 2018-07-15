@@ -210,8 +210,8 @@ function getTemp(xml) {
 				// Fill objects with variable XML array lenght
 				if (obj.Device.PROGRAM.SHIFT_PROGRAM.length < 16) {
 					for (var i = 1; i < 17; i++) {
-						adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ [i] +'.'+ [i] +'.START', {null , ack: true});
-						adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ [i] +'.'+ [i] +'.END', {null , ack: true});
+						adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ [i] +'.'+ [i] +'.START', {val: null, ack: true});
+						adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ [i] +'.'+ [i] +'.END', {val: null, ack: true});
 					}
 				}
 					
