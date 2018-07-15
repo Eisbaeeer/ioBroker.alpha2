@@ -207,7 +207,7 @@ function getTemp(xml) {
                 
                 adapter.log.debug("Program lenght 0: " + obj.Device.PROGRAM.SHIFT_PROGRAM.length);
 				
-				// Fill objects with variable XML array lenght
+				// Fill PROGRAM objects with variable XML array lenght
 				if (obj.Device.PROGRAM.SHIFT_PROGRAM.length < 16) {
 					for (var i = 1; i < 17; i++) {
 						adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ [i] +'.'+ [i] +'.START', {val: null, ack: true});
@@ -229,39 +229,42 @@ function getTemp(xml) {
 				}				
 					
                 
-                if (typeof obj.Device.HEATAREA[0] === "undefined"){
-				} else {
-				adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_NAME', {val: obj.Device.HEATAREA[0].HEATAREA_NAME, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_MODE', {val: obj.Device.HEATAREA[0].HEATAREA_MODE, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[0].T_ACTUAL), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[0].T_TARGET), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEK', {val: obj.Device.HEATAREA[0].PROGRAM_WEEK, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[0].PROGRAM_WEEKEND, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[0].T_HEAT_DAY), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[0].T_HEAT_NIGHT), ack: true});
+            // if (typeof obj.Device.HEATAREA[0] === "undefined"){
+			//	} else {
+			//	adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_NAME', {val: obj.Device.HEATAREA[0].HEATAREA_NAME, ack: true});
+             //   adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_MODE', {val: obj.Device.HEATAREA[0].HEATAREA_MODE, ack: true});
+             //   adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[0].T_ACTUAL), ack: true});
+             //   adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[0].T_TARGET), ack: true});
+             //   adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEK', {val: obj.Device.HEATAREA[0].PROGRAM_WEEK, ack: true});
+             //   adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[0].PROGRAM_WEEKEND, ack: true});
+             //   adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[0].T_HEAT_DAY), ack: true});
+             //   adapter.setState(adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[0].T_HEAT_NIGHT), ack: true});
+             //   }
+				
+			//	if (typeof obj.Device.HEATAREA[1] === "undefined"){
+			//	} else {
+			//	adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.HEATAREA_NAME', {val: obj.Device.HEATAREA[1].HEATAREA_NAME, ack: true});
+             //   adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.HEATAREA_MODE', {val: obj.Device.HEATAREA[1].HEATAREA_MODE, ack: true});
+            //    adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[1].T_ACTUAL), ack: true});
+            //    adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[1].T_TARGET), ack: true});
+            //    adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEK', {val: obj.Device.HEATAREA[1].PROGRAM_WEEK, ack: true});
+            //    adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[1].PROGRAM_WEEKEND, ack: true});
+            //    adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[1].T_HEAT_DAY), ack: true});
+            //    adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[1].T_HEAT_NIGHT), ack: true});
+            //    }
+				
+				for (var i = 0; i < obj.Device.HEATAREA.length; i++) {
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.HEATAREA_NAME', {val: obj.Device.HEATAREA[i].HEATAREA_NAME, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.HEATAREA_MODE', {val: obj.Device.HEATAREA[i].HEATAREA_MODE, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[i].T_ACTUAL), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[i].T_TARGET), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.PROGRAM_WEEK', {val: obj.Device.HEATAREA[i].PROGRAM_WEEK, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[i].PROGRAM_WEEKEND, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[i].T_HEAT_DAY), val: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[i].T_HEAT_NIGHT), ack: true});
                 }
-				if (typeof obj.Device.HEATAREA[1] === "undefined"){
-				} else {
-				adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.HEATAREA_NAME', {val: obj.Device.HEATAREA[1].HEATAREA_NAME, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.HEATAREA_MODE', {val: obj.Device.HEATAREA[1].HEATAREA_MODE, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[1].T_ACTUAL), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[1].T_TARGET), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEK', {val: obj.Device.HEATAREA[1].PROGRAM_WEEK, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[1].PROGRAM_WEEKEND, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[1].T_HEAT_DAY), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[1].T_HEAT_NIGHT), ack: true});
-                }
-				if (typeof obj.Device.HEATAREA[2] === "undefined"){
-				} else {
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.HEATAREA_NAME', {val: obj.Device.HEATAREA[2].HEATAREA_NAME, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.HEATAREA_MODE', {val: obj.Device.HEATAREA[2].HEATAREA_MODE, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[2].T_ACTUAL), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[2].T_TARGET), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.PROGRAM_WEEK', {val: obj.Device.HEATAREA[2].PROGRAM_WEEK, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[2].PROGRAM_WEEKEND, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[2].T_HEAT_DAY), val: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.2.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[2].T_HEAT_NIGHT), ack: true});
-                }
+				
+				
 				
                 adapter.setState(adapter.namespace + '.' + 'HEATCTRL.0.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[0].INUSE)), ack: true});
                 adapter.setState(adapter.namespace + '.' + 'HEATCTRL.0.HEATAREA_NR', {val: obj.Device.HEATCTRL[0].HEATAREA_NR, ack: true});
