@@ -206,6 +206,9 @@ function getTemp(xml) {
                 adapter.setState(adapter.namespace + '.' + 'VACATION.END_TIME', {val: obj.Device.VACATION.END_TIME, ack: true});
                 
                 adapter.log.debug("Program lenght 0: " + obj.Device.PROGRAM.SHIFT_PROGRAM.length);
+				for (var i = 0; i < obj.Device.PROGRAM.SHIFT_PROGRAM.length; i++) {
+				adapter.log.debug("for loop position: " + i);
+				}				
 				adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.1.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].START , ack: true});
                 adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.1.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[0].END, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'PROGRAM.0.2.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[1].START , ack: true});
@@ -2518,6 +2521,7 @@ function main() {
 
     // in this template all states changes inside the adapters namespace are subscribed
     adapter.subscribeStates('*');
+	getXMLcyclic();
 
 
     /**
