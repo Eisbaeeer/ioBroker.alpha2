@@ -190,7 +190,7 @@ function getTemp(xml) {
     parser(xml, {explicitArray: false, mergeAttrs: true, explicitRoot: false}, function(err, obj) {
         if(err) adapter.log.info('Fehler XML-Parsen: ' + err, 'error');
         else {
-            //adapter.log.info("XMLcyclic: " + JSON.stringify(obj));
+				adapter.log.debug("XMLcyclic: " + JSON.stringify(obj));
                 adapter.setState(adapter.namespace + '.' + 'DEVICE.ID', {val: obj.Device.ID, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'DEVICE.NAME', {val: obj.Device.NAME, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'DEVICE.TYPE', {val: obj.Device.TYPE, ack: true});
