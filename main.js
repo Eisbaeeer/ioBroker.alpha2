@@ -207,21 +207,27 @@ function getTemp(xml) {
                 
                 adapter.log.debug("Program lenght 0: " + obj.Device.PROGRAM.SHIFT_PROGRAM.length);
 				
-				
+				// Fill objects with variable XML array lenght
+				if (obj.Device.PROGRAM.SHIFT_PROGRAM.length < 16) {
+					for (var i = 1; i < 17; i++) {
+						adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ [i] +'.'+ [i] +'.START', {null , ack: true});
+						adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ [i] +'.'+ [i] +'.END', {null , ack: true});
+					}
+				}
+					
 				for (var i = 0; i < obj.Device.PROGRAM.SHIFT_PROGRAM.length; i++) {
-				adapter.log.debug("--- for loop position: " + i);
-				adapter.log.debug("Program NR: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr);				
-				adapter.log.debug("Shiftingtime: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime);
-				adapter.log.debug("Start: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].START);
-				adapter.log.debug("End: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].END);
-				adapter.log.debug("PROGRAM: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].START);
-				adapter.log.debug("PROGRAM: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].END);
+					adapter.log.debug("--- for loop position: " + i);
+					adapter.log.debug("Program NR: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr);				
+					adapter.log.debug("Shiftingtime: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime);
+					adapter.log.debug("Start: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].START);
+					adapter.log.debug("End: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].END);
+					adapter.log.debug("PROGRAM: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].START);
+					adapter.log.debug("PROGRAM: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].END);
 				
-				adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[i].START , ack: true});
-				adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[i].END , ack: true});
+					adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[i].START , ack: true});
+					adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[i].END , ack: true});
 				}				
-				
-				
+					
                 
                 if (typeof obj.Device.HEATAREA[0] === "undefined"){
 				} else {
@@ -701,7 +707,7 @@ function main() {
     adapter.setObject('PROGRAM.1.1.END', {
         type: 'state',
         common: {
-            name: 'PROGRAM 1 2 END',
+            name: 'PROGRAM 1 1 END',
             type: 'string',
             unit: '',
             read: true,
@@ -857,7 +863,7 @@ function main() {
     adapter.setObject('PROGRAM.2.1.END', {
         type: 'state',
         common: {
-            name: 'PROGRAM 2 2 END',
+            name: 'PROGRAM 2 1 END',
             type: 'string',
             unit: '',
             read: true,
@@ -1013,7 +1019,7 @@ function main() {
     adapter.setObject('PROGRAM.3.1.END', {
         type: 'state',
         common: {
-            name: 'PROGRAM 3 2 END',
+            name: 'PROGRAM 3 1 END',
             type: 'string',
             unit: '',
             read: true,
