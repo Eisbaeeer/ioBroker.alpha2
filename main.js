@@ -121,6 +121,31 @@ adapter.on('stateChange', function (id, state) {
 		if (id == adapter.namespace + '.' + 'PROGRAM.1.3.START') {var nr = '1'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
 		if (id == adapter.namespace + '.' + 'PROGRAM.1.4.END') {var nr = '1'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
 		if (id == adapter.namespace + '.' + 'PROGRAM.1.4.START') {var nr = '1'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.1.END') {var nr = '2'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.1.START') {var nr = '2'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.2.END') {var nr = '2'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.2.START') {var nr = '2'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.3.END') {var nr = '2'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.3.START') {var nr = '2'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.4.END') {var nr = '2'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.4.START') {var nr = '2'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.1.END') {var nr = '3'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.1.START') {var nr = '3'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.2.END') {var nr = '3'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.2.START') {var nr = '3'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.3.END') {var nr = '3'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.3.START') {var nr = '3'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.4.END') {var nr = '3'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.4.START') {var nr = '3'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.1.END') {var nr = '4'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.1.START') {var nr = '4'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.2.END') {var nr = '4'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.2.START') {var nr = '4'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.3.END') {var nr = '41'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.3.START') {var nr = '4'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.4.END') {var nr = '4'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.4.START') {var nr = '4'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		
 		
 		if (id == adapter.namespace + '.' + 'VACATION.START_DATE') {var new_target = 'START_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
 		if (id == adapter.namespace + '.' + 'VACATION.END_DATE') {var new_target = 'END_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
@@ -164,15 +189,15 @@ function httpPost(data) {
 			};
 	
     var req = http.request(options, function(res) {
-    adapter.log.info("http Status: " + res.statusCode);
-    adapter.log.info('HEADERS: ' + JSON.stringify(res.headers), (res.statusCode != 200 ? "warn" : "info")); // Header (Rückmeldung vom Webserver)
+    adapter.log.debug("http Status: " + res.statusCode);
+    adapter.log.debug('HEADERS: ' + JSON.stringify(res.headers), (res.statusCode != 200 ? "warn" : "info")); // Header (Rückmeldung vom Webserver)
     });
     
     req.on('error', function(e) { // Fehler abfangen
         adapter.log.info('ERROR: ' + e.message,"warn");
     });
 
-    adapter.log.info("Data to request body: " + data);
+    adapter.log.debug("Data to request body: " + data);
     // write data to request body
     (data ? req.write(data) : adapter.log.info("Daten: keine Daten angegeben"));
     req.end();
@@ -181,7 +206,6 @@ function httpPost(data) {
 // Get XML Data from API
 function getXMLcyclic() {
 		request('http://'+adapter.config.host+'/data/static.xml', function (error, response, body) {
-		//request('http://10.49.12.169/data/static.xml', function (error, response, body) {
         if (!error && response.statusCode == 200) {
             getTemp(body); 
             } else { 
@@ -262,18 +286,15 @@ function main() {
 
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
     // adapter.config:
-    adapter.log.info('config test1: '    + adapter.config.test1);
-    adapter.log.info('config test1: '    + adapter.config.test2);
-    adapter.log.info('config mySelect: ' + adapter.config.mySelect);
-	
+    	
 	/*
 	* Interval
 	* example 
 	* setInterval(pifaceread, adapter.config.piinterval);
 	*/
 	setInterval(getXMLcyclic, adapter.config.polltime);
-	adapter.log.info('config admin polltime: ' + adapter.config.polltime);
-	//setInterval(getXMLcyclic, 30000);
+	adapter.log.info('config host: ' + adapter.config.host);
+	adapter.log.info('config polltime: ' + adapter.config.polltime);
 
 
     /**
@@ -375,7 +396,7 @@ function main() {
         common: {
             name: 'VACATION_TEMP',
             type: 'number',
-            unit: "°C",
+            unit: "",
             read: true,
             write: true,
 			role: 'EZR'
@@ -1143,7 +1164,7 @@ function main() {
         common: {
             name: 'HEATAREA 0 T_ACTUAL',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: false,
 			role: 'EZR'
@@ -1155,7 +1176,7 @@ function main() {
         common: {
             name: 'HEATAREA 0 T_TARGET',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1191,7 +1212,7 @@ function main() {
         common: {
             name: 'HEATAREA 0 T_HEAT_DAY',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1203,7 +1224,7 @@ function main() {
         common: {
             name: 'HEATAREA 0 T_HEAT_NIGHT',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1251,7 +1272,7 @@ function main() {
         common: {
             name: 'HEATAREA 1 T_ACTUAL',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: false,
 			role: 'EZR'
@@ -1263,7 +1284,7 @@ function main() {
         common: {
             name: 'HEATAREA 1 T_TARGET',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1299,7 +1320,7 @@ function main() {
         common: {
             name: 'HEATAREA 1 T_HEAT_DAY',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1311,7 +1332,7 @@ function main() {
         common: {
             name: 'HEATAREA 1 T_HEAT_NIGHT',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1359,7 +1380,7 @@ function main() {
         common: {
             name: 'HEATAREA 2 T_ACTUAL',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: false,
 			role: 'EZR'
@@ -1371,7 +1392,7 @@ function main() {
         common: {
             name: 'HEATAREA 2 T_TARGET',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1407,7 +1428,7 @@ function main() {
         common: {
             name: 'HEATAREA 2 T_HEAT_DAY',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1419,7 +1440,7 @@ function main() {
         common: {
             name: 'HEATAREA 2 T_HEAT_NIGHT',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1467,7 +1488,7 @@ function main() {
         common: {
             name: 'HEATAREA 3 T_ACTUAL',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: false,
 			role: 'EZR'
@@ -1479,7 +1500,7 @@ function main() {
         common: {
             name: 'HEATAREA 3 T_TARGET',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1515,7 +1536,7 @@ function main() {
         common: {
             name: 'HEATAREA 3 T_HEAT_DAY',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1527,7 +1548,7 @@ function main() {
         common: {
             name: 'HEATAREA 3 T_HEAT_NIGHT',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1575,7 +1596,7 @@ function main() {
         common: {
             name: 'HEATAREA 4 T_ACTUAL',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: false,
 			role: 'EZR'
@@ -1587,7 +1608,7 @@ function main() {
         common: {
             name: 'HEATAREA 4 T_TARGET',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1623,7 +1644,7 @@ function main() {
         common: {
             name: 'HEATAREA 4 T_HEAT_DAY',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1635,7 +1656,7 @@ function main() {
         common: {
             name: 'HEATAREA 0 T_HEAT_NIGHT',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1683,7 +1704,7 @@ function main() {
         common: {
             name: 'HEATAREA 5 T_ACTUAL',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: false,
 			role: 'EZR'
@@ -1695,7 +1716,7 @@ function main() {
         common: {
             name: 'HEATAREA 5 T_TARGET',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1731,7 +1752,7 @@ function main() {
         common: {
             name: 'HEATAREA 5 T_HEAT_DAY',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1743,7 +1764,7 @@ function main() {
         common: {
             name: 'HEATAREA 5 T_HEAT_NIGHT',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1791,7 +1812,7 @@ function main() {
         common: {
             name: 'HEATAREA 6 T_ACTUAL',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: false,
 			role: 'EZR'
@@ -1803,7 +1824,7 @@ function main() {
         common: {
             name: 'HEATAREA 6 T_TARGET',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1839,7 +1860,7 @@ function main() {
         common: {
             name: 'HEATAREA 6 T_HEAT_DAY',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1851,7 +1872,7 @@ function main() {
         common: {
             name: 'HEATAREA 6 T_HEAT_NIGHT',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1899,7 +1920,7 @@ function main() {
         common: {
             name: 'HEATAREA 7 T_ACTUAL',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: false,
 			role: 'EZR'
@@ -1911,7 +1932,7 @@ function main() {
         common: {
             name: 'HEATAREA 7 T_TARGET',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1947,7 +1968,7 @@ function main() {
         common: {
             name: 'HEATAREA 7 T_HEAT_DAY',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
@@ -1959,7 +1980,7 @@ function main() {
         common: {
             name: 'HEATAREA 7 T_HEAT_NIGHT',
             type: 'number',
-            unit: '°C',
+            unit: '',
             read: true,
             write: true,
 			role: 'EZR'
