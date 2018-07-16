@@ -15,7 +15,7 @@ The adapter uses the XML-API of the Alpha2. If you are using more then one Alpha
 
 ## Usage
 You can change the following objects in:
-- For each HEATAREA (max 8 areas)
+- For each HEATAREA (max 8 areas)    
 | Description         | Object          | Values                    |
 |---------------------|-----------------|---------------------------|
 | Target Temperature  | T_TARGET        | Temp. in degrees Celsius  |
@@ -25,9 +25,9 @@ You can change the following objects in:
 | Program Weekdays    | PROGRAM_WEEK    | Program Nr. 0-3           |
 | Program Weekend     | PROGRAM_WEEKEND | Program Nr. 0-3           |
 
-- For each PROGRAM with max. 4 shifts for each program. 
-- Steps of minutes are 15. Only allowed 00,15,30,45
-- Hours in 24 style
+- For each PROGRAM with max. 4 shifts for each program.    
+- Steps of minutes are 15. Only allowed 00,15,30,45   
+- Hours in 24 style   
 | Description         | Object          | Values                        |
 |---------------------|-----------------|-------------------------------|
 | Start time          | START           | Time of program start [hh:mm] |
@@ -40,7 +40,7 @@ You can change the following objects in:
 | End of vacation       | VACATION.END_DATE   | [YYYY-MM-DD]             |
 | Temp. during vacation | T_HEAT_VACATION     | Temp. in degrees Celsius |
 
-- All other objects are read-only
+- All other objects are read-only   
 
 ## Examples
 ### Set the temperature of Room1
