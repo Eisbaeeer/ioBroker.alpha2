@@ -44,7 +44,7 @@ adapter.on('unload', function (callback) {
 // is called if a subscribed object changes
 adapter.on('objectChange', function (id, obj) {
     // Warning, obj can be null if it was deleted
-    adapter.log.info('objectChange ' + id + ' ' + JSON.stringify(obj));
+    adapter.log.debug('objectChange ' + id + ' ' + JSON.stringify(obj));
 });
 
 // is called if a subscribed state changes
@@ -54,9 +54,9 @@ adapter.on('stateChange', function (id, state) {
 
     // you can use the ack flag to detect if it is status (true) or command (false)
     if (state && !state.ack) {
-        adapter.log.info('ack is not set!');
-		adapter.log.info('Value: ' + state.val);
-		adapter.log.info('id: ' + id);
+        adapter.log.debug('ack is not set!');
+		adapter.log.debug('Value: ' + state.val);
+		adapter.log.debug('id: ' + id);
 		
 		// save value in var
 		var new_val = state.val;
@@ -113,14 +113,14 @@ adapter.on('stateChange', function (id, state) {
 
 		if (id == adapter.namespace + '.' + 'DEVICE.T_HEAT_VACATION') {var new_target = 'T_HEAT_VACATION';var xml_construct = '<'+ new_target +'>'+ new_val +'</'+ new_target +'>';}
 		
-		if (id == adapter.namespace + '.' + 'PROGRAM.0.1.END') {var nr = '1'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.0.1.START') {var nr = '1'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.0.2.END') {var nr = '1'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.0.2.START') {var nr = '1'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.0.3.END') {var nr = '1'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.0.3.START') {var nr = '1'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.0.4.END') {var nr = '1'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.0.4.START') {var nr = '1'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.1.END') {var nr = '1'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.1.START') {var nr = '1'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.2.END') {var nr = '1'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.2.START') {var nr = '1'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.3.END') {var nr = '1'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.3.START') {var nr = '1'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.4.END') {var nr = '1'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.4.START') {var nr = '1'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
 		
 		
 			// Post DATA to DEVICE
