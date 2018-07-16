@@ -124,6 +124,7 @@ adapter.on('stateChange', function (id, state) {
 		
 		if (id == adapter.namespace + '.' + 'VACATION.START_DATE') {var new_target = 'START_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
 		if (id == adapter.namespace + '.' + 'VACATION.END_DATE') {var new_target = 'END_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
+		if (id == adapter.namespace + '.' + 'T_HEAT_VACATION') {var xml_construct = '<T_HEAT_VACATION>'+ new_val +'</T_HEAT_VACATION>';}
 		
 		
 			// Post DATA to DEVICE
