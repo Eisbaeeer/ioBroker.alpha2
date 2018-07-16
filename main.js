@@ -228,7 +228,6 @@ function getTemp(xml) {
 					adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[i].END , ack: true});
 				}				
 					
-                			
 				for (var i = 0; i < obj.Device.HEATAREA.length; i++) {
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.HEATAREA_NAME', {val: obj.Device.HEATAREA[i].HEATAREA_NAME, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.HEATAREA_MODE', {val: obj.Device.HEATAREA[i].HEATAREA_MODE, ack: true});
@@ -239,42 +238,14 @@ function getTemp(xml) {
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[i].T_HEAT_DAY), ack: true});
                 adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[i].T_HEAT_NIGHT), ack: true});
                 }
-				
-				
-				
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.0.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[0].INUSE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.0.HEATAREA_NR', {val: obj.Device.HEATCTRL[0].HEATAREA_NR, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.0.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[0].ACTOR)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.0.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[0].HEATCTRL_STATE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.1.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[1].INUSE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.1.HEATAREA_NR', {val: obj.Device.HEATCTRL[1].HEATAREA_NR, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.1.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[1].ACTOR)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.1.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[1].HEATCTRL_STATE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.2.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[2].INUSE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.2.HEATAREA_NR', {val: obj.Device.HEATCTRL[2].HEATAREA_NR, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.2.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[2].ACTOR)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.2.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[2].HEATCTRL_STATE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.3.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[3].INUSE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.3.HEATAREA_NR', {val: obj.Device.HEATCTRL[3].HEATAREA_NR, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.3.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[3].ACTOR)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.3.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[3].HEATCTRL_STATE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.4.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[4].INUSE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.4.HEATAREA_NR', {val: obj.Device.HEATCTRL[4].HEATAREA_NR, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.4.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[4].ACTOR)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.4.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[4].HEATCTRL_STATE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.5.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[5].INUSE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.5.HEATAREA_NR', {val: obj.Device.HEATCTRL[5].HEATAREA_NR, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.5.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[5].ACTOR)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.5.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[5].HEATCTRL_STATE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.6.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[6].INUSE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.6.HEATAREA_NR', {val: obj.Device.HEATCTRL[6].HEATAREA_NR, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.6.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[6].ACTOR)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.6.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[6].HEATCTRL_STATE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[7].INUSE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.HEATAREA_NR', {val: obj.Device.HEATCTRL[7].HEATAREA_NR, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[7].ACTOR)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.7.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[7].HEATCTRL_STATE)), ack: true});
-			   
+								
+				for (var i = 0; i < obj.Device.HEATCTRL.length; i++) {
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [i] +'.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[i].INUSE)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [i] +'.HEATAREA_NR', {val: obj.Device.HEATCTRL[i].HEATAREA_NR, ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [i] +'.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[i].ACTOR)), ack: true});
+                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [i] +'.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[i].HEATCTRL_STATE)), ack: true});
+				}
+						   
 			    // fill global vals
 				device_id = obj.Device.ID;
 			   
