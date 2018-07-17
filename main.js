@@ -446,7 +446,7 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -470,7 +470,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -518,7 +518,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -530,7 +530,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -554,7 +554,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -566,7 +566,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -590,7 +590,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -602,7 +602,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -626,7 +626,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -638,7 +638,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -674,7 +674,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -686,7 +686,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -710,7 +710,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -722,7 +722,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -746,7 +746,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -758,7 +758,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -782,7 +782,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -794,7 +794,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -830,7 +830,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -842,7 +842,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -866,7 +866,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -878,7 +878,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -902,7 +902,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -914,7 +914,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -938,7 +938,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -950,7 +950,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -986,7 +986,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -998,7 +998,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -1022,7 +1022,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -1034,7 +1034,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -1058,7 +1058,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -1070,7 +1070,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -1094,7 +1094,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
@@ -1106,7 +1106,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'value.time'
+			role: 'value'
         },   
         native: {}
     });
