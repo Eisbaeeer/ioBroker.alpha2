@@ -182,8 +182,7 @@ function httpPost(data) {
 	
 		// URL, die abgefragt, bzw. gesendet werden soll:
 		var options = {
-			//host: adapter.config.host,
-			host: '10.49.12.169',
+			host: adapter.config.host,
 			path: '/data/changes.xml',
 			method: 'POST'                // in der Regel: "GET"
 			};
@@ -307,7 +306,7 @@ function main() {
      *
      */
 
-    adapter.setObject('DEVICE', {
+    adapter.setObjectNotExistsNotExists('DEVICE', {
         type: 'object',
         common: {
             name: 'DEVICE',
@@ -315,11 +314,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-    adapter.setObject('DEVICE.ID', {
+    adapter.setObjectNotExistsNotExists('DEVICE.ID', {
         type: 'state',
         common: {
             name: 'ID',
@@ -327,11 +326,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-    adapter.setObject('DEVICE.NAME', {
+    adapter.setObjectNotExistsNotExists('DEVICE.NAME', {
         type: 'state',
         common: {
             name: 'NAME',
@@ -339,11 +338,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-    adapter.setObject('DEVICE.TYPE', {
+    adapter.setObjectNotExistsNotExists('DEVICE.TYPE', {
         type: 'state',
         common: {
             name: 'TYPE',
@@ -351,11 +350,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-    adapter.setObject('DEVICE.DATETIME', {
+    adapter.setObjectNotExistsNotExists('DEVICE.DATETIME', {
         type: 'state',
         common: {
             name: 'DATE-TIME',
@@ -363,11 +362,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.date'
         },   
         native: {}
     });
-    adapter.setObject('DEVICE.TIMEZONE', {
+    adapter.setObjectNotExistsNotExists('DEVICE.TIMEZONE', {
         type: 'state',
         common: {
             name: 'TIMEZONE',
@@ -375,11 +374,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value'
         },   
         native: {}
     });
-    adapter.setObject('DEVICE.NTPSYNC', {
+    adapter.setObjectNotExistsNotExists('DEVICE.NTPSYNC', {
         type: 'state',
         common: {
             name: 'NTPSYNC STATUS',
@@ -387,23 +386,23 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('DEVICE.T_HEAT_VACATION', {
+    adapter.setObjectNotExistsNotExists('DEVICE.T_HEAT_VACATION', {
         type: 'state',
         common: {
             name: 'VACATION_TEMP',
             type: 'number',
-            unit: "",
+            unit: "°C",
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-    adapter.setObject('VACATION', {
+    adapter.setObjectNotExistsNotExists('VACATION', {
         type: 'object',
         common: {
             name: 'VACATION',
@@ -411,11 +410,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-    adapter.setObject('VACATION.STATE', {
+    adapter.setObjectNotExistsNotExists('VACATION.STATE', {
         type: 'state',
         common: {
             name: 'VACATION STATE',
@@ -423,11 +422,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('VACATION.START_DATE', {
+    adapter.setObjectNotExistsNotExists('VACATION.START_DATE', {
         type: 'state',
         common: {
             name: 'VACATION START DATE',
@@ -435,11 +434,11 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.date'
         },   
         native: {}
     });
-    adapter.setObject('VACATION.START_TIME', {
+    adapter.setObjectNotExistsNotExists('VACATION.START_TIME', {
         type: 'state',
         common: {
             name: 'VACATION START TIME',
@@ -447,11 +446,11 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('VACATION.END_DATE', {
+    adapter.setObjectNotExistsNotExists('VACATION.END_DATE', {
         type: 'state',
         common: {
             name: 'VACATION END DATE',
@@ -459,11 +458,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.date'
         },   
         native: {}
     });
-    adapter.setObject('VACATION.END_TIME', {
+    adapter.setObjectNotExistsNotExists('VACATION.END_TIME', {
         type: 'state',
         common: {
             name: 'VACATION END TIME',
@@ -471,11 +470,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM', {
+    adapter.setObjectNotExistsNotExists('PROGRAM', {
         type: 'object',
         common: {
             name: 'PROGRAM',
@@ -483,11 +482,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4', {
+    adapter.setObjectNotExistsNotExists('PROGRAM.4', {
         type: 'object',
         common: {
             name: 'PROGRAM 4',
@@ -495,11 +494,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4.1', {
+    adapter.setObjectNotExistsNotExists('PROGRAM.4.1', {
         type: 'object',
         common: {
             name: 'PROGRAM 4 shift 1',
@@ -507,11 +506,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4.1.START', {
+    adapter.setObjectNotExistsNotExists('PROGRAM.4.1.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 4 1 START',
@@ -519,11 +518,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4.1.END', {
+    adapter.setObjectNotExistsNotExists('PROGRAM.4.1.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 4 1 END',
@@ -531,11 +530,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4.2', {
+    adapter.setObjectNotExists('PROGRAM.4.2', {
         type: 'object',
         common: {
             name: 'PROGRAM 4 shift 2',
@@ -543,11 +542,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4.2.START', {
+    adapter.setObjectNotExists('PROGRAM.4.2.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 4 2 START',
@@ -555,11 +554,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4.2.END', {
+    adapter.setObjectNotExists('PROGRAM.4.2.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 4 2 END',
@@ -567,11 +566,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4.3', {
+    adapter.setObjectNotExists('PROGRAM.4.3', {
         type: 'object',
         common: {
             name: 'PROGRAM 4 shift 3',
@@ -579,11 +578,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4.3.START', {
+    adapter.setObjectNotExists('PROGRAM.4.3.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 4 3 START',
@@ -591,11 +590,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4.3.END', {
+    adapter.setObjectNotExists('PROGRAM.4.3.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 4 3 END',
@@ -603,11 +602,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4.4', {
+    adapter.setObjectNotExists('PROGRAM.4.4', {
         type: 'object',
         common: {
             name: 'PROGRAM 4 shift 4',
@@ -615,11 +614,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });    
-    adapter.setObject('PROGRAM.4.4.START', {
+    adapter.setObjectNotExists('PROGRAM.4.4.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 4 4 START',
@@ -627,11 +626,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.4.4.END', {
+    adapter.setObjectNotExists('PROGRAM.4.4.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 4 4 END',
@@ -639,11 +638,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.1', {
+    adapter.setObjectNotExists('PROGRAM.1', {
         type: 'object',
         common: {
             name: 'PROGRAM 1',
@@ -651,11 +650,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });	
-	adapter.setObject('PROGRAM.1.1', {
+	adapter.setObjectNotExists('PROGRAM.1.1', {
         type: 'object',
         common: {
             name: 'PROGRAM 1 shift 1',
@@ -663,11 +662,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.1.1.START', {
+    adapter.setObjectNotExists('PROGRAM.1.1.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 1 1 START',
@@ -675,11 +674,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.1.1.END', {
+    adapter.setObjectNotExists('PROGRAM.1.1.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 1 1 END',
@@ -687,11 +686,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.1.2', {
+    adapter.setObjectNotExists('PROGRAM.1.2', {
         type: 'object',
         common: {
             name: 'PROGRAM 1 shift 2',
@@ -699,11 +698,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.1.2.START', {
+    adapter.setObjectNotExists('PROGRAM.1.2.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 1 2 START',
@@ -711,11 +710,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.1.2.END', {
+    adapter.setObjectNotExists('PROGRAM.1.2.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 1 2 END',
@@ -723,11 +722,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.1.3', {
+    adapter.setObjectNotExists('PROGRAM.1.3', {
         type: 'object',
         common: {
             name: 'PROGRAM 1 shift 3',
@@ -735,11 +734,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.1.3.START', {
+    adapter.setObjectNotExists('PROGRAM.1.3.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 1 3 START',
@@ -747,11 +746,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.1.3.END', {
+    adapter.setObjectNotExists('PROGRAM.1.3.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 1 3 END',
@@ -759,11 +758,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.1.4', {
+    adapter.setObjectNotExists('PROGRAM.1.4', {
         type: 'object',
         common: {
             name: 'PROGRAM 1 shift 4',
@@ -771,11 +770,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });    
-    adapter.setObject('PROGRAM.1.4.START', {
+    adapter.setObjectNotExists('PROGRAM.1.4.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 1 4 START',
@@ -783,11 +782,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.1.4.END', {
+    adapter.setObjectNotExists('PROGRAM.1.4.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 1 4 END',
@@ -795,11 +794,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-	adapter.setObject('PROGRAM.2', {
+	adapter.setObjectNotExists('PROGRAM.2', {
         type: 'object',
         common: {
             name: 'PROGRAM 2',
@@ -807,11 +806,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });	
-	adapter.setObject('PROGRAM.2.1', {
+	adapter.setObjectNotExists('PROGRAM.2.1', {
         type: 'object',
         common: {
             name: 'PROGRAM 2 shift 1',
@@ -819,11 +818,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.2.1.START', {
+    adapter.setObjectNotExists('PROGRAM.2.1.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 2 1 START',
@@ -831,11 +830,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.2.1.END', {
+    adapter.setObjectNotExists('PROGRAM.2.1.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 2 1 END',
@@ -843,11 +842,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.2.2', {
+    adapter.setObjectNotExists('PROGRAM.2.2', {
         type: 'object',
         common: {
             name: 'PROGRAM 2 shift 2',
@@ -855,11 +854,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'vstate'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.2.2.START', {
+    adapter.setObjectNotExists('PROGRAM.2.2.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 2 2 START',
@@ -867,11 +866,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.2.2.END', {
+    adapter.setObjectNotExists('PROGRAM.2.2.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 2 2 END',
@@ -879,11 +878,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.2.3', {
+    adapter.setObjectNotExists('PROGRAM.2.3', {
         type: 'object',
         common: {
             name: 'PROGRAM 2 shift 3',
@@ -891,11 +890,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.2.3.START', {
+    adapter.setObjectNotExists('PROGRAM.2.3.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 2 3 START',
@@ -903,11 +902,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.2.3.END', {
+    adapter.setObjectNotExists('PROGRAM.2.3.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 2 3 END',
@@ -915,11 +914,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.2.4', {
+    adapter.setObjectNotExists('PROGRAM.2.4', {
         type: 'object',
         common: {
             name: 'PROGRAM 2 shift 4',
@@ -927,11 +926,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });    
-    adapter.setObject('PROGRAM.2.4.START', {
+    adapter.setObjectNotExists('PROGRAM.2.4.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 2 4 START',
@@ -939,11 +938,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.2.4.END', {
+    adapter.setObjectNotExists('PROGRAM.2.4.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 2 4 END',
@@ -951,11 +950,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-	adapter.setObject('PROGRAM.3', {
+	adapter.setObjectNotExists('PROGRAM.3', {
         type: 'object',
         common: {
             name: 'PROGRAM 3',
@@ -963,11 +962,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });	
-	adapter.setObject('PROGRAM.3.1', {
+	adapter.setObjectNotExists('PROGRAM.3.1', {
         type: 'object',
         common: {
             name: 'PROGRAM 3 shift 1',
@@ -975,11 +974,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.3.1.START', {
+    adapter.setObjectNotExists('PROGRAM.3.1.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 3 1 START',
@@ -987,11 +986,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.3.1.END', {
+    adapter.setObjectNotExists('PROGRAM.3.1.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 3 1 END',
@@ -999,11 +998,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.3.2', {
+    adapter.setObjectNotExists('PROGRAM.3.2', {
         type: 'object',
         common: {
             name: 'PROGRAM 3 shift 2',
@@ -1011,11 +1010,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.3.2.START', {
+    adapter.setObjectNotExists('PROGRAM.3.2.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 3 2 START',
@@ -1023,11 +1022,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.3.2.END', {
+    adapter.setObjectNotExists('PROGRAM.3.2.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 3 2 END',
@@ -1035,11 +1034,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.3.3', {
+    adapter.setObjectNotExists('PROGRAM.3.3', {
         type: 'object',
         common: {
             name: 'PROGRAM 3 shift 3',
@@ -1047,11 +1046,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.3.3.START', {
+    adapter.setObjectNotExists('PROGRAM.3.3.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 3 3 START',
@@ -1059,11 +1058,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.3.3.END', {
+    adapter.setObjectNotExists('PROGRAM.3.3.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 3 3 END',
@@ -1071,11 +1070,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.3.4', {
+    adapter.setObjectNotExists('PROGRAM.3.4', {
         type: 'object',
         common: {
             name: 'PROGRAM 3 shift 4',
@@ -1083,11 +1082,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });    
-    adapter.setObject('PROGRAM.3.4.START', {
+    adapter.setObjectNotExists('PROGRAM.3.4.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 3 4 START',
@@ -1095,11 +1094,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-    adapter.setObject('PROGRAM.3.4.END', {
+    adapter.setObjectNotExists('PROGRAM.3.4.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 3 4 END',
@@ -1107,11 +1106,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.time'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA', {
+	adapter.setObjectNotExists('HEATAREA', {
         type: 'object',
         common: {
             name: 'HEATAREA',
@@ -1119,11 +1118,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.0', {
+	adapter.setObjectNotExists('HEATAREA.0', {
         type: 'object',
         common: {
             name: 'HEATAREA NR 1',
@@ -1131,11 +1130,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.0.HEATAREA_NAME', {
+	adapter.setObjectNotExists('HEATAREA.0.HEATAREA_NAME', {
         type: 'state',
         common: {
             name: 'HEATAREA 0 HEATAREA_NAME',
@@ -1143,11 +1142,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.0.HEATAREA_MODE', {
+	adapter.setObjectNotExists('HEATAREA.0.HEATAREA_MODE', {
         type: 'state',
         common: {
             name: 'HEATAREA 0 HEATAREA_MODE',
@@ -1155,35 +1154,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.0.T_ACTUAL', {
+	adapter.setObjectNotExists('HEATAREA.0.T_ACTUAL', {
         type: 'state',
         common: {
             name: 'HEATAREA 0 T_ACTUAL',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.0.T_TARGET', {
+		adapter.setObjectNotExists('HEATAREA.0.T_TARGET', {
         type: 'state',
         common: {
             name: 'HEATAREA 0 T_TARGET',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.0.PROGRAM_WEEK', {
+		adapter.setObjectNotExists('HEATAREA.0.PROGRAM_WEEK', {
         type: 'state',
         common: {
             name: 'HEATAREA 0 PROGRAMM_WEEK',
@@ -1191,11 +1190,11 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.0.PROGRAM_WEEKEND', {
+			adapter.setObjectNotExists('HEATAREA.0.PROGRAM_WEEKEND', {
         type: 'state',
         common: {
             name: 'HEATAREA 0 PROGRAMM_WEEKEND',
@@ -1203,35 +1202,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.0.T_HEAT_DAY', {
+			adapter.setObjectNotExists('HEATAREA.0.T_HEAT_DAY', {
         type: 'state',
         common: {
             name: 'HEATAREA 0 T_HEAT_DAY',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.0.T_HEAT_NIGHT', {
+		adapter.setObjectNotExists('HEATAREA.0.T_HEAT_NIGHT', {
         type: 'state',
         common: {
             name: 'HEATAREA 0 T_HEAT_NIGHT',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.1', {
+		adapter.setObjectNotExists('HEATAREA.1', {
         type: 'object',
         common: {
             name: 'HEATAREA NR 2',
@@ -1239,11 +1238,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.1.HEATAREA_NAME', {
+	adapter.setObjectNotExists('HEATAREA.1.HEATAREA_NAME', {
         type: 'state',
         common: {
             name: 'HEATAREA 1 HEATAREA_NAME',
@@ -1251,11 +1250,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.1.HEATAREA_MODE', {
+	adapter.setObjectNotExists('HEATAREA.1.HEATAREA_MODE', {
         type: 'state',
         common: {
             name: 'HEATAREA 1 HEATAREA_MODE',
@@ -1263,35 +1262,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.1.T_ACTUAL', {
+	adapter.setObjectNotExists('HEATAREA.1.T_ACTUAL', {
         type: 'state',
         common: {
             name: 'HEATAREA 1 T_ACTUAL',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.1.T_TARGET', {
+		adapter.setObjectNotExists('HEATAREA.1.T_TARGET', {
         type: 'state',
         common: {
             name: 'HEATAREA 1 T_TARGET',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.1.PROGRAM_WEEK', {
+		adapter.setObjectNotExists('HEATAREA.1.PROGRAM_WEEK', {
         type: 'state',
         common: {
             name: 'HEATAREA 1 PROGRAMM_WEEK',
@@ -1299,11 +1298,11 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.1.PROGRAM_WEEKEND', {
+			adapter.setObjectNotExists('HEATAREA.1.PROGRAM_WEEKEND', {
         type: 'state',
         common: {
             name: 'HEATAREA 1 PROGRAMM_WEEKEND',
@@ -1311,35 +1310,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.1.T_HEAT_DAY', {
+			adapter.setObjectNotExists('HEATAREA.1.T_HEAT_DAY', {
         type: 'state',
         common: {
             name: 'HEATAREA 1 T_HEAT_DAY',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.1.T_HEAT_NIGHT', {
+		adapter.setObjectNotExists('HEATAREA.1.T_HEAT_NIGHT', {
         type: 'state',
         common: {
             name: 'HEATAREA 1 T_HEAT_NIGHT',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.2', {
+		adapter.setObjectNotExists('HEATAREA.2', {
         type: 'object',
         common: {
             name: 'HEATAREA NR 3',
@@ -1347,11 +1346,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.2.HEATAREA_NAME', {
+	adapter.setObjectNotExists('HEATAREA.2.HEATAREA_NAME', {
         type: 'state',
         common: {
             name: 'HEATAREA 2 HEATAREA_NAME',
@@ -1359,11 +1358,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.2.HEATAREA_MODE', {
+	adapter.setObjectNotExists('HEATAREA.2.HEATAREA_MODE', {
         type: 'state',
         common: {
             name: 'HEATAREA 2 HEATAREA_MODE',
@@ -1371,35 +1370,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.2.T_ACTUAL', {
+	adapter.setObjectNotExists('HEATAREA.2.T_ACTUAL', {
         type: 'state',
         common: {
             name: 'HEATAREA 2 T_ACTUAL',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.2.T_TARGET', {
+		adapter.setObjectNotExists('HEATAREA.2.T_TARGET', {
         type: 'state',
         common: {
             name: 'HEATAREA 2 T_TARGET',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.2.PROGRAM_WEEK', {
+		adapter.setObjectNotExists('HEATAREA.2.PROGRAM_WEEK', {
         type: 'state',
         common: {
             name: 'HEATAREA 2 PROGRAMM_WEEK',
@@ -1407,11 +1406,11 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.2.PROGRAM_WEEKEND', {
+			adapter.setObjectNotExists('HEATAREA.2.PROGRAM_WEEKEND', {
         type: 'state',
         common: {
             name: 'HEATAREA 2 PROGRAMM_WEEKEND',
@@ -1419,35 +1418,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.2.T_HEAT_DAY', {
+			adapter.setObjectNotExists('HEATAREA.2.T_HEAT_DAY', {
         type: 'state',
         common: {
             name: 'HEATAREA 2 T_HEAT_DAY',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.2.T_HEAT_NIGHT', {
+		adapter.setObjectNotExists('HEATAREA.2.T_HEAT_NIGHT', {
         type: 'state',
         common: {
             name: 'HEATAREA 2 T_HEAT_NIGHT',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.3', {
+		adapter.setObjectNotExists('HEATAREA.3', {
         type: 'object',
         common: {
             name: 'HEATAREA NR 4',
@@ -1455,11 +1454,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.3.HEATAREA_NAME', {
+	adapter.setObjectNotExists('HEATAREA.3.HEATAREA_NAME', {
         type: 'state',
         common: {
             name: 'HEATAREA 3 HEATAREA_NAME',
@@ -1467,11 +1466,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.3.HEATAREA_MODE', {
+	adapter.setObjectNotExists('HEATAREA.3.HEATAREA_MODE', {
         type: 'state',
         common: {
             name: 'HEATAREA 3 HEATAREA_MODE',
@@ -1479,35 +1478,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.3.T_ACTUAL', {
+	adapter.setObjectNotExists('HEATAREA.3.T_ACTUAL', {
         type: 'state',
         common: {
             name: 'HEATAREA 3 T_ACTUAL',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.3.T_TARGET', {
+		adapter.setObjectNotExists('HEATAREA.3.T_TARGET', {
         type: 'state',
         common: {
             name: 'HEATAREA 3 T_TARGET',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.3.PROGRAM_WEEK', {
+		adapter.setObjectNotExists('HEATAREA.3.PROGRAM_WEEK', {
         type: 'state',
         common: {
             name: 'HEATAREA 3 PROGRAMM_WEEK',
@@ -1515,11 +1514,11 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.3.PROGRAM_WEEKEND', {
+			adapter.setObjectNotExists('HEATAREA.3.PROGRAM_WEEKEND', {
         type: 'state',
         common: {
             name: 'HEATAREA 3 PROGRAMM_WEEKEND',
@@ -1527,35 +1526,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.3.T_HEAT_DAY', {
+			adapter.setObjectNotExists('HEATAREA.3.T_HEAT_DAY', {
         type: 'state',
         common: {
             name: 'HEATAREA 3 T_HEAT_DAY',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.3.T_HEAT_NIGHT', {
+		adapter.setObjectNotExists('HEATAREA.3.T_HEAT_NIGHT', {
         type: 'state',
         common: {
             name: 'HEATAREA 3 T_HEAT_NIGHT',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
-            write: true,
-			role: 'EZR'
+            write: false,
+			role: 'value.temperature'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.4', {
+	adapter.setObjectNotExists('HEATAREA.4', {
         type: 'object',
         common: {
             name: 'HEATAREA NR 5',
@@ -1563,11 +1562,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.4.HEATAREA_NAME', {
+	adapter.setObjectNotExists('HEATAREA.4.HEATAREA_NAME', {
         type: 'state',
         common: {
             name: 'HEATAREA 4 HEATAREA_NAME',
@@ -1575,47 +1574,47 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.4.HEATAREA_MODE', {
+	adapter.setObjectNotExists('HEATAREA.4.HEATAREA_MODE', {
         type: 'state',
         common: {
             name: 'HEATAREA 4 HEATAREA_MODE',
             type: 'string',
             unit: '',
             read: true,
-            write: true,
-			role: 'EZR'
+            write: false,
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.4.T_ACTUAL', {
+	adapter.setObjectNotExists('HEATAREA.4.T_ACTUAL', {
         type: 'state',
         common: {
             name: 'HEATAREA 4 T_ACTUAL',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.4.T_TARGET', {
+		adapter.setObjectNotExists('HEATAREA.4.T_TARGET', {
         type: 'state',
         common: {
             name: 'HEATAREA 4 T_TARGET',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.4.PROGRAM_WEEK', {
+		adapter.setObjectNotExists('HEATAREA.4.PROGRAM_WEEK', {
         type: 'state',
         common: {
             name: 'HEATAREA 4 PROGRAMM_WEEK',
@@ -1623,11 +1622,11 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.4.PROGRAM_WEEKEND', {
+			adapter.setObjectNotExists('HEATAREA.4.PROGRAM_WEEKEND', {
         type: 'state',
         common: {
             name: 'HEATAREA 4 PROGRAMM_WEEKEND',
@@ -1635,35 +1634,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.4.T_HEAT_DAY', {
+			adapter.setObjectNotExists('HEATAREA.4.T_HEAT_DAY', {
         type: 'state',
         common: {
             name: 'HEATAREA 4 T_HEAT_DAY',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.4.T_HEAT_NIGHT', {
+		adapter.setObjectNotExists('HEATAREA.4.T_HEAT_NIGHT', {
         type: 'state',
         common: {
             name: 'HEATAREA 0 T_HEAT_NIGHT',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.5', {
+	adapter.setObjectNotExists('HEATAREA.5', {
         type: 'object',
         common: {
             name: 'HEATAREA NR 6',
@@ -1671,11 +1670,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.5.HEATAREA_NAME', {
+	adapter.setObjectNotExists('HEATAREA.5.HEATAREA_NAME', {
         type: 'state',
         common: {
             name: 'HEATAREA 5 HEATAREA_NAME',
@@ -1683,11 +1682,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.5.HEATAREA_MODE', {
+	adapter.setObjectNotExists('HEATAREA.5.HEATAREA_MODE', {
         type: 'state',
         common: {
             name: 'HEATAREA 5 HEATAREA_MODE',
@@ -1695,35 +1694,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.5.T_ACTUAL', {
+	adapter.setObjectNotExists('HEATAREA.5.T_ACTUAL', {
         type: 'state',
         common: {
             name: 'HEATAREA 5 T_ACTUAL',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.5.T_TARGET', {
+		adapter.setObjectNotExists('HEATAREA.5.T_TARGET', {
         type: 'state',
         common: {
             name: 'HEATAREA 5 T_TARGET',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.5.PROGRAM_WEEK', {
+		adapter.setObjectNotExists('HEATAREA.5.PROGRAM_WEEK', {
         type: 'state',
         common: {
             name: 'HEATAREA 5 PROGRAMM_WEEK',
@@ -1731,11 +1730,11 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.5.PROGRAM_WEEKEND', {
+			adapter.setObjectNotExists('HEATAREA.5.PROGRAM_WEEKEND', {
         type: 'state',
         common: {
             name: 'HEATAREA 5 PROGRAMM_WEEKEND',
@@ -1743,35 +1742,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.5.T_HEAT_DAY', {
+			adapter.setObjectNotExists('HEATAREA.5.T_HEAT_DAY', {
         type: 'state',
         common: {
             name: 'HEATAREA 5 T_HEAT_DAY',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.5.T_HEAT_NIGHT', {
+		adapter.setObjectNotExists('HEATAREA.5.T_HEAT_NIGHT', {
         type: 'state',
         common: {
             name: 'HEATAREA 5 T_HEAT_NIGHT',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.6', {
+		adapter.setObjectNotExists('HEATAREA.6', {
         type: 'object',
         common: {
             name: 'HEATAREA NR 7',
@@ -1779,11 +1778,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.6.HEATAREA_NAME', {
+	adapter.setObjectNotExists('HEATAREA.6.HEATAREA_NAME', {
         type: 'state',
         common: {
             name: 'HEATAREA 6 HEATAREA_NAME',
@@ -1791,11 +1790,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.6.HEATAREA_MODE', {
+	adapter.setObjectNotExists('HEATAREA.6.HEATAREA_MODE', {
         type: 'state',
         common: {
             name: 'HEATAREA 6 HEATAREA_MODE',
@@ -1803,35 +1802,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.6.T_ACTUAL', {
+	adapter.setObjectNotExists('HEATAREA.6.T_ACTUAL', {
         type: 'state',
         common: {
             name: 'HEATAREA 6 T_ACTUAL',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.6.T_TARGET', {
+		adapter.setObjectNotExists('HEATAREA.6.T_TARGET', {
         type: 'state',
         common: {
             name: 'HEATAREA 6 T_TARGET',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.6.PROGRAM_WEEK', {
+		adapter.setObjectNotExists('HEATAREA.6.PROGRAM_WEEK', {
         type: 'state',
         common: {
             name: 'HEATAREA 6 PROGRAMM_WEEK',
@@ -1839,11 +1838,11 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.6.PROGRAM_WEEKEND', {
+			adapter.setObjectNotExists('HEATAREA.6.PROGRAM_WEEKEND', {
         type: 'state',
         common: {
             name: 'HEATAREA 6 PROGRAMM_WEEKEND',
@@ -1851,35 +1850,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.6.T_HEAT_DAY', {
+			adapter.setObjectNotExists('HEATAREA.6.T_HEAT_DAY', {
         type: 'state',
         common: {
             name: 'HEATAREA 6 T_HEAT_DAY',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.6.T_HEAT_NIGHT', {
+		adapter.setObjectNotExists('HEATAREA.6.T_HEAT_NIGHT', {
         type: 'state',
         common: {
             name: 'HEATAREA 6 T_HEAT_NIGHT',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.7', {
+		adapter.setObjectNotExists('HEATAREA.7', {
         type: 'object',
         common: {
             name: 'HEATAREA NR 8',
@@ -1887,11 +1886,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.7.HEATAREA_NAME', {
+	adapter.setObjectNotExists('HEATAREA.7.HEATAREA_NAME', {
         type: 'state',
         common: {
             name: 'HEATAREA 7 HEATAREA_NAME',
@@ -1899,11 +1898,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.7.HEATAREA_MODE', {
+	adapter.setObjectNotExists('HEATAREA.7.HEATAREA_MODE', {
         type: 'state',
         common: {
             name: 'HEATAREA 7 HEATAREA_MODE',
@@ -1911,35 +1910,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-	adapter.setObject('HEATAREA.7.T_ACTUAL', {
+	adapter.setObjectNotExists('HEATAREA.7.T_ACTUAL', {
         type: 'state',
         common: {
             name: 'HEATAREA 7 T_ACTUAL',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.7.T_TARGET', {
+		adapter.setObjectNotExists('HEATAREA.7.T_TARGET', {
         type: 'state',
         common: {
             name: 'HEATAREA 7 T_TARGET',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.7.PROGRAM_WEEK', {
+		adapter.setObjectNotExists('HEATAREA.7.PROGRAM_WEEK', {
         type: 'state',
         common: {
             name: 'HEATAREA 7 PROGRAMM_WEEK',
@@ -1947,11 +1946,11 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.7.PROGRAM_WEEKEND', {
+			adapter.setObjectNotExists('HEATAREA.7.PROGRAM_WEEKEND', {
         type: 'state',
         common: {
             name: 'HEATAREA 7 PROGRAMM_WEEKEND',
@@ -1959,35 +1958,35 @@ function main() {
             unit: '',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-			adapter.setObject('HEATAREA.7.T_HEAT_DAY', {
+			adapter.setObjectNotExists('HEATAREA.7.T_HEAT_DAY', {
         type: 'state',
         common: {
             name: 'HEATAREA 7 T_HEAT_DAY',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-		adapter.setObject('HEATAREA.7.T_HEAT_NIGHT', {
+		adapter.setObjectNotExists('HEATAREA.7.T_HEAT_NIGHT', {
         type: 'state',
         common: {
             name: 'HEATAREA 7 T_HEAT_NIGHT',
             type: 'number',
-            unit: '',
+            unit: '°C',
             read: true,
             write: true,
-			role: 'EZR'
+			role: 'value.temperature'
         },   
         native: {}
     });
-			adapter.setObject('HEATCTRL', {
+			adapter.setObjectNotExists('HEATCTRL', {
         type: 'object',
         common: {
             name: 'HEATCONTROL',
@@ -1995,11 +1994,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'text'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.0', {
+		adapter.setObjectNotExists('HEATCTRL.0', {
         type: 'object',
         common: {
             name: 'HEATCONTROL 0',
@@ -2007,11 +2006,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.0.INUSE', {
+		adapter.setObjectNotExists('HEATCTRL.0.INUSE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
@@ -2019,11 +2018,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.0.HEATAREA_NR', {
+		adapter.setObjectNotExists('HEATCTRL.0.HEATAREA_NR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2031,11 +2030,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.0.ACTOR', {
+		adapter.setObjectNotExists('HEATCTRL.0.ACTOR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2043,11 +2042,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.0.HEATCTRL_STATE', {
+		adapter.setObjectNotExists('HEATCTRL.0.HEATCTRL_STATE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL STATE',
@@ -2055,11 +2054,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.1', {
+		adapter.setObjectNotExists('HEATCTRL.1', {
         type: 'object',
         common: {
             name: 'HEATCONTROL 1',
@@ -2067,11 +2066,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.1.INUSE', {
+		adapter.setObjectNotExists('HEATCTRL.1.INUSE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
@@ -2079,11 +2078,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.1.HEATAREA_NR', {
+		adapter.setObjectNotExists('HEATCTRL.1.HEATAREA_NR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2091,11 +2090,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.1.ACTOR', {
+		adapter.setObjectNotExists('HEATCTRL.1.ACTOR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2103,11 +2102,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.1.HEATCTRL_STATE', {
+		adapter.setObjectNotExists('HEATCTRL.1.HEATCTRL_STATE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL STATE',
@@ -2115,11 +2114,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.2', {
+		adapter.setObjectNotExists('HEATCTRL.2', {
         type: 'object',
         common: {
             name: 'HEATCONTROL 2',
@@ -2127,11 +2126,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.2.INUSE', {
+		adapter.setObjectNotExists('HEATCTRL.2.INUSE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
@@ -2139,11 +2138,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.2.HEATAREA_NR', {
+		adapter.setObjectNotExists('HEATCTRL.2.HEATAREA_NR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2151,11 +2150,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.2.ACTOR', {
+		adapter.setObjectNotExists('HEATCTRL.2.ACTOR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2163,11 +2162,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.2.HEATCTRL_STATE', {
+		adapter.setObjectNotExists('HEATCTRL.2.HEATCTRL_STATE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL STATE',
@@ -2175,11 +2174,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.3', {
+		adapter.setObjectNotExists('HEATCTRL.3', {
         type: 'object',
         common: {
             name: 'HEATCONTROL 3',
@@ -2187,11 +2186,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.3.INUSE', {
+		adapter.setObjectNotExists('HEATCTRL.3.INUSE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
@@ -2199,11 +2198,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.3.HEATAREA_NR', {
+		adapter.setObjectNotExists('HEATCTRL.3.HEATAREA_NR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2211,11 +2210,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.3.ACTOR', {
+		adapter.setObjectNotExists('HEATCTRL.3.ACTOR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2223,11 +2222,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.3.HEATCTRL_STATE', {
+		adapter.setObjectNotExists('HEATCTRL.3.HEATCTRL_STATE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL STATE',
@@ -2235,11 +2234,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.4', {
+		adapter.setObjectNotExists('HEATCTRL.4', {
         type: 'object',
         common: {
             name: 'HEATCONTROL 4',
@@ -2247,11 +2246,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.4.INUSE', {
+		adapter.setObjectNotExists('HEATCTRL.4.INUSE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
@@ -2259,11 +2258,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.4.HEATAREA_NR', {
+		adapter.setObjectNotExists('HEATCTRL.4.HEATAREA_NR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2271,11 +2270,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.4.ACTOR', {
+		adapter.setObjectNotExists('HEATCTRL.4.ACTOR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2283,11 +2282,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.4.HEATCTRL_STATE', {
+		adapter.setObjectNotExists('HEATCTRL.4.HEATCTRL_STATE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL STATE',
@@ -2295,11 +2294,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.5', {
+		adapter.setObjectNotExists('HEATCTRL.5', {
         type: 'object',
         common: {
             name: 'HEATCONTROL 5',
@@ -2307,11 +2306,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.5.INUSE', {
+		adapter.setObjectNotExists('HEATCTRL.5.INUSE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
@@ -2319,11 +2318,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.5.HEATAREA_NR', {
+		adapter.setObjectNotExists('HEATCTRL.5.HEATAREA_NR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2331,11 +2330,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.5.ACTOR', {
+		adapter.setObjectNotExists('HEATCTRL.5.ACTOR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2343,11 +2342,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.5.HEATCTRL_STATE', {
+		adapter.setObjectNotExists('HEATCTRL.5.HEATCTRL_STATE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL STATE',
@@ -2355,11 +2354,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.6', {
+		adapter.setObjectNotExists('HEATCTRL.6', {
         type: 'object',
         common: {
             name: 'HEATCONTROL 6',
@@ -2367,11 +2366,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.6.INUSE', {
+		adapter.setObjectNotExists('HEATCTRL.6.INUSE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
@@ -2379,11 +2378,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.6.HEATAREA_NR', {
+		adapter.setObjectNotExists('HEATCTRL.6.HEATAREA_NR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2391,11 +2390,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.6.ACTOR', {
+		adapter.setObjectNotExists('HEATCTRL.6.ACTOR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2403,11 +2402,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.6.HEATCTRL_STATE', {
+		adapter.setObjectNotExists('HEATCTRL.6.HEATCTRL_STATE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL STATE',
@@ -2415,11 +2414,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.7', {
+		adapter.setObjectNotExists('HEATCTRL.7', {
         type: 'object',
         common: {
             name: 'HEATCONTROL 7',
@@ -2427,11 +2426,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.7.INUSE', {
+		adapter.setObjectNotExists('HEATCTRL.7.INUSE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL INUSE',
@@ -2439,11 +2438,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.7.HEATAREA_NR', {
+		adapter.setObjectNotExists('HEATCTRL.7.HEATAREA_NR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2451,11 +2450,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.7.ACTOR', {
+		adapter.setObjectNotExists('HEATCTRL.7.ACTOR', {
         type: 'state',
         common: {
             name: 'HEATCONTROL HEATAREA',
@@ -2463,11 +2462,11 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });
-		adapter.setObject('HEATCTRL.7.HEATCTRL_STATE', {
+		adapter.setObjectNotExists('HEATCTRL.7.HEATCTRL_STATE', {
         type: 'state',
         common: {
             name: 'HEATCONTROL STATE',
@@ -2475,7 +2474,7 @@ function main() {
             unit: '',
             read: true,
             write: false,
-			role: 'EZR'
+			role: 'state'
         },   
         native: {}
     });

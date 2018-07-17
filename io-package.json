@@ -1,8 +1,22 @@
 {
   "common": {
     "name": "alpha2",
-    "version": "0.0.1",
+    "version": "0.0.2",
+	"news": {
+            "0.0.1": {
+                "en": "Initial version",
+                "de": "Initiale Version"
+            },
+			"0.0.2": {
+                "en": "Fixed issue #1",
+                "de": "Fixed issue #1"
+            }
+        },
     "title": "Möhlenhoff Alpha2",
+	"titleLang": {
+            "en": "Möhlenhoff Alpha2 heat-control adapter",
+            "de": "Möhlenhoff Alpha2 Fußbodenheizungsregler Adapter"
+        },
     "desc": {
       "en": "ioBroker Moehlenhoff Alpha2 Adapter",
       "de": "ioBroker Moehlenhoff Alpha2 Adapter"
@@ -25,12 +39,11 @@
     "readme": "https://github.com/Eisbaeeer/ioBroker.alpha2/blob/master/README.md",
     "loglevel": "info",
     "type": "climate-control",
-    "restartAdapters": [
-      "vis"
-    ]
+	"license": "MIT"
   },
   "native": {
-    "pollInterval": 60
+    "polltime": 30000,
+	"host": "192.168.1.100"
   },
   "objects": [
   ]
