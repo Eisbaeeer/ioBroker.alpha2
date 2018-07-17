@@ -306,7 +306,7 @@ function main() {
      *
      */
 
-    adapter.setObjectNotExistsNotExists('DEVICE', {
+    adapter.setObjectNotExists('DEVICE', {
         type: 'object',
         common: {
             name: 'DEVICE',
@@ -318,7 +318,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('DEVICE.ID', {
+    adapter.setObjectNotExists('DEVICE.ID', {
         type: 'state',
         common: {
             name: 'ID',
@@ -330,7 +330,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('DEVICE.NAME', {
+    adapter.setObjectNotExists('DEVICE.NAME', {
         type: 'state',
         common: {
             name: 'NAME',
@@ -342,7 +342,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('DEVICE.TYPE', {
+    adapter.setObjectNotExists('DEVICE.TYPE', {
         type: 'state',
         common: {
             name: 'TYPE',
@@ -354,7 +354,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('DEVICE.DATETIME', {
+    adapter.setObjectNotExists('DEVICE.DATETIME', {
         type: 'state',
         common: {
             name: 'DATE-TIME',
@@ -366,7 +366,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('DEVICE.TIMEZONE', {
+    adapter.setObjectNotExists('DEVICE.TIMEZONE', {
         type: 'state',
         common: {
             name: 'TIMEZONE',
@@ -378,7 +378,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('DEVICE.NTPSYNC', {
+    adapter.setObjectNotExists('DEVICE.NTPSYNC', {
         type: 'state',
         common: {
             name: 'NTPSYNC STATUS',
@@ -390,7 +390,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('DEVICE.T_HEAT_VACATION', {
+    adapter.setObjectNotExists('DEVICE.T_HEAT_VACATION', {
         type: 'state',
         common: {
             name: 'VACATION_TEMP',
@@ -402,7 +402,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('VACATION', {
+    adapter.setObjectNotExists('VACATION', {
         type: 'object',
         common: {
             name: 'VACATION',
@@ -414,7 +414,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('VACATION.STATE', {
+    adapter.setObjectNotExists('VACATION.STATE', {
         type: 'state',
         common: {
             name: 'VACATION STATE',
@@ -426,7 +426,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('VACATION.START_DATE', {
+    adapter.setObjectNotExists('VACATION.START_DATE', {
         type: 'state',
         common: {
             name: 'VACATION START DATE',
@@ -438,7 +438,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('VACATION.START_TIME', {
+    adapter.setObjectNotExists('VACATION.START_TIME', {
         type: 'state',
         common: {
             name: 'VACATION START TIME',
@@ -450,7 +450,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('VACATION.END_DATE', {
+    adapter.setObjectNotExists('VACATION.END_DATE', {
         type: 'state',
         common: {
             name: 'VACATION END DATE',
@@ -462,7 +462,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('VACATION.END_TIME', {
+    adapter.setObjectNotExists('VACATION.END_TIME', {
         type: 'state',
         common: {
             name: 'VACATION END TIME',
@@ -474,7 +474,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('PROGRAM', {
+    adapter.setObjectNotExists('PROGRAM', {
         type: 'object',
         common: {
             name: 'PROGRAM',
@@ -486,7 +486,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('PROGRAM.4', {
+    adapter.setObjectNotExists('PROGRAM.4', {
         type: 'object',
         common: {
             name: 'PROGRAM 4',
@@ -498,7 +498,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('PROGRAM.4.1', {
+    adapter.setObjectNotExists('PROGRAM.4.1', {
         type: 'object',
         common: {
             name: 'PROGRAM 4 shift 1',
@@ -510,7 +510,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('PROGRAM.4.1.START', {
+    adapter.setObjectNotExists('PROGRAM.4.1.START', {
         type: 'state',
         common: {
             name: 'PROGRAM 4 1 START',
@@ -522,7 +522,7 @@ function main() {
         },   
         native: {}
     });
-    adapter.setObjectNotExistsNotExists('PROGRAM.4.1.END', {
+    adapter.setObjectNotExists('PROGRAM.4.1.END', {
         type: 'state',
         common: {
             name: 'PROGRAM 4 1 END',
