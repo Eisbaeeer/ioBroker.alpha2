@@ -80,10 +80,10 @@
         "native": {}
     },
 	{
-    "_id": "DEVICE."name"",
+    "_id": "DEVICE.name",
         "type": "state",
         "common": {
-            "name": ""name"",
+            "name": "name",
             "type": "string",
             "unit": "",
             "read": true,
@@ -93,10 +93,10 @@
         "native": {}
     }, 
 	{
-    "_id": "DEVICE."type"",
+    "_id": "DEVICE.type",
         "type": "state",
         "common": {
-            "name": ""type"",
+            "name": "type",
             "type": "string",
             "unit": "",
             "read": true,
