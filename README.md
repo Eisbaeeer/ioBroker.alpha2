@@ -62,6 +62,10 @@ You can check the object VACATION.STATE to check the status. If the status showi
 
 ## Changelog
 
+### 0.0.3
+- (Eisbaeeer)   
+fixed issues #2
+
 ### 0.0.2
 - (Eisbaeeer)   
 fixed issues #1
