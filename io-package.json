@@ -51,7 +51,7 @@
   },
   "objects": [],
   "instanceObjects": [
-		
+	{	
    "_id": "DEVICE",
         "type": "object",
         "common": {
@@ -64,6 +64,7 @@
         },   
         "native": {}
     },
+	{
     "_id": "DEVICE.ID",
         "type": "state",
         "common": {
@@ -76,6 +77,7 @@
         },   
         "native": {}
     },
+	{
     "_id": "DEVICE."name"",
         "type": "state",
         "common": {
@@ -85,9 +87,9 @@
             "read": true,
             "write": false,
 			"role": "text"
-        },   
+        },		
         "native": {}
-    },
+    }, 	{
     "_id": "DEVICE."type"",
         "type": "state",
         "common": {
@@ -100,7 +102,7 @@
         },   
         "native": {}
     },
-    "_id": "DEVICE.DATETIME",
+    {   "_id": "DEVICE.DATETIME",
         "type": "state",
         "common": {
             "name": "DATE-TIME",
@@ -112,7 +114,7 @@
         },   
         "native": {}
     },
-    "_id": "DEVICE.TIMEZONE",
+    {   "_id": "DEVICE.TIMEZONE",
         "type": "state",
         "common": {
             "name": "TIMEZONE",
@@ -124,7 +126,7 @@
         },   
         "native": {}
     },
-    "_id": "DEVICE.NTPSYNC",
+    {   "_id": "DEVICE.NTPSYNC",
         "type": "state",
         "common": {
             "name": "NTPSYNC STATUS",
@@ -136,7 +138,7 @@
         },   
         "native": {}
     },
-    "_id": "DEVICE.T_HEAT_VACATION",
+    {   "_id": "DEVICE.T_HEAT_VACATION",
         "type": "state",
         "common": {
             "name": "VACATION_TEMP",
@@ -148,7 +150,7 @@
         },   
         "native": {}
     },
-    "_id": "VACATION",
+    {   "_id": "VACATION",
         "type": "object",
         "common": {
             "name": "VACATION",
@@ -160,7 +162,7 @@
         },   
         "native": {}
     },
-    "_id": "VACATION.STATE",
+    {   "_id": "VACATION.STATE",
         "type": "state",
         "common": {
             "name": "VACATION STATE",
@@ -172,7 +174,7 @@
         },   
         "native": {}
     },
-    "_id": "VACATION.START_DATE",
+    {   "_id": "VACATION.START_DATE",
         "type": "state",
         "common": {
             "name": "VACATION START DATE",
@@ -184,7 +186,7 @@
         },   
         "native": {}
     },
-    "_id": "VACATION.START_TIME",
+    {   "_id": "VACATION.START_TIME",
         "type": "state",
         "common": {
             "name": "VACATION START TIME",
@@ -196,7 +198,7 @@
         },   
         "native": {}
     },
-    "_id": "VACATION.END_DATE",
+    {   "_id": "VACATION.END_DATE",
         "type": "state",
         "common": {
             "name": "VACATION END DATE",
@@ -208,7 +210,7 @@
         },   
         "native": {}
     },
-    "_id": "VACATION.END_TIME",
+    {   "_id": "VACATION.END_TIME",
         "type": "state",
         "common": {
             "name": "VACATION END TIME",
@@ -220,7 +222,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM",
+    {   "_id": "PROGRAM",
         "type": "object",
         "common": {
             "name": "PROGRAM",
@@ -232,7 +234,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4",
+    {   "_id": "PROGRAM.4",
         "type": "object",
         "common": {
             "name": "PROGRAM 4",
@@ -244,7 +246,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4.1",
+    {   "_id": "PROGRAM.4.1",
         "type": "object",
         "common": {
             "name": "PROGRAM 4 shift 1",
@@ -256,7 +258,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4.1.START",
+    {   "_id": "PROGRAM.4.1.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 4 1 START",
@@ -268,7 +270,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4.1.END",
+    {   "_id": "PROGRAM.4.1.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 4 1 END",
@@ -280,7 +282,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4.2",
+    {   "_id": "PROGRAM.4.2",
         "type": "object",
         "common": {
             "name": "PROGRAM 4 shift 2",
@@ -292,7 +294,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4.2.START",
+    {   "_id": "PROGRAM.4.2.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 4 2 START",
@@ -304,7 +306,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4.2.END",
+    {   "_id": "PROGRAM.4.2.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 4 2 END",
@@ -316,7 +318,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4.3",
+    {   "_id": "PROGRAM.4.3",
         "type": "object",
         "common": {
             "name": "PROGRAM 4 shift 3",
@@ -328,7 +330,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4.3.START",
+    {   "_id": "PROGRAM.4.3.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 4 3 START",
@@ -340,7 +342,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4.3.END",
+    {   "_id": "PROGRAM.4.3.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 4 3 END",
@@ -352,7 +354,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4.4",
+    {   "_id": "PROGRAM.4.4",
         "type": "object",
         "common": {
             "name": "PROGRAM 4 shift 4",
@@ -364,7 +366,7 @@
         },   
         "native": {}
     },    
-    "_id": "PROGRAM.4.4.START",
+    {   "_id": "PROGRAM.4.4.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 4 4 START",
@@ -376,7 +378,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.4.4.END",
+    {   "_id": "PROGRAM.4.4.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 4 4 END",
@@ -388,7 +390,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.1",
+    {   "_id": "PROGRAM.1",
         "type": "object",
         "common": {
             "name": "PROGRAM 1",
@@ -400,7 +402,7 @@
         },   
         "native": {}
     },	
-	"_id": "PROGRAM.1.1",
+	{   "_id": "PROGRAM.1.1",
         "type": "object",
         "common": {
             "name": "PROGRAM 1 shift 1",
@@ -412,7 +414,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.1.1.START",
+    {   "_id": "PROGRAM.1.1.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 1 1 START",
@@ -424,7 +426,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.1.1.END",
+    {   "_id": "PROGRAM.1.1.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 1 1 END",
@@ -436,7 +438,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.1.2",
+    {   "_id": "PROGRAM.1.2",
         "type": "object",
         "common": {
             "name": "PROGRAM 1 shift 2",
@@ -448,7 +450,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.1.2.START",
+    {   "_id": "PROGRAM.1.2.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 1 2 START",
@@ -460,7 +462,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.1.2.END",
+    {   "_id": "PROGRAM.1.2.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 1 2 END",
@@ -472,7 +474,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.1.3",
+    {   "_id": "PROGRAM.1.3",
         "type": "object",
         "common": {
             "name": "PROGRAM 1 shift 3",
@@ -484,7 +486,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.1.3.START",
+    {   "_id": "PROGRAM.1.3.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 1 3 START",
@@ -496,7 +498,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.1.3.END",
+    {   "_id": "PROGRAM.1.3.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 1 3 END",
@@ -508,7 +510,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.1.4",
+    {   "_id": "PROGRAM.1.4",
         "type": "object",
         "common": {
             "name": "PROGRAM 1 shift 4",
@@ -520,7 +522,7 @@
         },   
         "native": {}
     },    
-    "_id": "PROGRAM.1.4.START",
+    {   "_id": "PROGRAM.1.4.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 1 4 START",
@@ -532,7 +534,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.1.4.END",
+    {   "_id": "PROGRAM.1.4.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 1 4 END",
@@ -544,7 +546,7 @@
         },   
         "native": {}
     },
-	"_id": "PROGRAM.2",
+	{   "_id": "PROGRAM.2",
         "type": "object",
         "common": {
             "name": "PROGRAM 2",
@@ -556,7 +558,7 @@
         },   
         "native": {}
     },	
-	"_id": "PROGRAM.2.1",
+	{   "_id": "PROGRAM.2.1",
         "type": "object",
         "common": {
             "name": "PROGRAM 2 shift 1",
@@ -568,7 +570,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.2.1.START",
+    {   "_id": "PROGRAM.2.1.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 2 1 START",
@@ -580,7 +582,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.2.1.END",
+    {   "_id": "PROGRAM.2.1.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 2 1 END",
@@ -592,7 +594,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.2.2",
+    {   "_id": "PROGRAM.2.2",
         "type": "object",
         "common": {
             "name": "PROGRAM 2 shift 2",
@@ -604,7 +606,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.2.2.START",
+    {   "_id": "PROGRAM.2.2.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 2 2 START",
@@ -616,7 +618,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.2.2.END",
+    {   "_id": "PROGRAM.2.2.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 2 2 END",
@@ -628,7 +630,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.2.3",
+    {   "_id": "PROGRAM.2.3",
         "type": "object",
         "common": {
             "name": "PROGRAM 2 shift 3",
@@ -640,7 +642,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.2.3.START",
+    {   "_id": "PROGRAM.2.3.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 2 3 START",
@@ -652,7 +654,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.2.3.END",
+    {   "_id": "PROGRAM.2.3.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 2 3 END",
@@ -664,7 +666,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.2.4",
+    {   "_id": "PROGRAM.2.4",
         "type": "object",
         "common": {
             "name": "PROGRAM 2 shift 4",
@@ -676,7 +678,7 @@
         },   
         "native": {}
     },    
-    "_id": "PROGRAM.2.4.START",
+    {   "_id": "PROGRAM.2.4.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 2 4 START",
@@ -688,7 +690,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.2.4.END",
+    {   "_id": "PROGRAM.2.4.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 2 4 END",
@@ -700,7 +702,7 @@
         },   
         "native": {}
     },
-	"_id": "PROGRAM.3",
+	{   "_id": "PROGRAM.3",
         "type": "object",
         "common": {
             "name": "PROGRAM 3",
@@ -712,7 +714,7 @@
         },   
         "native": {}
     },	
-	"_id": "PROGRAM.3.1",
+	{   "_id": "PROGRAM.3.1",
         "type": "object",
         "common": {
             "name": "PROGRAM 3 shift 1",
@@ -724,7 +726,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.3.1.START",
+    {   "_id": "PROGRAM.3.1.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 3 1 START",
@@ -736,7 +738,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.3.1.END",
+    {   "_id": "PROGRAM.3.1.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 3 1 END",
@@ -748,7 +750,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.3.2",
+    {   "_id": "PROGRAM.3.2",
         "type": "object",
         "common": {
             "name": "PROGRAM 3 shift 2",
@@ -760,7 +762,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.3.2.START",
+    {   "_id": "PROGRAM.3.2.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 3 2 START",
@@ -772,7 +774,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.3.2.END",
+    {   "_id": "PROGRAM.3.2.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 3 2 END",
@@ -784,7 +786,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.3.3",
+    {   "_id": "PROGRAM.3.3",
         "type": "object",
         "common": {
             "name": "PROGRAM 3 shift 3",
@@ -796,7 +798,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.3.3.START",
+    {   "_id": "PROGRAM.3.3.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 3 3 START",
@@ -808,7 +810,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.3.3.END",
+    {   "_id": "PROGRAM.3.3.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 3 3 END",
@@ -820,7 +822,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.3.4",
+    {   "_id": "PROGRAM.3.4",
         "type": "object",
         "common": {
             "name": "PROGRAM 3 shift 4",
@@ -832,7 +834,7 @@
         },   
         "native": {}
     },    
-    "_id": "PROGRAM.3.4.START",
+    {   "_id": "PROGRAM.3.4.START",
         "type": "state",
         "common": {
             "name": "PROGRAM 3 4 START",
@@ -844,7 +846,7 @@
         },   
         "native": {}
     },
-    "_id": "PROGRAM.3.4.END",
+    {   "_id": "PROGRAM.3.4.END",
         "type": "state",
         "common": {
             "name": "PROGRAM 3 4 END",
@@ -856,7 +858,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA",
+	{   "_id": "HEATAREA",
         "type": "object",
         "common": {
             "name": "HEATAREA",
@@ -868,7 +870,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.0",
+	{   "_id": "HEATAREA.0",
         "type": "object",
         "common": {
             "name": "HEATAREA NR 1",
@@ -880,7 +882,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.0.HEATAREA_"name"",
+	{   "_id": "HEATAREA.0.HEATAREA_"name"",
         "type": "state",
         "common": {
             "name": "HEATAREA 0 HEATAREA_"name"",
@@ -892,7 +894,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.0.HEATAREA_MODE",
+	{   "_id": "HEATAREA.0.HEATAREA_MODE",
         "type": "state",
         "common": {
             "name": "HEATAREA 0 HEATAREA_MODE",
@@ -904,7 +906,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.0.T_ACTUAL",
+	{   "_id": "HEATAREA.0.T_ACTUAL",
         "type": "state",
         "common": {
             "name": "HEATAREA 0 T_ACTUAL",
@@ -916,7 +918,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.0.T_TARGET",
+		{   "_id": "HEATAREA.0.T_TARGET",
         "type": "state",
         "common": {
             "name": "HEATAREA 0 T_TARGET",
@@ -928,7 +930,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.0.PROGRAM_WEEK",
+		{   "_id": "HEATAREA.0.PROGRAM_WEEK",
         "type": "state",
         "common": {
             "name": "HEATAREA 0 PROGRAMM_WEEK",
@@ -940,7 +942,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.0.PROGRAM_WEEKEND",
+			{   "_id": "HEATAREA.0.PROGRAM_WEEKEND",
         "type": "state",
         "common": {
             "name": "HEATAREA 0 PROGRAMM_WEEKEND",
@@ -952,7 +954,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.0.T_HEAT_DAY",
+			{   "_id": "HEATAREA.0.T_HEAT_DAY",
         "type": "state",
         "common": {
             "name": "HEATAREA 0 T_HEAT_DAY",
@@ -964,7 +966,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.0.T_HEAT_NIGHT",
+		{   "_id": "HEATAREA.0.T_HEAT_NIGHT",
         "type": "state",
         "common": {
             "name": "HEATAREA 0 T_HEAT_NIGHT",
@@ -976,7 +978,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.1",
+		{   "_id": "HEATAREA.1",
         "type": "object",
         "common": {
             "name": "HEATAREA NR 2",
@@ -988,7 +990,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.1.HEATAREA_"name"",
+	{   "_id": "HEATAREA.1.HEATAREA_"name"",
         "type": "state",
         "common": {
             "name": "HEATAREA 1 HEATAREA_"name"",
@@ -1000,7 +1002,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.1.HEATAREA_MODE",
+	{   "_id": "HEATAREA.1.HEATAREA_MODE",
         "type": "state",
         "common": {
             "name": "HEATAREA 1 HEATAREA_MODE",
@@ -1012,7 +1014,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.1.T_ACTUAL",
+	{   "_id": "HEATAREA.1.T_ACTUAL",
         "type": "state",
         "common": {
             "name": "HEATAREA 1 T_ACTUAL",
@@ -1024,7 +1026,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.1.T_TARGET",
+		{   "_id": "HEATAREA.1.T_TARGET",
         "type": "state",
         "common": {
             "name": "HEATAREA 1 T_TARGET",
@@ -1036,7 +1038,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.1.PROGRAM_WEEK",
+		{   "_id": "HEATAREA.1.PROGRAM_WEEK",
         "type": "state",
         "common": {
             "name": "HEATAREA 1 PROGRAMM_WEEK",
@@ -1048,7 +1050,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.1.PROGRAM_WEEKEND",
+			{   "_id": "HEATAREA.1.PROGRAM_WEEKEND",
         "type": "state",
         "common": {
             "name": "HEATAREA 1 PROGRAMM_WEEKEND",
@@ -1060,7 +1062,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.1.T_HEAT_DAY",
+			{   "_id": "HEATAREA.1.T_HEAT_DAY",
         "type": "state",
         "common": {
             "name": "HEATAREA 1 T_HEAT_DAY",
@@ -1072,7 +1074,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.1.T_HEAT_NIGHT",
+		{   "_id": "HEATAREA.1.T_HEAT_NIGHT",
         "type": "state",
         "common": {
             "name": "HEATAREA 1 T_HEAT_NIGHT",
@@ -1084,7 +1086,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.2",
+		{   "_id": "HEATAREA.2",
         "type": "object",
         "common": {
             "name": "HEATAREA NR 3",
@@ -1096,7 +1098,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.2.HEATAREA_"name"",
+	{   "_id": "HEATAREA.2.HEATAREA_"name"",
         "type": "state",
         "common": {
             "name": "HEATAREA 2 HEATAREA_"name"",
@@ -1108,7 +1110,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.2.HEATAREA_MODE",
+	{   "_id": "HEATAREA.2.HEATAREA_MODE",
         "type": "state",
         "common": {
             "name": "HEATAREA 2 HEATAREA_MODE",
@@ -1120,7 +1122,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.2.T_ACTUAL",
+	{   "_id": "HEATAREA.2.T_ACTUAL",
         "type": "state",
         "common": {
             "name": "HEATAREA 2 T_ACTUAL",
@@ -1132,7 +1134,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.2.T_TARGET",
+		{   "_id": "HEATAREA.2.T_TARGET",
         "type": "state",
         "common": {
             "name": "HEATAREA 2 T_TARGET",
@@ -1144,7 +1146,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.2.PROGRAM_WEEK",
+		{   "_id": "HEATAREA.2.PROGRAM_WEEK",
         "type": "state",
         "common": {
             "name": "HEATAREA 2 PROGRAMM_WEEK",
@@ -1156,7 +1158,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.2.PROGRAM_WEEKEND",
+			{   "_id": "HEATAREA.2.PROGRAM_WEEKEND",
         "type": "state",
         "common": {
             "name": "HEATAREA 2 PROGRAMM_WEEKEND",
@@ -1168,7 +1170,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.2.T_HEAT_DAY",
+			{   "_id": "HEATAREA.2.T_HEAT_DAY",
         "type": "state",
         "common": {
             "name": "HEATAREA 2 T_HEAT_DAY",
@@ -1180,7 +1182,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.2.T_HEAT_NIGHT",
+		{   "_id": "HEATAREA.2.T_HEAT_NIGHT",
         "type": "state",
         "common": {
             "name": "HEATAREA 2 T_HEAT_NIGHT",
@@ -1192,7 +1194,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.3",
+		{   "_id": "HEATAREA.3",
         "type": "object",
         "common": {
             "name": "HEATAREA NR 4",
@@ -1204,7 +1206,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.3.HEATAREA_"name"",
+	{   "_id": "HEATAREA.3.HEATAREA_"name"",
         "type": "state",
         "common": {
             "name": "HEATAREA 3 HEATAREA_"name"",
@@ -1216,7 +1218,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.3.HEATAREA_MODE",
+	{   "_id": "HEATAREA.3.HEATAREA_MODE",
         "type": "state",
         "common": {
             "name": "HEATAREA 3 HEATAREA_MODE",
@@ -1228,7 +1230,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.3.T_ACTUAL",
+	{   "_id": "HEATAREA.3.T_ACTUAL",
         "type": "state",
         "common": {
             "name": "HEATAREA 3 T_ACTUAL",
@@ -1240,7 +1242,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.3.T_TARGET",
+		{   "_id": "HEATAREA.3.T_TARGET",
         "type": "state",
         "common": {
             "name": "HEATAREA 3 T_TARGET",
@@ -1252,7 +1254,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.3.PROGRAM_WEEK",
+		{   "_id": "HEATAREA.3.PROGRAM_WEEK",
         "type": "state",
         "common": {
             "name": "HEATAREA 3 PROGRAMM_WEEK",
@@ -1264,7 +1266,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.3.PROGRAM_WEEKEND",
+			{   "_id": "HEATAREA.3.PROGRAM_WEEKEND",
         "type": "state",
         "common": {
             "name": "HEATAREA 3 PROGRAMM_WEEKEND",
@@ -1276,7 +1278,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.3.T_HEAT_DAY",
+			{   "_id": "HEATAREA.3.T_HEAT_DAY",
         "type": "state",
         "common": {
             "name": "HEATAREA 3 T_HEAT_DAY",
@@ -1288,7 +1290,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.3.T_HEAT_NIGHT",
+		{   "_id": "HEATAREA.3.T_HEAT_NIGHT",
         "type": "state",
         "common": {
             "name": "HEATAREA 3 T_HEAT_NIGHT",
@@ -1300,7 +1302,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.4",
+	{   "_id": "HEATAREA.4",
         "type": "object",
         "common": {
             "name": "HEATAREA NR 5",
@@ -1312,7 +1314,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.4.HEATAREA_"name"",
+	{   "_id": "HEATAREA.4.HEATAREA_"name"",
         "type": "state",
         "common": {
             "name": "HEATAREA 4 HEATAREA_"name"",
@@ -1324,7 +1326,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.4.HEATAREA_MODE",
+	{   "_id": "HEATAREA.4.HEATAREA_MODE",
         "type": "state",
         "common": {
             "name": "HEATAREA 4 HEATAREA_MODE",
@@ -1336,7 +1338,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.4.T_ACTUAL",
+	{   "_id": "HEATAREA.4.T_ACTUAL",
         "type": "state",
         "common": {
             "name": "HEATAREA 4 T_ACTUAL",
@@ -1348,7 +1350,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.4.T_TARGET",
+		{   "_id": "HEATAREA.4.T_TARGET",
         "type": "state",
         "common": {
             "name": "HEATAREA 4 T_TARGET",
@@ -1360,7 +1362,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.4.PROGRAM_WEEK",
+		{   "_id": "HEATAREA.4.PROGRAM_WEEK",
         "type": "state",
         "common": {
             "name": "HEATAREA 4 PROGRAMM_WEEK",
@@ -1372,7 +1374,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.4.PROGRAM_WEEKEND",
+			{   "_id": "HEATAREA.4.PROGRAM_WEEKEND",
         "type": "state",
         "common": {
             "name": "HEATAREA 4 PROGRAMM_WEEKEND",
@@ -1384,7 +1386,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.4.T_HEAT_DAY",
+			{   "_id": "HEATAREA.4.T_HEAT_DAY",
         "type": "state",
         "common": {
             "name": "HEATAREA 4 T_HEAT_DAY",
@@ -1396,7 +1398,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.4.T_HEAT_NIGHT",
+		{   "_id": "HEATAREA.4.T_HEAT_NIGHT",
         "type": "state",
         "common": {
             "name": "HEATAREA 0 T_HEAT_NIGHT",
@@ -1408,7 +1410,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.5",
+	{   "_id": "HEATAREA.5",
         "type": "object",
         "common": {
             "name": "HEATAREA NR 6",
@@ -1420,7 +1422,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.5.HEATAREA_"name"",
+	{   "_id": "HEATAREA.5.HEATAREA_"name"",
         "type": "state",
         "common": {
             "name": "HEATAREA 5 HEATAREA_"name"",
@@ -1432,7 +1434,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.5.HEATAREA_MODE",
+	{   "_id": "HEATAREA.5.HEATAREA_MODE",
         "type": "state",
         "common": {
             "name": "HEATAREA 5 HEATAREA_MODE",
@@ -1444,7 +1446,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.5.T_ACTUAL",
+	{   "_id": "HEATAREA.5.T_ACTUAL",
         "type": "state",
         "common": {
             "name": "HEATAREA 5 T_ACTUAL",
@@ -1456,7 +1458,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.5.T_TARGET",
+		{   "_id": "HEATAREA.5.T_TARGET",
         "type": "state",
         "common": {
             "name": "HEATAREA 5 T_TARGET",
@@ -1468,7 +1470,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.5.PROGRAM_WEEK",
+		{   "_id": "HEATAREA.5.PROGRAM_WEEK",
         "type": "state",
         "common": {
             "name": "HEATAREA 5 PROGRAMM_WEEK",
@@ -1480,7 +1482,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.5.PROGRAM_WEEKEND",
+			{   "_id": "HEATAREA.5.PROGRAM_WEEKEND",
         "type": "state",
         "common": {
             "name": "HEATAREA 5 PROGRAMM_WEEKEND",
@@ -1492,7 +1494,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.5.T_HEAT_DAY",
+			{   "_id": "HEATAREA.5.T_HEAT_DAY",
         "type": "state",
         "common": {
             "name": "HEATAREA 5 T_HEAT_DAY",
@@ -1504,7 +1506,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.5.T_HEAT_NIGHT",
+		{   "_id": "HEATAREA.5.T_HEAT_NIGHT",
         "type": "state",
         "common": {
             "name": "HEATAREA 5 T_HEAT_NIGHT",
@@ -1516,7 +1518,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.6",
+		{   "_id": "HEATAREA.6",
         "type": "object",
         "common": {
             "name": "HEATAREA NR 7",
@@ -1528,7 +1530,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.6.HEATAREA_"name"",
+	{   "_id": "HEATAREA.6.HEATAREA_"name"",
         "type": "state",
         "common": {
             "name": "HEATAREA 6 HEATAREA_"name"",
@@ -1540,7 +1542,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.6.HEATAREA_MODE",
+	{   "_id": "HEATAREA.6.HEATAREA_MODE",
         "type": "state",
         "common": {
             "name": "HEATAREA 6 HEATAREA_MODE",
@@ -1552,7 +1554,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.6.T_ACTUAL",
+	{   "_id": "HEATAREA.6.T_ACTUAL",
         "type": "state",
         "common": {
             "name": "HEATAREA 6 T_ACTUAL",
@@ -1564,7 +1566,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.6.T_TARGET",
+		{   "_id": "HEATAREA.6.T_TARGET",
         "type": "state",
         "common": {
             "name": "HEATAREA 6 T_TARGET",
@@ -1576,7 +1578,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.6.PROGRAM_WEEK",
+		{   "_id": "HEATAREA.6.PROGRAM_WEEK",
         "type": "state",
         "common": {
             "name": "HEATAREA 6 PROGRAMM_WEEK",
@@ -1588,7 +1590,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.6.PROGRAM_WEEKEND",
+			{   "_id": "HEATAREA.6.PROGRAM_WEEKEND",
         "type": "state",
         "common": {
             "name": "HEATAREA 6 PROGRAMM_WEEKEND",
@@ -1600,7 +1602,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.6.T_HEAT_DAY",
+			{   "_id": "HEATAREA.6.T_HEAT_DAY",
         "type": "state",
         "common": {
             "name": "HEATAREA 6 T_HEAT_DAY",
@@ -1612,7 +1614,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.6.T_HEAT_NIGHT",
+		{   "_id": "HEATAREA.6.T_HEAT_NIGHT",
         "type": "state",
         "common": {
             "name": "HEATAREA 6 T_HEAT_NIGHT",
@@ -1624,7 +1626,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.7",
+		{   "_id": "HEATAREA.7",
         "type": "object",
         "common": {
             "name": "HEATAREA NR 8",
@@ -1636,7 +1638,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.7.HEATAREA_"name"",
+	{   "_id": "HEATAREA.7.HEATAREA_"name"",
         "type": "state",
         "common": {
             "name": "HEATAREA 7 HEATAREA_"name"",
@@ -1648,7 +1650,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.7.HEATAREA_MODE",
+	{   "_id": "HEATAREA.7.HEATAREA_MODE",
         "type": "state",
         "common": {
             "name": "HEATAREA 7 HEATAREA_MODE",
@@ -1660,7 +1662,7 @@
         },   
         "native": {}
     },
-	"_id": "HEATAREA.7.T_ACTUAL",
+	{   "_id": "HEATAREA.7.T_ACTUAL",
         "type": "state",
         "common": {
             "name": "HEATAREA 7 T_ACTUAL",
@@ -1672,7 +1674,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.7.T_TARGET",
+		{   "_id": "HEATAREA.7.T_TARGET",
         "type": "state",
         "common": {
             "name": "HEATAREA 7 T_TARGET",
@@ -1684,7 +1686,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.7.PROGRAM_WEEK",
+		{   "_id": "HEATAREA.7.PROGRAM_WEEK",
         "type": "state",
         "common": {
             "name": "HEATAREA 7 PROGRAMM_WEEK",
@@ -1696,7 +1698,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.7.PROGRAM_WEEKEND",
+			{   "_id": "HEATAREA.7.PROGRAM_WEEKEND",
         "type": "state",
         "common": {
             "name": "HEATAREA 7 PROGRAMM_WEEKEND",
@@ -1708,7 +1710,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATAREA.7.T_HEAT_DAY",
+			{   "_id": "HEATAREA.7.T_HEAT_DAY",
         "type": "state",
         "common": {
             "name": "HEATAREA 7 T_HEAT_DAY",
@@ -1720,7 +1722,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATAREA.7.T_HEAT_NIGHT",
+		{   "_id": "HEATAREA.7.T_HEAT_NIGHT",
         "type": "state",
         "common": {
             "name": "HEATAREA 7 T_HEAT_NIGHT",
@@ -1732,7 +1734,7 @@
         },   
         "native": {}
     },
-			"_id": "HEATCTRL",
+			{   "_id": "HEATCTRL",
         "type": "object",
         "common": {
             "name": "HEATCONTROL",
@@ -1744,7 +1746,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.0",
+		{   "_id": "HEATCTRL.0",
         "type": "object",
         "common": {
             "name": "HEATCONTROL 0",
@@ -1756,7 +1758,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.0.INUSE",
+		{   "_id": "HEATCTRL.0.INUSE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
@@ -1768,7 +1770,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.0.HEATAREA_NR",
+		{   "_id": "HEATCTRL.0.HEATAREA_NR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -1780,7 +1782,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.0.ACTOR",
+		{   "_id": "HEATCTRL.0.ACTOR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -1792,7 +1794,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.0.HEATCTRL_STATE",
+		{   "_id": "HEATCTRL.0.HEATCTRL_STATE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
@@ -1804,7 +1806,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.1",
+		{   "_id": "HEATCTRL.1",
         "type": "object",
         "common": {
             "name": "HEATCONTROL 1",
@@ -1816,7 +1818,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.1.INUSE",
+		{   "_id": "HEATCTRL.1.INUSE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
@@ -1828,7 +1830,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.1.HEATAREA_NR",
+		{   "_id": "HEATCTRL.1.HEATAREA_NR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -1840,7 +1842,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.1.ACTOR",
+		{   "_id": "HEATCTRL.1.ACTOR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -1852,7 +1854,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.1.HEATCTRL_STATE",
+		{   "_id": "HEATCTRL.1.HEATCTRL_STATE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
@@ -1864,7 +1866,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.2",
+		{   "_id": "HEATCTRL.2",
         "type": "object",
         "common": {
             "name": "HEATCONTROL 2",
@@ -1876,7 +1878,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.2.INUSE",
+		{   "_id": "HEATCTRL.2.INUSE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
@@ -1888,7 +1890,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.2.HEATAREA_NR",
+		{   "_id": "HEATCTRL.2.HEATAREA_NR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -1900,7 +1902,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.2.ACTOR",
+		{   "_id": "HEATCTRL.2.ACTOR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -1912,7 +1914,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.2.HEATCTRL_STATE",
+		{   "_id": "HEATCTRL.2.HEATCTRL_STATE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
@@ -1924,7 +1926,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.3",
+		{   "_id": "HEATCTRL.3",
         "type": "object",
         "common": {
             "name": "HEATCONTROL 3",
@@ -1936,7 +1938,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.3.INUSE",
+		{   "_id": "HEATCTRL.3.INUSE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
@@ -1948,7 +1950,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.3.HEATAREA_NR",
+		{   "_id": "HEATCTRL.3.HEATAREA_NR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -1960,7 +1962,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.3.ACTOR",
+		{   "_id": "HEATCTRL.3.ACTOR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -1972,7 +1974,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.3.HEATCTRL_STATE",
+		{   "_id": "HEATCTRL.3.HEATCTRL_STATE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
@@ -1984,7 +1986,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.4",
+		{   "_id": "HEATCTRL.4",
         "type": "object",
         "common": {
             "name": "HEATCONTROL 4",
@@ -1996,7 +1998,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.4.INUSE",
+		{   "_id": "HEATCTRL.4.INUSE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
@@ -2008,7 +2010,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.4.HEATAREA_NR",
+		{   "_id": "HEATCTRL.4.HEATAREA_NR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -2020,7 +2022,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.4.ACTOR",
+		{   "_id": "HEATCTRL.4.ACTOR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -2032,7 +2034,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.4.HEATCTRL_STATE",
+		{   "_id": "HEATCTRL.4.HEATCTRL_STATE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
@@ -2044,7 +2046,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.5",
+		{   "_id": "HEATCTRL.5",
         "type": "object",
         "common": {
             "name": "HEATCONTROL 5",
@@ -2056,7 +2058,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.5.INUSE",
+		{   "_id": "HEATCTRL.5.INUSE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
@@ -2068,7 +2070,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.5.HEATAREA_NR",
+		{   "_id": "HEATCTRL.5.HEATAREA_NR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -2080,7 +2082,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.5.ACTOR",
+		{   "_id": "HEATCTRL.5.ACTOR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -2092,7 +2094,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.5.HEATCTRL_STATE",
+		{   "_id": "HEATCTRL.5.HEATCTRL_STATE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
@@ -2104,7 +2106,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.6",
+		{   "_id": "HEATCTRL.6",
         "type": "object",
         "common": {
             "name": "HEATCONTROL 6",
@@ -2116,7 +2118,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.6.INUSE",
+		{   "_id": "HEATCTRL.6.INUSE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
@@ -2128,7 +2130,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.6.HEATAREA_NR",
+		{   "_id": "HEATCTRL.6.HEATAREA_NR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -2140,7 +2142,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.6.ACTOR",
+		{   "_id": "HEATCTRL.6.ACTOR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -2152,7 +2154,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.6.HEATCTRL_STATE",
+		{   "_id": "HEATCTRL.6.HEATCTRL_STATE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
@@ -2164,7 +2166,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.7",
+		{   "_id": "HEATCTRL.7",
         "type": "object",
         "common": {
             "name": "HEATCONTROL 7",
@@ -2176,7 +2178,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.7.INUSE",
+		{   "_id": "HEATCTRL.7.INUSE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
@@ -2188,7 +2190,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.7.HEATAREA_NR",
+		{   "_id": "HEATCTRL.7.HEATAREA_NR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -2200,7 +2202,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.7.ACTOR",
+		{   "_id": "HEATCTRL.7.ACTOR",
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
@@ -2212,7 +2214,7 @@
         },   
         "native": {}
     },
-		"_id": "HEATCTRL.7.HEATCTRL_STATE",
+		{   "_id": "HEATCTRL.7.HEATCTRL_STATE",
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
