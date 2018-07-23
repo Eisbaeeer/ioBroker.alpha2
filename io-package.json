@@ -951,10 +951,10 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.0.HEATAREA_"name"",
+  "_id": "HEATAREA.0.HEATAREA_name",
         "type": "state",
         "common": {
-            "name": "HEATAREA 0 HEATAREA_"name"",
+            "name": "HEATAREA 0 HEATAREA_name",
             "type": "string",
             "unit": "",
             "read": true,
@@ -1068,10 +1068,10 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.1.HEATAREA_"name"",
+  "_id": "HEATAREA.1.HEATAREA_name",
         "type": "state",
         "common": {
-            "name": "HEATAREA 1 HEATAREA_"name"",
+            "name": "HEATAREA 1 HEATAREA_name",
             "type": "string",
             "unit": "",
             "read": true,
@@ -1185,10 +1185,10 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.2.HEATAREA_"name"",
+  "_id": "HEATAREA.2.HEATAREA_name",
         "type": "state",
         "common": {
-            "name": "HEATAREA 2 HEATAREA_"name"",
+            "name": "HEATAREA 2 HEATAREA_name",
             "type": "string",
             "unit": "",
             "read": true,
@@ -1302,10 +1302,10 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.3.HEATAREA_"name"",
+  "_id": "HEATAREA.3.HEATAREA_name",
         "type": "state",
         "common": {
-            "name": "HEATAREA 3 HEATAREA_"name"",
+            "name": "HEATAREA 3 HEATAREA_name",
             "type": "string",
             "unit": "",
             "read": true,
@@ -1419,10 +1419,10 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.4.HEATAREA_"name"",
+  "_id": "HEATAREA.4.HEATAREA_name",
         "type": "state",
         "common": {
-            "name": "HEATAREA 4 HEATAREA_"name"",
+            "name": "HEATAREA 4 HEATAREA_name",
             "type": "string",
             "unit": "",
             "read": true,
@@ -1536,10 +1536,10 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.5.HEATAREA_"name"",
+  "_id": "HEATAREA.5.HEATAREA_name",
         "type": "state",
         "common": {
-            "name": "HEATAREA 5 HEATAREA_"name"",
+            "name": "HEATAREA 5 HEATAREA_name",
             "type": "string",
             "unit": "",
             "read": true,
@@ -1653,10 +1653,10 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.6.HEATAREA_"name"",
+  "_id": "HEATAREA.6.HEATAREA_name",
         "type": "state",
         "common": {
-            "name": "HEATAREA 6 HEATAREA_"name"",
+            "name": "HEATAREA 6 HEATAREA_name",
             "type": "string",
             "unit": "",
             "read": true,
@@ -1770,10 +1770,10 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.7.HEATAREA_"name"",
+  "_id": "HEATAREA.7.HEATAREA_name",
         "type": "state",
         "common": {
-            "name": "HEATAREA 7 HEATAREA_"name"",
+            "name": "HEATAREA 7 HEATAREA_name",
             "type": "string",
             "unit": "",
             "read": true,
