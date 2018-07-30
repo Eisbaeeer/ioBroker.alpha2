@@ -190,7 +190,10 @@ function httpPost(data) {
     var req = http.request(options, function(res) {
     adapter.log.debug("http Status: " + res.statusCode);
     adapter.log.debug('HEADERS: ' + JSON.stringify(res.headers), (res.statusCode != 200 ? "warn" : "info")); // Header (Rückmeldung vom Webserver)
-    });
+    if (res.statusCode == 200) {
+		getXMLcyclic();
+	}
+	});
     
     req.on('error', function(e) { // Fehler abfangen
         adapter.log.info('ERROR: ' + e.message,"warn");

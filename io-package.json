@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "alpha2",
-    "version": "0.0.3",
+    "version": "0.0.4",
 	"news": {
             "0.0.1": {
                 "en": "Initial version",
@@ -14,6 +14,10 @@
 			"0.0.3": {
                 "en": "Fixed issue #2",
                 "de": "Fixed issue #2"
+            },
+			"0.0.4": {
+                "en": "Added refresh of states after setting states",
+                "de": "Aktualisierung der Werte nach dem Setzen eines Objektes"
             }
         },
     "title": "Möhlenhoff Alpha2",
