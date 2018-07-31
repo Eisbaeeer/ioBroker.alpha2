@@ -14,7 +14,11 @@
 			"0.0.3": {
                 "en": "Fixed issue #2",
                 "de": "Fixed issue #2"
-            }
+            },
+			"0.0.4": {
+                "en": "Added refresh after set objects",
+                "de": "Aktualisierung nach setzen von Objekten"
+            },
         },
     "title": "Möhlenhoff Alpha2",
 	"titleLang": {

@@ -191,7 +191,7 @@ function httpPost(data) {
     adapter.log.debug("http Status: " + res.statusCode);
     adapter.log.debug('HEADERS: ' + JSON.stringify(res.headers), (res.statusCode != 200 ? "warn" : "info")); // Header (Rückmeldung vom Webserver)
 	 if (res.statusCode == 200) {
-		//setTimeout(getXMLcyclic,3000);
+		setTimeout(getXMLcyclic,5000);
 	}
 	});
     
