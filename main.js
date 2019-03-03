@@ -13,7 +13,7 @@
 'use strict';
 
 // you have to require the utils module and call adapter function
-const utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
+const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 
 // you have to call the adapter function and pass a options object
 // name has to be set and has to be equal to adapters folder name and main file name excluding extension
@@ -189,7 +189,7 @@ function httpPost(data) {
 	
     var req = http.request(options, function(res) {
     adapter.log.debug("http Status: " + res.statusCode);
-    adapter.log.debug('HEADERS: ' + JSON.stringify(res.headers), (res.statusCode != 200 ? "warn" : "info")); // Header (Rückmeldung vom Webserver)
+    adapter.log.debug('HEADERS: ' + JSON.stringify(res.headers), (res.statusCode != 200 ? "warn" : "info")); // Header (Rï¿½ckmeldung vom Webserver)
 	 if (res.statusCode == 200) {
 		setTimeout(getXMLcyclic,5000);
 	}
