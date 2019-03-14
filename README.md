@@ -1,6 +1,6 @@
 ![Logo](admin/mh-logo-schrift.png)
 # ioBroker.alpha2
-[![NPM version](http://img.shields.io/npm/v/iobroker.alpha2.svg)](https://www.npmjs.com/package/iobroker.alpha2)
+![Number of Installations](http://iobroker.live/badges/alpha2-installed.svg) ![Number of Installations](http://iobroker.live/badges/alpha2-stable.svg) [![NPM version](http://img.shields.io/npm/v/iobroker.alpha2.svg)](https://www.npmjs.com/package/iobroker.alpha2)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.alpha2.svg)](https://www.npmjs.com/package/iobroker.alpha2)
 [![Travis-CI](https://travis-ci.org/Eisbaeeer/ioBroker.alpha2.svg?branch=master)](https://www.travis-ci.org/Eisbaeeer/ioBroker.alpha2)   
 [![NPM](https://nodei.co/npm/iobroker.alpha2.png?downloads=true)](https://nodei.co/npm/iobroker.alpha2/)

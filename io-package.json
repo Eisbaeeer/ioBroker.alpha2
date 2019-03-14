@@ -32,7 +32,6 @@
     "authors": [
       "Eisbaeeer <eisbaeeer@gmail.com>"
     ],
-    "desc":         "Moehlenhoff Alpha2",
     "platform": "Javascript/Node.js",
     "mode": "daemon",
     "materialize":  true,
