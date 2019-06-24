@@ -83,7 +83,7 @@
         "native": {}
     },
 	{
-    "_id": "DEVICE.name",
+    "_id": "DEVICE.NAME",
         "type": "state",
         "common": {
             "name": "name",
@@ -96,7 +96,7 @@
         "native": {}
     }, 
 	{
-    "_id": "DEVICE.type",
+    "_id": "DEVICE.TYPE",
         "type": "state",
         "common": {
             "name": "type",
@@ -954,7 +954,7 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.0.HEATAREA_name",
+  "_id": "HEATAREA.0.HEATAREA_NAME",
         "type": "state",
         "common": {
             "name": "HEATAREA 0 HEATAREA_name",
@@ -1071,7 +1071,7 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.1.HEATAREA_name",
+  "_id": "HEATAREA.1.HEATAREA_NAME",
         "type": "state",
         "common": {
             "name": "HEATAREA 1 HEATAREA_name",
@@ -1188,7 +1188,7 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.2.HEATAREA_name",
+  "_id": "HEATAREA.2.HEATAREA_NAME",
         "type": "state",
         "common": {
             "name": "HEATAREA 2 HEATAREA_name",
@@ -1305,7 +1305,7 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.3.HEATAREA_name",
+  "_id": "HEATAREA.3.HEATAREA_NAME",
         "type": "state",
         "common": {
             "name": "HEATAREA 3 HEATAREA_name",
@@ -1422,7 +1422,7 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.4.HEATAREA_name",
+  "_id": "HEATAREA.4.HEATAREA_NAME",
         "type": "state",
         "common": {
             "name": "HEATAREA 4 HEATAREA_name",
@@ -1539,7 +1539,7 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.5.HEATAREA_name",
+  "_id": "HEATAREA.5.HEATAREA_NAME",
         "type": "state",
         "common": {
             "name": "HEATAREA 5 HEATAREA_name",
@@ -1656,7 +1656,7 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.6.HEATAREA_name",
+  "_id": "HEATAREA.6.HEATAREA_NAME",
         "type": "state",
         "common": {
             "name": "HEATAREA 6 HEATAREA_name",
@@ -1773,7 +1773,7 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.7.HEATAREA_name",
+  "_id": "HEATAREA.7.HEATAREA_NAME",
         "type": "state",
         "common": {
             "name": "HEATAREA 7 HEATAREA_name",
