@@ -1,7 +1,7 @@
 {
   "name": "iobroker.alpha2",
-  "version": "0.0.4",
-  "description": "ioBroker M�hlenhoff Alpha2 Adapter",
+  "version": "1.0.0",
+  "description": "ioBroker Moehlenhoff Alpha2 Adapter",
   "author": {
     "name": "Eisbaeeer",
     "email": "Eisbaeeer@gmail.com"
