@@ -83,3 +83,4 @@ fixed issues #1
 
 ## License
 The MIT License (MIT)
+Copyright (c) 2019 Eisbaeeer <eisbaeeer@gmail.com> 
