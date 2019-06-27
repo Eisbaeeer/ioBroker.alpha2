@@ -18,23 +18,7 @@ const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 // you have to call the adapter function and pass a options object
 // name has to be set and has to be equal to adapters folder name and main file name excluding extension
 // adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.template.0
-<<<<<<< HEAD
-     let adapter: ioBroker.alpha2;
-
-function startAdapter(options: Partial <iobroker.adapteroptions>= {}) {
-	return adapter = utils.adapter({
-		// custom options
-		name: "alpha2",
-		// ...
-	});
-}
-
-
-//const adapter = new utils.Adapter('alpha2');
-
-=======
 const adapter = new utils.Adapter('alpha2');
->>>>>>> parent of f725e03... support compact mode
 const request = require('request');
 const parser = require('xml2js').parseString;
 const http = require('http');   
