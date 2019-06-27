@@ -50,8 +50,7 @@
     "readme": "https://github.com/Eisbaeeer/ioBroker.alpha2/blob/master/README.md",
     "loglevel": "info",
     "type": "climate-control",
-	"license": "MIT",
-	"compact": true
+	"license": "MIT"
   },
   "native": {
     "polltime": 30000,
