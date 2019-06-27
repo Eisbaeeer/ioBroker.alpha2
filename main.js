@@ -18,15 +18,16 @@ const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 // you have to call the adapter function and pass a options object
 // name has to be set and has to be equal to adapters folder name and main file name excluding extension
 // adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.template.0
-     let adapter: ioBroker.alpha2;
+     let adapter;
 
-function startAdapter(options: Partial <iobroker.adapteroptions>= {}) {
-	return adapter = utils.adapter({
-		// custom options
-		name: "alpha2",
-		// ...
-	});
-}
+     function startAdapter(options) {
+
+          options = options || {};
+
+          Object.assign(options, {'alpha2'});
+          adapter = new utils.Adapter(options);
+          return adapter;
+     });
 
 
 //const adapter = new utils.Adapter('alpha2');
