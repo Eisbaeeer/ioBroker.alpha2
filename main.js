@@ -250,6 +250,22 @@ function getTemp(xml) {
 					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.HEATCTRL_STATE', {val: Number(obj.Device.HEATCTRL[i].HEATCTRL_STATE), ack: true});
 					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.ACTOR_PERCENT', {val: Number(obj.Device.HEATCTRL[i].ACTOR_PERCENT), ack: true});
 				}
+				
+				for (var i = 0; i < obj.Device.IODEVICE.length; i++) {
+                    
+					var IODeviceNr = obj.Device.IODEVICE[i].nr; //Nummer des Iodevice auslesen
+					//adapter.log.info(JSON.stringify(obj.Device.IODEVICE));
+					//adapter.log.info(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.');
+					
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_TYPE', {val: obj.Device.IODEVICE[i].IODEVICE_TYPE, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_ID', {val: obj.Device.IODEVICE[i].IODEVICE_ID, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_STATE', {val: obj.Device.IODEVICE[i].IODEVICE_STATE, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_COMERROR', {val: obj.Device.IODEVICE[i].IODEVICE_COMERROR, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.HEATAREA_NR', {val: obj.Device.IODEVICE[i].HEATAREA_NR, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.SIGNALSTRENGTH', {val: obj.Device.IODEVICE[i].SIGNALSTRENGTH, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.BATTERY', {val: obj.Device.IODEVICE[i].BATTERY, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.ISON', {val: obj.Device.IODEVICE[i].ISON, ack: true});
+				}
 			    // fill global vals
 				device_id = obj.Device.ID;
 			   
