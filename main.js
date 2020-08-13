@@ -74,8 +74,10 @@ adapter.on('stateChange', function (id, state) {
             if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.PROGRAM_WEEKEND') {var heatarea = i;var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
             if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.ISLOCKED') {var heatarea = i;var new_target = 'ISLOCKED';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}            
         }
+        
 		if (id == adapter.namespace + '.' + 'DEVICE.T_HEAT_VACATION') {var new_target = 'T_HEAT_VACATION';var xml_construct = '<'+ new_target +'>'+ new_val +'</'+ new_target +'>';}
-		
+        if (id == adapter.namespace + '.' + 'DEVICE.LOCK_MODE') {var new_target = 'LOCK_MODE';var xml_construct = '<'+ new_target +'>'+ new_val +'</'+ new_target +'>';}
+                
 		if (id == adapter.namespace + '.' + 'PROGRAM.1.1.END') {var nr = '1'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
 		if (id == adapter.namespace + '.' + 'PROGRAM.1.1.START') {var nr = '1'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
 		if (id == adapter.namespace + '.' + 'PROGRAM.1.2.END') {var nr = '1'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
@@ -109,15 +111,12 @@ adapter.on('stateChange', function (id, state) {
 		if (id == adapter.namespace + '.' + 'PROGRAM.4.4.END') {var nr = '4'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
 		if (id == adapter.namespace + '.' + 'PROGRAM.4.4.START') {var nr = '4'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
 		
-		
 		if (id == adapter.namespace + '.' + 'VACATION.START_DATE') {var new_target = 'START_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
 		if (id == adapter.namespace + '.' + 'VACATION.END_DATE') {var new_target = 'END_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
-		if (id == adapter.namespace + '.' + 'T_HEAT_VACATION') {var xml_construct = '<T_HEAT_VACATION>'+ new_val +'</T_HEAT_VACATION>';}
-		
-		
-			// Post DATA to DEVICE
-			var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID>'+ xml_construct +'</Device></Devices>';
-			httpPost(data);
+    
+        // Post DATA to DEVICE
+        var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID>'+ xml_construct +'</Device></Devices>';
+        httpPost(data);
 	}
 });
 
