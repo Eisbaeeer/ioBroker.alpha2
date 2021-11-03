@@ -1,7 +1,7 @@
 {
     "common": {
       "name": "alpha2",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "news": {
               "0.0.1": {
                   "en": "Initial version",
@@ -40,6 +40,10 @@
                         "Funktion zum Sperren der Regler hinzugefügt (Kindersicherung)",
                         "Einige neue Objekte und Infos hinzugefügt, z.B. IODEVICEs"
                         ]
+              },
+              "1.0.3": {
+                "en": "Fixed errormessages in log",
+                "de": "Fehlermeldungen im Log korrigiert"
               }
           },
           "title": "Möhlenhoff Alpha2",
@@ -982,6 +986,474 @@
           "native": {}
       },
       { 
+    "_id": "PROGRAM.5.5",
+          "type": "channel",
+          "common": {
+              "name": "PROGRAM 5 shift 5",
+              "type": "channel",
+              "unit": "",
+              "read": true,
+              "write": false,
+              "role": "state"
+          },   
+          "native": {}
+      },    
+      { 
+    "_id": "PROGRAM.5.5.START",
+          "type": "state",
+          "common": {
+              "name": "PROGRAM 5 5 START",
+              "type": "string",
+              "unit": "",
+              "read": true,
+              "write": false,
+              "role": "value"
+          },   
+          "native": {}
+      },
+      { 
+    "_id": "PROGRAM.5.5.END",
+          "type": "state",
+          "common": {
+              "name": "PROGRAM 5 5 END",
+              "type": "string",
+              "unit": "",
+              "read": true,
+              "write": false,
+              "role": "value"
+          },   
+          "native": {}
+      },
+      { 
+        "_id": "PROGRAM.6.6",
+        "type": "channel",
+        "common": {
+            "name": "PROGRAM 6 shift 6",
+            "type": "channel",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "state"
+        },   
+        "native": {}
+    },    
+    { 
+  "_id": "PROGRAM.6.6.START",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 6 6 START",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+  "_id": "PROGRAM.6.6.END",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 6 6 END",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+        "_id": "PROGRAM.7.7",
+        "type": "channel",
+        "common": {
+            "name": "PROGRAM 7 shift 7",
+            "type": "channel",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "state"
+        },   
+        "native": {}
+    },    
+    { 
+  "_id": "PROGRAM.7.7.START",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 7 7 START",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+  "_id": "PROGRAM.7.7.END",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 7 7 END",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+        "_id": "PROGRAM.8.8",
+        "type": "channel",
+        "common": {
+            "name": "PROGRAM 8 shift 8",
+            "type": "channel",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "state"
+        },   
+        "native": {}
+    },    
+    { 
+  "_id": "PROGRAM.8.8.START",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 8 8 START",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+  "_id": "PROGRAM.8.8.END",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 8 8 END",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+        "_id": "PROGRAM.9.9",
+        "type": "channel",
+        "common": {
+            "name": "PROGRAM 9 shift 9",
+            "type": "channel",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "state"
+        },   
+        "native": {}
+    },    
+    { 
+  "_id": "PROGRAM.9.9.START",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 9 9 START",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+  "_id": "PROGRAM.9.9.END",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 9 9 END",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+        "_id": "PROGRAM.10.10",
+        "type": "channel",
+        "common": {
+            "name": "PROGRAM 10 shift 10",
+            "type": "channel",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "state"
+        },   
+        "native": {}
+    },    
+    { 
+  "_id": "PROGRAM.10.10.START",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 10 10 START",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+  "_id": "PROGRAM.10.10.END",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 10 10 END",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+        "_id": "PROGRAM.11.11",
+        "type": "channel",
+        "common": {
+            "name": "PROGRAM 11 shift 11",
+            "type": "channel",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "state"
+        },   
+        "native": {}
+    },    
+    { 
+  "_id": "PROGRAM.11.11.START",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 11 11 START",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+  "_id": "PROGRAM.11.11.END",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 11 11 END",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+        "_id": "PROGRAM.12.12",
+        "type": "channel",
+        "common": {
+            "name": "PROGRAM 12 shift 12",
+            "type": "channel",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "state"
+        },   
+        "native": {}
+    },    
+    { 
+  "_id": "PROGRAM.12.12.START",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 12 12 START",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+  "_id": "PROGRAM.12.12.END",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 12 12 END",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+        "_id": "PROGRAM.13.13",
+        "type": "channel",
+        "common": {
+            "name": "PROGRAM 13 shift 13",
+            "type": "channel",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "state"
+        },   
+        "native": {}
+    },    
+    { 
+  "_id": "PROGRAM.13.13.START",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 13 13 START",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+  "_id": "PROGRAM.13.13.END",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 13 13 END",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+        "_id": "PROGRAM.14.14",
+        "type": "channel",
+        "common": {
+            "name": "PROGRAM 14 shift 14",
+            "type": "channel",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "state"
+        },   
+        "native": {}
+    },    
+    { 
+  "_id": "PROGRAM.14.14.START",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 14 14 START",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+  "_id": "PROGRAM.14.14.END",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 14 14 END",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+        "_id": "PROGRAM.15.15",
+        "type": "channel",
+        "common": {
+            "name": "PROGRAM 15 shift 15",
+            "type": "channel",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "state"
+        },   
+        "native": {}
+    },    
+    { 
+  "_id": "PROGRAM.15.15.START",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 15 15 START",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+  "_id": "PROGRAM.15.15.END",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 15 15 END",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+        "_id": "PROGRAM.16.16",
+        "type": "channel",
+        "common": {
+            "name": "PROGRAM 16 shift 16",
+            "type": "channel",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "state"
+        },   
+        "native": {}
+    },    
+    { 
+  "_id": "PROGRAM.16.16.START",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 16 16 START",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
+  "_id": "PROGRAM.16.16.END",
+        "type": "state",
+        "common": {
+            "name": "PROGRAM 16 16 END",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": false,
+            "role": "value"
+        },   
+        "native": {}
+    },
+    { 
     "_id": "HEATAREA",
           "type": "channel",
           "common": {

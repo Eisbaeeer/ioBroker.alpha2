@@ -60,6 +60,10 @@ You can check the object VACATION.STATE to check the status. If the status showi
 
 ## Changelog
 
+### 1.0.3
+. (Eisbaeeer)
+Fixed error messages in log
+
 ### 1.0.2
 - (oHa510)
 Fixed an issue if you don't use all 4/8/12 heataras then heatareas could get assigned to wrong heatarea object in iobroker
