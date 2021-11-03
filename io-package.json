@@ -4351,7 +4351,7 @@
     "_id": "IODEVICE",
           "type": "channel",
           "common": {
-              "name": "IODEVICE (Raumbediengeraet welches der Heizzone zugeordnet ist)",
+              "name": "IODEVICE (Room Sensor)",
               "type": "channel",
               "unit": "",
               "read": true,
