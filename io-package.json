@@ -67,13 +67,12 @@
   "objects": [],
   "instanceObjects": [
   
-  
 	{	
    "_id": "DEVICE",
-        "type": "object",
+        "type": "device",
         "common": {
             "name": "DEVICE",
-            "type": "object",
+            "type": "device",
             "unit": "",
             "read": true,
             "write": false,
@@ -174,10 +173,10 @@
     },
     { 
   "_id": "VACATION",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "VACATION",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -252,10 +251,10 @@
     },
     { 
   "_id": "PROGRAM",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -265,10 +264,10 @@
     },
     { 
   "_id": "PROGRAM.4",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 4",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -278,10 +277,10 @@
     },
     { 
   "_id": "PROGRAM.4.1",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 4 shift 1",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -317,10 +316,10 @@
     },
     { 
   "_id": "PROGRAM.4.2",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 4 shift 2",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -356,10 +355,10 @@
     },
     { 
   "_id": "PROGRAM.4.3",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 4 shift 3",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -395,10 +394,10 @@
     },
     { 
   "_id": "PROGRAM.4.4",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 4 shift 4",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -434,10 +433,10 @@
     },
     { 
   "_id": "PROGRAM.1",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 1",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -447,10 +446,10 @@
     },	
 	{ 
   "_id": "PROGRAM.1.1",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 1 shift 1",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -486,10 +485,10 @@
     },
     { 
   "_id": "PROGRAM.1.2",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 1 shift 2",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -525,10 +524,10 @@
     },
     { 
   "_id": "PROGRAM.1.3",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 1 shift 3",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -564,10 +563,10 @@
     },
     { 
   "_id": "PROGRAM.1.4",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 1 shift 4",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -603,10 +602,10 @@
     },
 	{ 
   "_id": "PROGRAM.2",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 2",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -616,10 +615,10 @@
     },	
 	{ 
   "_id": "PROGRAM.2.1",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 2 shift 1",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -655,10 +654,10 @@
     },
     { 
   "_id": "PROGRAM.2.2",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 2 shift 2",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -694,10 +693,10 @@
     },
     { 
   "_id": "PROGRAM.2.3",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 2 shift 3",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -733,10 +732,10 @@
     },
     { 
   "_id": "PROGRAM.2.4",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 2 shift 4",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -772,10 +771,10 @@
     },
 	{ 
   "_id": "PROGRAM.3",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 3",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -785,10 +784,10 @@
     },	
 	{ 
   "_id": "PROGRAM.3.1",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 3 shift 1",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -824,10 +823,10 @@
     },
     { 
   "_id": "PROGRAM.3.2",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 3 shift 2",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -863,10 +862,10 @@
     },
     { 
   "_id": "PROGRAM.3.3",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 3 shift 3",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -902,10 +901,10 @@
     },
     { 
   "_id": "PROGRAM.3.4",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "PROGRAM 3 shift 4",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -941,10 +940,10 @@
     },
 	{ 
   "_id": "HEATAREA",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATAREA",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -954,10 +953,10 @@
     },
 	{ 
   "_id": "HEATAREA.0",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATAREA NR 1",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -1071,10 +1070,10 @@
     },
 		{ 
   "_id": "HEATAREA.1",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATAREA NR 2",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -1188,10 +1187,10 @@
     },
 		{ 
   "_id": "HEATAREA.2",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATAREA NR 3",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -1305,10 +1304,10 @@
     },
 		{ 
   "_id": "HEATAREA.3",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATAREA NR 4",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -1422,10 +1421,10 @@
     },
 	{ 
   "_id": "HEATAREA.4",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATAREA NR 5",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -1539,10 +1538,10 @@
     },
 	{ 
   "_id": "HEATAREA.5",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATAREA NR 6",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -1656,10 +1655,10 @@
     },
 		{ 
   "_id": "HEATAREA.6",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATAREA NR 7",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -1773,10 +1772,10 @@
     },
 		{ 
   "_id": "HEATAREA.7",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATAREA NR 8",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -1890,10 +1889,10 @@
     },
 			{ 
   "_id": "HEATCTRL",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATCONTROL",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -1903,10 +1902,10 @@
     },
 		{ 
   "_id": "HEATCTRL.0",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATCONTROL 0",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -1968,10 +1967,10 @@
     },
 		{ 
   "_id": "HEATCTRL.1",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATCONTROL 1",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -2033,10 +2032,10 @@
     },
 		{ 
   "_id": "HEATCTRL.2",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATCONTROL 2",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -2098,10 +2097,10 @@
     },
 		{ 
   "_id": "HEATCTRL.3",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATCONTROL 3",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -2163,10 +2162,10 @@
     },
 		{ 
   "_id": "HEATCTRL.4",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATCONTROL 4",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -2228,10 +2227,10 @@
     },
 		{ 
   "_id": "HEATCTRL.5",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATCONTROL 5",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -2293,10 +2292,10 @@
     },
 		{ 
   "_id": "HEATCTRL.6",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATCONTROL 6",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
@@ -2358,10 +2357,10 @@
     },
 		{ 
   "_id": "HEATCTRL.7",
-        "type": "object",
+        "type": "channel",
         "common": {
             "name": "HEATCONTROL 7",
-            "type": "object",
+            "type": "channel",
             "unit": "",
             "read": true,
             "write": false,
