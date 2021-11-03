@@ -14,15 +14,14 @@
 
 // you have to require the utils module and call adapter function
 const utils = require('@iobroker/adapter-core'); // Get common adapter utils
+
+// you have to call the adapter function and pass a options object
+// name has to be set and has to be equal to adapters folder name and main file name excluding extension
+// adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.template.0
+const adapter = new utils.Adapter('alpha2');
 const request = require('request');
 const parser = require('xml2js').parseString;
 const http = require('http');   
-
-/**
- * The adapter instance
- * @type {ioBroker.Adapter}
- */
-let adapter;
 
 // define adapter wide vars
 var device_id;
@@ -32,150 +31,113 @@ it is available then var.The variable is available inside a block and it's child
 You can define the same variable name inside a child without produce a conflict with the variable of the parent block.*/
 let variable = 1234;
 
-/**
- * Starts the adapter instance
- * @param {Partial<ioBroker.AdapterOptions>} [options]
- */
-function startAdapter(options) {
-    // Create the adapter and define its methods
-    adapter = utils.adapter(Object.assign({}, options, {name: 'alpha2'}));
+// is called when adapter shuts down - callback has to be called under any circumstances!
+adapter.on('unload', function (callback) {
+    try {
+        adapter.log.info('cleaned everything up...');
+        callback();
+    } catch (e) {
+        callback();
+    }
+});
 
-	// is called if a subscribed object changes
-	adapter.on('objectChange', function (id, obj) {
-		// Warning, obj can be null if it was deleted
-		adapter.log.debug('objectChange ' + id + ' ' + JSON.stringify(obj));
-	});
+// is called if a subscribed object changes
+adapter.on('objectChange', function (id, obj) {
+    // Warning, obj can be null if it was deleted
+    adapter.log.debug('objectChange ' + id + ' ' + JSON.stringify(obj));
+});
 
-	// is called if a subscribed state changes
-	adapter.on('stateChange', function (id, state) {
-		// Warning, state can be null if it was deleted
-		//adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
+// is called if a subscribed state changes
+adapter.on('stateChange', function (id, state) {
+    // Warning, state can be null if it was deleted
+    //adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
 
-		// you can use the ack flag to detect if it is status (true) or command (false)
-		if (state && !state.ack) {
-			adapter.log.debug('ack is not set!');
-			adapter.log.debug('Value: ' + state.val);
-			adapter.log.debug('id: ' + id);
+    // you can use the ack flag to detect if it is status (true) or command (false)
+    if (state && !state.ack) {
+        adapter.log.debug('ack is not set!');
+		adapter.log.debug('Value: ' + state.val);
+		adapter.log.debug('id: ' + id);
+		
+		// save value in var
+		var new_val = state.val;
+		
+		// Set HEATAREA values
+        for (var i = 1; i < 13; i++) //Alle möglichen HEATAREA's abprüfen..
+        {
+            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.T_TARGET') {var heatarea = i; var new_target = 'T_TARGET'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
+            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.T_HEAT_DAY') {var heatarea = i; var new_target = 'T_HEAT_DAY'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
+            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.T_HEAT_NIGHT') {var heatarea = i; var new_target = 'T_HEAT_NIGHT'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
+            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.T_COOL_DAY') {var heatarea = i; var new_target = 'T_COOL_DAY'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
+            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.T_COOL_NIGHT') {var heatarea = i; var new_target = 'T_COOL_NIGHT'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
+            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.HEATAREA_MODE') {var heatarea = i; var new_target = 'HEATAREA_MODE'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
+            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.PROGRAM_WEEK') {var heatarea = i;	var new_target = 'PROGRAM_WEEK'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
+            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.PROGRAM_WEEKEND') {var heatarea = i;var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
+            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.ISLOCKED') {var heatarea = i;var new_target = 'ISLOCKED';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}            
+        }
+        
+		if (id == adapter.namespace + '.' + 'DEVICE.T_HEAT_VACATION') {var new_target = 'T_HEAT_VACATION';var xml_construct = '<'+ new_target +'>'+ new_val +'</'+ new_target +'>';}
+        if (id == adapter.namespace + '.' + 'DEVICE.LOCK_MODE') {var new_target = 'LOCK_MODE';var xml_construct = '<'+ new_target +'>'+ new_val +'</'+ new_target +'>';}
+                
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.1.END') {var nr = '1'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.1.START') {var nr = '1'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.2.END') {var nr = '1'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.2.START') {var nr = '1'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.3.END') {var nr = '1'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.3.START') {var nr = '1'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.4.END') {var nr = '1'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.1.4.START') {var nr = '1'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.1.END') {var nr = '2'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.1.START') {var nr = '2'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.2.END') {var nr = '2'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.2.START') {var nr = '2'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.3.END') {var nr = '2'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.3.START') {var nr = '2'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.4.END') {var nr = '2'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.2.4.START') {var nr = '2'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.1.END') {var nr = '3'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.1.START') {var nr = '3'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.2.END') {var nr = '3'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.2.START') {var nr = '3'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.3.END') {var nr = '3'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.3.START') {var nr = '3'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.4.END') {var nr = '3'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.3.4.START') {var nr = '3'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.1.END') {var nr = '4'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.1.START') {var nr = '4'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.2.END') {var nr = '4'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.2.START') {var nr = '4'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.3.END') {var nr = '41'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.3.START') {var nr = '4'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.4.END') {var nr = '4'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		if (id == adapter.namespace + '.' + 'PROGRAM.4.4.START') {var nr = '4'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
+		
+		if (id == adapter.namespace + '.' + 'VACATION.START_DATE') {var new_target = 'START_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
+		if (id == adapter.namespace + '.' + 'VACATION.END_DATE') {var new_target = 'END_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
+    
+        // Post DATA to DEVICE
+        var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID>'+ xml_construct +'</Device></Devices>';
+        httpPost(data);
+	}
+});
 
-			// save value in var
-			var new_val = state.val;
+// Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
+adapter.on('message', function (obj) {
+    if (typeof obj === 'object' && obj.message) {
+        if (obj.command === 'send') {
+            // e.g. send email or pushover or whatever
+            console.log('send command');
 
-			// Set HEATAREA values
-			if (id == adapter.namespace + '.' + 'HEATAREA.0.T_TARGET') {var heatarea = '1'; var new_target = 'T_TARGET'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_DAY') {var heatarea = '1'; var new_target = 'T_HEAT_DAY'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.0.T_HEAT_NIGHT') {var heatarea = '1';	var new_target = 'T_HEAT_NIGHT'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.0.HEATAREA_MODE') {var heatarea = '1'; var new_target = 'HEATAREA_MODE'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEK') {var heatarea = '1';	var new_target = 'PROGRAM_WEEK'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.0.PROGRAM_WEEKEND') {var heatarea = '1';var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.1.T_TARGET') {var heatarea = "2";var new_target = 'T_TARGET';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_DAY') {var heatarea = '2';var new_target = 'T_HEAT_DAY';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.1.T_HEAT_NIGHT') {var heatarea = '2';var new_target = 'T_HEAT_NIGHT';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.1.HEATAREA_MODE') {var heatarea = '2';var new_target = 'HEATAREA_MODE';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEK') {var heatarea = '2';var new_target = 'PROGRAM_WEEK';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.1.PROGRAM_WEEKEND') {var heatarea = '2';var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.2.T_TARGET') {var heatarea = '3'; var new_target = 'T_TARGET'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.2.T_HEAT_DAY') {var heatarea = '3'; var new_target = 'T_HEAT_DAY'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.2.T_HEAT_NIGHT') {var heatarea = '3';	var new_target = 'T_HEAT_NIGHT'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.2.HEATAREA_MODE') {var heatarea = '3'; var new_target = 'HEATAREA_MODE'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.2.PROGRAM_WEEK') {var heatarea = '3';	var new_target = 'PROGRAM_WEEK'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.2.PROGRAM_WEEKEND') {var heatarea = '3';var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.3.T_TARGET') {var heatarea = '4'; var new_target = 'T_TARGET'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.3.T_HEAT_DAY') {var heatarea = '4'; var new_target = 'T_HEAT_DAY'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.3.T_HEAT_NIGHT') {var heatarea = '4';	var new_target = 'T_HEAT_NIGHT'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.3.HEATAREA_MODE') {var heatarea = '4'; var new_target = 'HEATAREA_MODE'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.3.PROGRAM_WEEK') {var heatarea = '4';	var new_target = 'PROGRAM_WEEK'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.3.PROGRAM_WEEKEND') {var heatarea = '4';var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.4.T_TARGET') {var heatarea = '5'; var new_target = 'T_TARGET'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.4.T_HEAT_DAY') {var heatarea = '5'; var new_target = 'T_HEAT_DAY'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.4.T_HEAT_NIGHT') {var heatarea = '5';	var new_target = 'T_HEAT_NIGHT'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.4.HEATAREA_MODE') {var heatarea = '5'; var new_target = 'HEATAREA_MODE'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.4.PROGRAM_WEEK') {var heatarea = '5';	var new_target = 'PROGRAM_WEEK'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.4.PROGRAM_WEEKEND') {var heatarea = '5';var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.5.T_TARGET') {var heatarea = '6'; var new_target = 'T_TARGET'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.5.T_HEAT_DAY') {var heatarea = '6'; var new_target = 'T_HEAT_DAY'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.5.T_HEAT_NIGHT') {var heatarea = '6';	var new_target = 'T_HEAT_NIGHT'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.5.HEATAREA_MODE') {var heatarea = '6'; var new_target = 'HEATAREA_MODE'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.5.PROGRAM_WEEK') {var heatarea = '6';	var new_target = 'PROGRAM_WEEK'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.5.PROGRAM_WEEKEND') {var heatarea = '6';var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.6.T_TARGET') {var heatarea = '7'; var new_target = 'T_TARGET'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.6.T_HEAT_DAY') {var heatarea = '7'; var new_target = 'T_HEAT_DAY'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.6.T_HEAT_NIGHT') {var heatarea = '7';	var new_target = 'T_HEAT_NIGHT'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.6.HEATAREA_MODE') {var heatarea = '7'; var new_target = 'HEATAREA_MODE'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.6.PROGRAM_WEEK') {var heatarea = '7';	var new_target = 'PROGRAM_WEEK'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.6.PROGRAM_WEEKEND') {var heatarea = '7';var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.7.T_TARGET') {var heatarea = '8'; var new_target = 'T_TARGET'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.7.T_HEAT_DAY') {var heatarea = '8'; var new_target = 'T_HEAT_DAY'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.7.T_HEAT_NIGHT') {var heatarea = '8';	var new_target = 'T_HEAT_NIGHT'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.7.HEATAREA_MODE') {var heatarea = '8'; var new_target = 'HEATAREA_MODE'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-			if (id == adapter.namespace + '.' + 'HEATAREA.7.PROGRAM_WEEK') {var heatarea = '8';	var new_target = 'PROGRAM_WEEK'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-			if (id == adapter.namespace + '.' + 'HEATAREA.7.PROGRAM_WEEKEND') {var heatarea = '8';var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
+            // Send response in callback if required
+            if (obj.callback) adapter.sendTo(obj.from, obj.command, 'Message received', obj.callback);
+        }
+    }
+});
 
-			if (id == adapter.namespace + '.' + 'DEVICE.T_HEAT_VACATION') {var new_target = 'T_HEAT_VACATION';var xml_construct = '<'+ new_target +'>'+ new_val +'</'+ new_target +'>';}
-
-			if (id == adapter.namespace + '.' + 'PROGRAM.1.1.END') {var nr = '1'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.1.1.START') {var nr = '1'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.1.2.END') {var nr = '1'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.1.2.START') {var nr = '1'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.1.3.END') {var nr = '1'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.1.3.START') {var nr = '1'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.1.4.END') {var nr = '1'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.1.4.START') {var nr = '1'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.2.1.END') {var nr = '2'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.2.1.START') {var nr = '2'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.2.2.END') {var nr = '2'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.2.2.START') {var nr = '2'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.2.3.END') {var nr = '2'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.2.3.START') {var nr = '2'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.2.4.END') {var nr = '2'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.2.4.START') {var nr = '2'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.3.1.END') {var nr = '3'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.3.1.START') {var nr = '3'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.3.2.END') {var nr = '3'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.3.2.START') {var nr = '3'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.3.3.END') {var nr = '3'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.3.3.START') {var nr = '3'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.3.4.END') {var nr = '3'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.3.4.START') {var nr = '3'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.4.1.END') {var nr = '4'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.4.1.START') {var nr = '4'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.4.2.END') {var nr = '4'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.4.2.START') {var nr = '4'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.4.3.END') {var nr = '41'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.4.3.START') {var nr = '4'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.4.4.END') {var nr = '4'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-			if (id == adapter.namespace + '.' + 'PROGRAM.4.4.START') {var nr = '4'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-
-
-			if (id == adapter.namespace + '.' + 'VACATION.START_DATE') {var new_target = 'START_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
-			if (id == adapter.namespace + '.' + 'VACATION.END_DATE') {var new_target = 'END_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
-			if (id == adapter.namespace + '.' + 'T_HEAT_VACATION') {var xml_construct = '<T_HEAT_VACATION>'+ new_val +'</T_HEAT_VACATION>';}
-
-
-				// Post DATA to DEVICE
-				var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID>'+ xml_construct +'</Device></Devices>';
-				httpPost(data);
-		}
-	});
-
-	// Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
-	adapter.on('message', function (obj) {
-		if (typeof obj === 'object' && obj.message) {
-			if (obj.command === 'send') {
-				// e.g. send email or pushover or whatever
-				console.log('send command');
-
-				// Send response in callback if required
-				if (obj.callback) adapter.sendTo(obj.from, obj.command, 'Message received', obj.callback);
-			}
-		}
-	});
-
-	// is called when databases are connected and adapter received configuration.
-	// start here!
-	adapter.on('ready', main);
-	
-	return adapter;
-}
+// is called when databases are connected and adapter received configuration.
+// start here!
+adapter.on('ready', function () {
+    main();
+});
 
 // Post Data to XML-API
 function httpPost(data) {
@@ -258,24 +220,52 @@ function getTemp(xml) {
 					adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[i].END , ack: true});
 				}				
 					
-				for (var i = 0; i < obj.Device.HEATAREA.length; i++) {
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.HEATAREA_NAME', {val: obj.Device.HEATAREA[i].HEATAREA_NAME, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.HEATAREA_MODE', {val: obj.Device.HEATAREA[i].HEATAREA_MODE, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[i].T_ACTUAL), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[i].T_TARGET), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.PROGRAM_WEEK', {val: obj.Device.HEATAREA[i].PROGRAM_WEEK, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[i].PROGRAM_WEEKEND, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[i].T_HEAT_DAY), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [i] +'.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[i].T_HEAT_NIGHT), ack: true});
+				for (var i = 0; i < obj.Device.HEATAREA.length; i++) {					
+					
+					var HeatareaNr = obj.Device.HEATAREA[i].nr; //Nummer der Heatarea auslesen
+					//adapter.log.info(JSON.stringify(obj.Device.HEATAREA));
+					//adapter.log.info(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.');
+					
+					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.HEATAREA_NAME', {val: obj.Device.HEATAREA[i].HEATAREA_NAME, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.HEATAREA_MODE', {val: obj.Device.HEATAREA[i].HEATAREA_MODE, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[i].T_ACTUAL), ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[i].T_TARGET), ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.PROGRAM_WEEK', {val: obj.Device.HEATAREA[i].PROGRAM_WEEK, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[i].PROGRAM_WEEKEND, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[i].T_HEAT_DAY), ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[i].T_HEAT_NIGHT), ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_COOL_DAY', {val: parseFloat(obj.Device.HEATAREA[i].T_COOL_DAY), ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_COOL_NIGHT', {val: parseFloat(obj.Device.HEATAREA[i].T_COOL_NIGHT), ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.ISLOCKED', {val: obj.Device.HEATAREA[i].ISLOCKED, ack: true});
                 }
 								
 				for (var i = 0; i < obj.Device.HEATCTRL.length; i++) {
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [i] +'.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[i].INUSE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [i] +'.HEATAREA_NR', {val: obj.Device.HEATCTRL[i].HEATAREA_NR, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [i] +'.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[i].ACTOR)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [i] +'.HEATCTRL_STATE', {val: Boolean(Number(obj.Device.HEATCTRL[i].HEATCTRL_STATE)), ack: true});
+                    
+					var HeatctrlNr = obj.Device.HEATCTRL[i].nr; //Nummer des Heatctrl auslesen
+					//adapter.log.info(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.');
+					
+					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[i].INUSE)), ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.HEATAREA_NR', {val: obj.Device.HEATCTRL[i].HEATAREA_NR, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[i].ACTOR)), ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.HEATCTRL_STATE', {val: Number(obj.Device.HEATCTRL[i].HEATCTRL_STATE), ack: true});
+					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.ACTOR_PERCENT', {val: Number(obj.Device.HEATCTRL[i].ACTOR_PERCENT), ack: true});
 				}
-						   
+				
+				for (var i = 0; i < obj.Device.IODEVICE.length; i++) {
+                    
+					var IODeviceNr = obj.Device.IODEVICE[i].nr; //Nummer des Iodevice auslesen
+					//adapter.log.info(JSON.stringify(obj.Device.IODEVICE));
+					//adapter.log.info(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.');
+					
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_TYPE', {val: obj.Device.IODEVICE[i].IODEVICE_TYPE, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_ID', {val: obj.Device.IODEVICE[i].IODEVICE_ID, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_STATE', {val: obj.Device.IODEVICE[i].IODEVICE_STATE, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_COMERROR', {val: obj.Device.IODEVICE[i].IODEVICE_COMERROR, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.HEATAREA_NR', {val: obj.Device.IODEVICE[i].HEATAREA_NR, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.SIGNALSTRENGTH', {val: obj.Device.IODEVICE[i].SIGNALSTRENGTH, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.BATTERY', {val: obj.Device.IODEVICE[i].BATTERY, ack: true});
+					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.ISON', {val: obj.Device.IODEVICE[i].ISON, ack: true});
+				}
 			    // fill global vals
 				device_id = obj.Device.ID;
 			   
@@ -294,7 +284,6 @@ function main() {
 	* example 
 	* setInterval(pifaceread, adapter.config.piinterval);
 	*/
-	clearInterval(getXMLcyclic);
 	setInterval(getXMLcyclic, adapter.config.polltime);
 	adapter.log.info('config host: ' + adapter.config.host);
 	adapter.log.info('config polltime: ' + adapter.config.polltime);
@@ -343,12 +332,7 @@ function main() {
   //  adapter.checkGroup('admin', 'admin', function (res) {
   //      console.log('check group user admin group admin: ' + res);
   //  });
-}
 
-if (module.parent) {
-    // Export startAdapter in compact mode
-    module.exports = startAdapter;
-} else {
-    // otherwise start the instance directly
-    startAdapter();
+
+
 }

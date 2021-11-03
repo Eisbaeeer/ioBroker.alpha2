@@ -63,12 +63,13 @@ You can check the object VACATION.STATE to check the status. If the status showi
 ## Changelog
 
 ### 1.0.1
-- (Eisbaeeer)
-Fixed issue #7 (compact mode)
-Fixed issue #13
-Fixed issue #18
-Fixed issue #19
-
+- (oHa510)
+Fixed an issue if you don't use all 4/8/12 heataras then heatareas could get assigned to wrong heatarea object in iobroker
+Expanded Heatareas and Heatctrl to the maxiumum of 12
+Changed Heatarea and Heatctrl indexing to 1-12 (old 0-11 was very confusing)
+Added support for locking controllers (kids mode)
+Added support for locking set temperature (hotel mode)
+Added some new objects and infos like IODEVICEs etc.
 
 ### 1.0.0
 - (Eisbaeeer)
@@ -90,5 +91,5 @@ fixed issues #1
 - (Eisbaeeer) inital version of Alpha2
 
 ## License
-The MIT License (MIT) 
-Copyright (c) 2021 Eisbaeeer Eisbaeeer@gmail.com
+The MIT License (MIT)
+Copyright (c) 2021 Eisbaeeer eisbaeeer@gmail.com
