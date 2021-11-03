@@ -1,6 +1,6 @@
 {
   "name": "iobroker.alpha2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ioBroker Moehlenhoff Alpha2 Adapter",
   "author": {
     "name": "Eisbaeeer",
@@ -23,7 +23,7 @@
     "url": "https://github.com/Eisbaeeer/ioBroker.alpha2"
   },
   "dependencies": {
-    "xml2js": "^0.4.19",
+    "xml2js": "^0.4.23",
     "request": "^2.55.0",
     "@iobroker/adapter-core": "^1.0.3"
   },

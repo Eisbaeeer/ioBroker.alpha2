@@ -62,6 +62,14 @@ You can check the object VACATION.STATE to check the status. If the status showi
 
 ## Changelog
 
+### 1.0.1
+- (Eisbaeeer)
+Fixed issue #7 (compact mode)
+Fixed issue #13
+Fixed issue #18
+Fixed issue #19
+
+
 ### 1.0.0
 - (Eisbaeeer)
 Fixed issue #6 (HEATAREA_NAME)
@@ -82,5 +90,5 @@ fixed issues #1
 - (Eisbaeeer) inital version of Alpha2
 
 ## License
-The MIT License (MIT)
-Copyright (c) 2019 Eisbaeeer <eisbaeeer@gmail.com> 
+The MIT License (MIT) 
+Copyright (c) 2021 Eisbaeeer Eisbaeeer@gmail.com

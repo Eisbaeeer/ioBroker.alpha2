@@ -1,28 +1,32 @@
 {
   "common": {
     "name": "alpha2",
-    "version": "1.0.0",
+    "version": "1.0.1",
 	"news": {
-            "0.0.1": {
-                "en": "Initial version",
-                "de": "Initiale Version"
+            "1.0.1": {
+                "en": "Fixed issues",
+                "de": "Fixed issues"   
             },
-			"0.0.2": {
-                "en": "Fixed issue #1",
-                "de": "Fixed issue #1"
+            "1.0.0": {
+                "en": "Fixed issue #6 (HEATAREA_NAME)",
+                "de": "Issue #6 korrigiert (HEATAREA_NAME)"
             },
-			"0.0.3": {
-                "en": "Fixed issue #2",
-                "de": "Fixed issue #2"
-            },
-			"0.0.4": {
+            "0.0.4": {
                 "en": "Added refresh after set objects",
                 "de": "Aktualisierung nach setzen von Objekten"
             },
-			"1.0.0": {
-                "en": "Fixed issue #6 (HEATAREA_NAME)",
-                "de": "Issue #6 korrigiert (HEATAREA_NAME)"
-            }
+            "0.0.3": {
+                "en": "Fixed issue #2",
+                "de": "Fixed issue #2"
+            },
+            "0.0.2": {
+                "en": "Fixed issue #1",
+                "de": "Fixed issue #1"
+            },
+            "0.0.1": {
+                "en": "Initial version",
+                "de": "Initiale Version"
+            }			
         },
     "title": "Möhlenhoff Alpha2",
 	"titleLang": {
@@ -42,13 +46,17 @@
     "loglevel":     "info", 
     "icon": "mh-logo.png",
     "enabled": true,
+    "compact": true,
     "extIcon": "https://raw.githubusercontent.com/Eisbaeeer/ioBroker.alpha2/master/admin/mh-logo.png",
     "keywords": [
       "Möhlenhoff",
-      "Alpha2"
+      "Alpha2",
+      "heating"
     ],
     "readme": "https://github.com/Eisbaeeer/ioBroker.alpha2/blob/master/README.md",
     "loglevel": "info",
+    "dataSource": "poll",
+    "connectionType": "local",
     "type": "climate-control",
 	"license": "MIT"
   },
@@ -143,7 +151,7 @@
         "type": "state",
         "common": {
             "name": "NTPSYNC STATUS",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -182,7 +190,7 @@
         "type": "state",
         "common": {
             "name": "VACATION STATE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -1911,7 +1919,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -1937,7 +1945,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -1950,7 +1958,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -1976,7 +1984,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2002,7 +2010,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2015,7 +2023,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2041,7 +2049,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2067,7 +2075,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2080,7 +2088,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2106,7 +2114,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2132,7 +2140,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2145,7 +2153,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2171,7 +2179,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2197,7 +2205,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2210,7 +2218,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2236,7 +2244,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2262,7 +2270,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2275,7 +2283,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2301,7 +2309,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2327,7 +2335,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2340,7 +2348,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2366,7 +2374,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL INUSE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2392,7 +2400,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL HEATAREA",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
@@ -2405,7 +2413,7 @@
         "type": "state",
         "common": {
             "name": "HEATCONTROL STATE",
-            "type": "boolean",
+            "type": "bool",
             "unit": "",
             "read": true,
             "write": false,
