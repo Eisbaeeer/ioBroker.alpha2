@@ -171,7 +171,34 @@
         },   
         "native": {}
     },
-    { 
+    {
+  "_id": "DEVICE.LOCK_MODE",
+        "type": "state",
+        "common": {
+            "name": "LOCK_MODE (Hotel mode)",
+            "type": "string",
+            "unit": "",
+            "read": true,
+            "write": true,
+            "role": "state",
+            "states":"0:active;1:inactive"
+        },   
+        "native": {}
+    },
+  "_id": "DEVICE.MODE",
+          "type": "state",
+          "common": {
+              "name": "MODE (Basis mode)",
+              "type": "string",
+              "unit": "",
+              "read": true,
+              "write": false,
+              "role": "state",
+              "states":"0:Standalone;1:Master;2:Slave"
+          },   
+          "native": {}
+      },
+      {  
   "_id": "VACATION",
         "type": "channel",
         "common": {
@@ -978,19 +1005,20 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.0.HEATAREA_MODE",
+        "_id": "HEATAREA.0.HEATAREA_MODE",
         "type": "state",
         "common": {
-            "name": "HEATAREA 0 HEATAREA_MODE",
+            "name": "HEATAREA 0 HEATAREA_MODE (Mode)",
             "type": "string",
             "unit": "",
             "read": true,
             "write": true,
-			"role": "state"
+            "role": "state",
+            "states": "0:Auto;1:Day;2:Night"
         },   
         "native": {}
     },
-	{ 
+    {
   "_id": "HEATAREA.0.T_ACTUAL",
         "type": "state",
         "common": {
@@ -1095,19 +1123,20 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.1.HEATAREA_MODE",
+        "_id": "HEATAREA.1.HEATAREA_MODE",
         "type": "state",
         "common": {
-            "name": "HEATAREA 1 HEATAREA_MODE",
+            "name": "HEATAREA 1 HEATAREA_MODE (Mode)",
             "type": "string",
             "unit": "",
             "read": true,
             "write": true,
-			"role": "state"
+            "role": "state",
+            "states": "0:Auto;1:Day;2:Night"
         },   
         "native": {}
     },
-	{ 
+    {  
   "_id": "HEATAREA.1.T_ACTUAL",
         "type": "state",
         "common": {
@@ -1186,6 +1215,46 @@
         "native": {}
     },
 		{ 
+  "_id": "HEATAREA.1.T_COOL_DAY",
+            "type": "state",
+            "common": {
+                "name": "HEATAREA 1 T_COOL_DAY",
+                "type": "number",
+                "unit": "°C",
+                "read": true,
+                "write": true,
+                "role": "value.temperature"
+            },   
+            "native": {}
+        },
+            { 
+  "_id": "HEATAREA.1.T_COOL_NIGHT",
+            "type": "state",
+            "common": {
+                "name": "HEATAREA 1 T_COOL_NIGHT",
+                "type": "number",
+                "unit": "°C",
+                "read": true,
+                "write": true,
+                "role": "value.temperature"
+            },   
+            "native": {}
+        },
+            { 
+  "_id": "HEATAREA.1.ISLOCKED",
+            "type": "state",
+            "common": {
+                "name": "HEATAREA 1 ISLOCKED (Child mode)",
+                "type": "boolean",
+                "unit": "",
+                "read": true,
+                "write": true,
+                "role": "state",
+                "states": "0:Delocked;1:Locked"
+            },   
+            "native": {}
+        },
+            { 
   "_id": "HEATAREA.2",
         "type": "channel",
         "common": {
@@ -1212,19 +1281,20 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.2.HEATAREA_MODE",
+        "_id": "HEATAREA.2.HEATAREA_MODE",
         "type": "state",
         "common": {
-            "name": "HEATAREA 2 HEATAREA_MODE",
+            "name": "HEATAREA 2 HEATAREA_MODE (Mode)",
             "type": "string",
             "unit": "",
             "read": true,
             "write": true,
-			"role": "state"
+            "role": "state",
+            "states": "0:Auto;1:Day;2:Night"
         },   
         "native": {}
     },
-	{ 
+    {
   "_id": "HEATAREA.2.T_ACTUAL",
         "type": "state",
         "common": {
@@ -1303,6 +1373,46 @@
         "native": {}
     },
 		{ 
+            "_id": "HEATAREA.2.T_COOL_DAY",
+            "type": "state",
+            "common": {
+                "name": "HEATAREA 2 T_COOL_DAY",
+                "type": "number",
+                "unit": "°C",
+                "read": true,
+                "write": true,
+                "role": "value.temperature"
+            },   
+            "native": {}
+        },
+            { 
+      "_id": "HEATAREA.2.T_COOL_NIGHT",
+            "type": "state",
+            "common": {
+                "name": "HEATAREA 2 T_COOL_NIGHT",
+                "type": "number",
+                "unit": "°C",
+                "read": true,
+                "write": true,
+                "role": "value.temperature"
+            },   
+            "native": {}
+        },
+            { 
+      "_id": "HEATAREA.2.ISLOCKED",
+            "type": "state",
+            "common": {
+                "name": "HEATAREA 2 ISLOCKED (Child mode)",
+                "type": "string",
+                "unit": "",
+                "read": true,
+                "write": true,
+                "role": "state",
+                "states": "0:Delocked;1:Locked"
+            },   
+            "native": {}
+        },
+            {
   "_id": "HEATAREA.3",
         "type": "channel",
         "common": {
@@ -1329,19 +1439,20 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.3.HEATAREA_MODE",
+        "_id": "HEATAREA.3.HEATAREA_MODE",
         "type": "state",
         "common": {
-            "name": "HEATAREA 3 HEATAREA_MODE",
+            "name": "HEATAREA 3 HEATAREA_MODE (Mode)",
             "type": "string",
             "unit": "",
             "read": true,
             "write": true,
-			"role": "state"
+            "role": "state",
+            "states": "0:Auto;1:Day;2:Night"
         },   
         "native": {}
     },
-	{ 
+    {
   "_id": "HEATAREA.3.T_ACTUAL",
         "type": "state",
         "common": {
@@ -1446,19 +1557,20 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.4.HEATAREA_MODE",
+        "_id": "HEATAREA.4.HEATAREA_MODE",
         "type": "state",
         "common": {
-            "name": "HEATAREA 4 HEATAREA_MODE",
+            "name": "HEATAREA 4 HEATAREA_MODE (Mode)",
             "type": "string",
             "unit": "",
             "read": true,
-            "write": false,
-			"role": "state"
+            "write": true,
+            "role": "state",
+            "states": "0:Auto;1:Day;2:Night"
         },   
         "native": {}
     },
-	{ 
+    {
   "_id": "HEATAREA.4.T_ACTUAL",
         "type": "state",
         "common": {
@@ -1563,19 +1675,20 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.5.HEATAREA_MODE",
+        "_id": "HEATAREA.5.HEATAREA_MODE",
         "type": "state",
         "common": {
-            "name": "HEATAREA 5 HEATAREA_MODE",
+            "name": "HEATAREA 5 HEATAREA_MODE (Mode)",
             "type": "string",
             "unit": "",
             "read": true,
             "write": true,
-			"role": "state"	
+            "role": "state",
+            "states": "0:Auto;1:Day;2:Night"
         },   
         "native": {}
     },
-	{ 
+    {
   "_id": "HEATAREA.5.T_ACTUAL",
         "type": "state",
         "common": {
@@ -1680,19 +1793,20 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.6.HEATAREA_MODE",
+        "_id": "HEATAREA.6.HEATAREA_MODE",
         "type": "state",
         "common": {
-            "name": "HEATAREA 6 HEATAREA_MODE",
+            "name": "HEATAREA 6 HEATAREA_MODE (Mode)",
             "type": "string",
             "unit": "",
             "read": true,
             "write": true,
-			"role": "state"
+            "role": "state",
+            "states": "0:Auto;1:Day;2:Night"
         },   
         "native": {}
     },
-	{ 
+    {
   "_id": "HEATAREA.6.T_ACTUAL",
         "type": "state",
         "common": {
@@ -1797,19 +1911,20 @@
         "native": {}
     },
 	{ 
-  "_id": "HEATAREA.7.HEATAREA_MODE",
+        "_id": "HEATAREA.7.HEATAREA_MODE",
         "type": "state",
         "common": {
-            "name": "HEATAREA 7 HEATAREA_MODE",
+            "name": "HEATAREA 7 HEATAREA_MODE (Mode)",
             "type": "string",
             "unit": "",
             "read": true,
             "write": true,
-			"role": "state"
+            "role": "state",
+            "states": "0:Auto;1:Day;2:Night"
         },   
         "native": {}
     },
-	{ 
+    {
   "_id": "HEATAREA.7.T_ACTUAL",
         "type": "state",
         "common": {
