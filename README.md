@@ -57,8 +57,6 @@ You can check the object VACATION.STATE to check the status. If the status showi
 
 ## Known limitations
 - no virtual rooms
-- max 8 heatareas (there are Alpha2 base stations with 12 heatareas)
-- no lock of room controllers (kids mode)
 
 ## Changelog
 
