@@ -1617,7 +1617,7 @@
           "type": "state",
           "common": {
               "name": "HEATAREA 1 ISLOCKED (Child mode)",
-              "type": "boolean",
+              "type": "string",
               "unit": "",
               "read": true,
               "write": true,
@@ -1937,7 +1937,7 @@
           "type": "state",
           "common": {
               "name": "HEATAREA 3 ISLOCKED (Child mode)",
-              "type": "boolean",
+              "type": "string",
               "unit": "",
               "read": true,
               "write": true,
@@ -2097,7 +2097,7 @@
           "type": "state",
           "common": {
               "name": "HEATAREA 4 ISLOCKED (Child mode)",
-              "type": "boolean",
+              "type": "string",
               "unit": "",
               "read": true,
               "write": true,
@@ -2257,7 +2257,7 @@
           "type": "state",
           "common": {
               "name": "HEATAREA 5 ISLOCKED (Child mode)",
-              "type": "boolean",
+              "type": "string",
               "unit": "",
               "read": true,
               "write": true,
@@ -2417,7 +2417,7 @@
           "type": "state",
           "common": {
               "name": "HEATAREA 6 ISLOCKED (Child mode)",
-              "type": "boolean",
+              "type": "string",
               "unit": "",
               "read": true,
               "write": true,
@@ -2577,7 +2577,7 @@
           "type": "state",
           "common": {
               "name": "HEATAREA 7 ISLOCKED (Child mode)",
-              "type": "boolean",
+              "type": "string",
               "unit": "",
               "read": true,
               "write": true,
@@ -2737,7 +2737,7 @@
           "type": "state",
           "common": {
               "name": "HEATAREA 8 ISLOCKED (Child mode)",
-              "type": "boolean",
+              "type": "string",
               "unit": "",
               "read": true,
               "write": true,
@@ -2897,7 +2897,7 @@
           "type": "state",
           "common": {
               "name": "HEATAREA 9 ISLOCKED (Child mode)",
-              "type": "boolean",
+              "type": "string",
               "unit": "",
               "read": true,
               "write": true,
@@ -3057,7 +3057,7 @@
           "type": "state",
           "common": {
               "name": "HEATAREA 10 ISLOCKED (Child mode)",
-              "type": "boolean",
+              "type": "string",
               "unit": "",
               "read": true,
               "write": true,
@@ -3217,7 +3217,7 @@
           "type": "state",
           "common": {
               "name": "HEATAREA 11 ISLOCKED (Child mode)",
-              "type": "boolean",
+              "type": "string",
               "unit": "",
               "read": true,
               "write": true,
@@ -3377,7 +3377,7 @@
           "type": "state",
           "common": {
               "name": "HEATAREA 12 ISLOCKED (Child mode)",
-              "type": "boolean",
+              "type": "string",
               "unit": "",
               "read": true,
               "write": true,
@@ -3456,7 +3456,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
@@ -3535,7 +3535,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
@@ -3614,7 +3614,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
@@ -3693,7 +3693,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
@@ -3772,7 +3772,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
@@ -3851,7 +3851,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
@@ -3930,7 +3930,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
@@ -4009,7 +4009,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
@@ -4088,7 +4088,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
@@ -4167,7 +4167,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
@@ -4246,7 +4246,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
@@ -4325,7 +4325,7 @@
           "type": "state",
           "common": {
               "name": "HEATCONTROL STATE",
-              "type": "string",
+              "type": "number",
               "unit": "",
               "read": true,
               "write": false,
