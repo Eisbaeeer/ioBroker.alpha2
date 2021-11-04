@@ -1620,7 +1620,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
@@ -1780,7 +1780,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
@@ -1940,7 +1940,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
@@ -2100,7 +2100,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
@@ -2260,7 +2260,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
@@ -2420,7 +2420,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
@@ -2580,7 +2580,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
@@ -2740,7 +2740,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
@@ -2900,7 +2900,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
@@ -3060,7 +3060,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
@@ -3220,7 +3220,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
@@ -3380,7 +3380,7 @@
               "type": "string",
               "unit": "",
               "read": true,
-              "write": true,
+              "write": false,
               "role": "state",
               "states": "0:Delocked;1:Locked"
           },   
