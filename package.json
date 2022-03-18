@@ -1,6 +1,6 @@
 {
   "name": "iobroker.alpha2",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "ioBroker Moehlenhoff Alpha2 Adapter",
   "author": {
     "name": "Eisbaeeer",
@@ -12,7 +12,7 @@
       "email": "Eisbaeeer@gmail.com"
     }
   ],
-  "homepage": "https://github.com/Eisbaeeer/ioBroker.alpha2",
+  "homepage": "https://github.com/bigluke26/ioBroker.alpha2",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -20,12 +20,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Eisbaeeer/ioBroker.alpha2"
+    "url": "https://github.com/bigluke26/ioBroker.alpha2"
   },
   "dependencies": {
     "xml2js": "^0.4.23",
     "request": "^2.55.0",
-    "@iobroker/adapter-core": "^1.0.3"
+    "@iobroker/adapter-core": "^1.0.4"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
@@ -43,7 +43,7 @@
   },
   "main": "main.js",
   "bugs": {
-    "url": "https://github.com/Eisbaeeer/ioBroker.alpha2/issues"
+    "url": "https://github.com/bigluke26/ioBroker.alpha2/issues"
   },
   "scripts": {
     "test": "npm run test:package && npm run test:unit",
