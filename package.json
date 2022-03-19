@@ -46,7 +46,6 @@
     "url": "https://github.com/bigluke26/ioBroker.alpha2/issues"
   },
   "scripts": {
-    "test": "npm run test:package && npm run test:unit",
     "test:package": "mocha test/package --exit",
     "test:unit": "mocha test/unit --exit",
     "test:integration": "mocha test/integration --exit"
