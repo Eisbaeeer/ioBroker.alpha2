@@ -12,7 +12,7 @@
       "email": "Eisbaeeer@gmail.com"
     }
   ],
-  "homepage": "https://github.com/bigluke26/ioBroker.alpha2",
+  "homepage": "https://github.com/Eisbaeeer/ioBroker.alpha2",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -20,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bigluke26/ioBroker.alpha2"
+    "url": "https://github.com/Eisbaeeer/ioBroker.alpha2"
   },
   "dependencies": {
     "xml2js": "^0.4.23",
@@ -43,7 +43,7 @@
   },
   "main": "main.js",
   "bugs": {
-    "url": "https://github.com/bigluke26/ioBroker.alpha2/issues"
+    "url": "https://github.com/Eisbaeeer/ioBroker.alpha2/issues"
   },
   "scripts": {
     "test:package": "mocha test/package --exit",
