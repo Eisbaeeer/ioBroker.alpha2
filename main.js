@@ -221,6 +221,8 @@ function getTemp(xml) {
                 adapter.setState(adapter.namespace + '.' + 'VACATION.START_TIME', {val: obj.Device.VACATION.START_TIME, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'VACATION.END_DATE', {val: obj.Device.VACATION.END_DATE, ack: true});
                 adapter.setState(adapter.namespace + '.' + 'VACATION.END_TIME', {val: obj.Device.VACATION.END_TIME, ack: true});
+
+                adapter.setState(adapter.namespace + '.' + 'DEVICE.PUMP', {val: Boolean(Number(obj.Device.PUMP_OUTPUT.PUMP_ISACTIVE)), ack: true});
                 
                 adapter.log.debug("Program lenght 0: " + obj.Device.PROGRAM.SHIFT_PROGRAM.length);
 				

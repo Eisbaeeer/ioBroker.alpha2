@@ -1,7 +1,7 @@
 {
     "common": {
       "name": "alpha2",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "news": {
               "0.0.1": {
                   "en": "Initial version",
@@ -44,6 +44,10 @@
               "1.0.3": {
                 "en": "Fixed errormessages in log",
                 "de": "Fehlermeldungen im Log korrigiert"
+              },
+              "1.0.4": {
+                "en": "Added PUMP status",
+                "de": "Neues Pumpenobjekt"
               }
           },
           "title": "Möhlenhoff Alpha2",
@@ -187,6 +191,19 @@
               "read": true,
               "write": true,
               "role": "value.temperature"
+          },   
+          "native": {}
+      },
+      {
+    "_id": "DEVICE.PUMP",
+          "type": "state",
+          "common": {
+              "name": "PUMP STATUS",
+              "type": "boolean",
+              "unit": "",
+              "read": true,
+              "write": false,
+              "role": "state"
           },   
           "native": {}
       },
