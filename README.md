@@ -62,7 +62,7 @@ You can check the object VACATION.STATE to check the status. If the status showi
 
 ### 1.0.4
 . (bigluke26)
-Added PUMP status
+Added PUMP status issue #26
 
 ### 1.0.3
 . (Eisbaeeer)
