@@ -80,7 +80,10 @@
       "dataSource": "poll",
       "connectionType": "local",
       "type": "climate-control",
-      "license": "MIT"
+      "licenseInformation": {
+        "type": "free",
+        "license": "MIT"
+      }
     },
     "native": {
       "polltime": 30000,
