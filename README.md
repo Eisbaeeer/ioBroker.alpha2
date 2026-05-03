@@ -100,6 +100,8 @@ fixed issues #1
 ### 0.0.1
 - (Eisbaeeer) inital version of Alpha2
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 The MIT License (MIT)
 Copyright (c) 2021 Eisbaeeer eisbaeeer@gmail.com
