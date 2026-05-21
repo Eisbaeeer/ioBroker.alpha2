@@ -60,6 +60,10 @@ You can check the object VACATION.STATE to check the status. If the status showi
 
 ## Changelog
 
+
+### **WORK IN PROGRESS**
+- (ioBroker-Bot) Adapter requires js-controller >= 6.0.11 now.
+
 ### 1.0.4
 . (bigluke26)
 Added PUMP status issue #26
