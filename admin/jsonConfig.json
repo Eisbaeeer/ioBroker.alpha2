@@ -1,0 +1,75 @@
+{
+    "i18n": false,
+    "type": "panel",
+    "items": {
+        "host": {
+            "type": "text",
+            "label": {
+                "en": "IP address of the base station",
+                "de": "IP-Adresse der Basisstation"
+            },
+            "help": {
+                "en": "e.g. 192.168.1.100 (optionally with :port)",
+                "de": "z. B. 192.168.1.100 (optional mit :Port)"
+            },
+            "xs": 12,
+            "sm": 12,
+            "md": 6,
+            "lg": 4,
+            "xl": 4
+        },
+        "polltime": {
+            "type": "number",
+            "min": 2000,
+            "max": 3600000,
+            "step": 1000,
+            "label": {
+                "en": "Live values every (ms)",
+                "de": "Live-Werte alle (ms)"
+            },
+            "help": {
+                "en": "temperatures, set points, pump (cyclic.xml); at least 2000",
+                "de": "Temperaturen, Sollwerte, Pumpe (cyclic.xml); mindestens 2000"
+            },
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 3,
+            "xl": 3
+        },
+        "staticInterval": {
+            "type": "number",
+            "min": 10,
+            "max": 3600,
+            "label": {
+                "en": "Actuators and settings every (s)",
+                "de": "Stellantriebe und Einstellungen alle (s)"
+            },
+            "help": {
+                "en": "complete data (static.xml), after every change as well",
+                "de": "vollständige Daten (static.xml), zusätzlich nach jeder Änderung"
+            },
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 3,
+            "xl": 3
+        },
+        "timeout": {
+            "type": "number",
+            "min": 1000,
+            "max": 30000,
+            "step": 500,
+            "label": {
+                "en": "Timeout per request (ms)",
+                "de": "Timeout je Anfrage (ms)"
+            },
+            "xs": 12,
+            "sm": 12,
+            "md": 4,
+            "lg": 3,
+            "xl": 3
+        }
+    }
+}

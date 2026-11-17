@@ -1,0 +1,41 @@
+# Lint, package check, unit tests and integration tests (simulated base station) on every push and pull request.
+# Publishing to npm is not set up: the npm package iobroker.alpha2 belongs to the original author.
+
+name: Test and Release
+
+on:
+    push:
+        branches:
+            - '*'
+        tags:
+            - 'v[0-9]+.[0-9]+.[0-9]+'
+            - 'v[0-9]+.[0-9]+.[0-9]+-**'
+    pull_request: {}
+
+concurrency:
+    group: ${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    check-and-lint:
+        if: contains(github.event.head_commit.message, '[skip ci]') == false
+        runs-on: ubuntu-latest
+        steps:
+            - uses: ioBroker/testing-action-check@v1
+              with:
+                  node-version: '24.x'
+                  lint: true
+
+    adapter-tests:
+        if: contains(github.event.head_commit.message, '[skip ci]') == false
+        needs: [check-and-lint]
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                node-version: [20.x, 22.x, 24.x]
+                os: [ubuntu-latest, windows-latest, macos-latest]
+        steps:
+            - uses: ioBroker/testing-action-adapter@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  os: ${{ matrix.os }}
