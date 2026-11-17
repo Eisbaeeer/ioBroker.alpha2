@@ -101,6 +101,7 @@ does not deliver (e.g. unused program slots) are left untouched.
 - (djlex83) Cloud credentials, network settings and codes are no longer read
 - (djlex83) Objects are extended instead of replaced (keeps history settings); state IDs and types unchanged
 - (djlex83) JSON config, current adapter-core, tests with a simulated base station, no `request`/`xml2js`
+- (djlex83) Requires Node.js 22 or newer
 
 ### 1.0.4
 
