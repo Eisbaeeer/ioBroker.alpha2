@@ -5,7 +5,6 @@
 Local control of the **Möhlenhoff Alpha 2** underfloor heating control (base station EZR) in ioBroker.
 The adapter talks to the XML API of the base station in your network. No cloud account is needed.
 
-This is a maintained fork of [Eisbaeeer/ioBroker.alpha2](https://github.com/Eisbaeeer/ioBroker.alpha2).
 Version 2.0.0 is a rewrite. **It is a drop-in update for 1.x**: the adapter name, all state IDs and their
 types stay the same, so aliases, scripts, visualisations and history (InfluxDB, SQL, History) keep working.
 

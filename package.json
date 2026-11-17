@@ -2,12 +2,12 @@
     "name": "iobroker.alpha2",
     "version": "2.1.0",
     "description": "Local control of the Möhlenhoff Alpha 2 underfloor heating control through its XML API",
-    "author": "djlex83 <djlex83@users.noreply.github.com>",
+    "author": "Eisbaeeer <Eisbaeeer@gmail.com>",
     "contributors": [
-        "Eisbaeeer <eisbaeeer@gmail.com>",
+        "Eisbaeeer <Eisbaeeer@gmail.com>",
         "djlex83 <djlex83@users.noreply.github.com>"
     ],
-    "homepage": "https://github.com/djlex83/ioBroker.alpha2",
+    "homepage": "https://github.com/Eisbaeeer/ioBroker.alpha2",
     "license": "MIT",
     "keywords": [
         "ioBroker",
@@ -21,10 +21,10 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/djlex83/ioBroker.alpha2.git"
+        "url": "git+https://github.com/Eisbaeeer/ioBroker.alpha2.git"
     },
     "bugs": {
-        "url": "https://github.com/djlex83/ioBroker.alpha2/issues"
+        "url": "https://github.com/Eisbaeeer/ioBroker.alpha2/issues"
     },
     "engines": {
         "node": ">=22"

@@ -1,5 +1,5 @@
 # Lint, package check, unit tests and integration tests (simulated base station) on every push and pull request.
-# Publishing to npm is not set up: the npm package iobroker.alpha2 belongs to the original author.
+# Publishing to npm is not set up yet (needs an npm token of the package owner).
 
 name: Test and Release
 
