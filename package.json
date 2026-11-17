@@ -1,6 +1,6 @@
 {
     "name": "iobroker.alpha2",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "Local control of the Möhlenhoff Alpha 2 underfloor heating control through its XML API",
     "author": "djlex83 <djlex83@users.noreply.github.com>",
     "contributors": [

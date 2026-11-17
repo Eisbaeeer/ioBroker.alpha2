@@ -70,6 +70,23 @@
             "md": 4,
             "lg": 3,
             "xl": 3
+        },
+        "syncTime": {
+            "type": "checkbox",
+            "label": {
+                "en": "Set the clock of the base station automatically",
+                "de": "Uhrzeit der Basisstation automatisch stellen"
+            },
+            "help": {
+                "en": "compares every hour and sets the time of ioBroker if the clock differs by more than 30 s; not used while the base station syncs via NTP itself",
+                "de": "vergleicht stündlich und stellt die Zeit von ioBroker ein, wenn die Uhr mehr als 30 s abweicht; ruht, solange die Basisstation selbst per NTP stellt"
+            },
+            "newLine": true,
+            "xs": 12,
+            "sm": 12,
+            "md": 12,
+            "lg": 12,
+            "xl": 12
         }
     }
 }

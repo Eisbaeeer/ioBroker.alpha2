@@ -39,8 +39,17 @@ types stay the same, so aliases, scripts, visualisations and history (InfluxDB, 
 | Live values every (ms)           | 10000   | temperatures, set points, pump (`cyclic.xml`), at least 2000  |
 | Actuators and settings every (s) | 30      | complete data (`static.xml`), additionally after every change |
 | Timeout per request (ms)         | 5000    | a request without answer is cancelled after this time         |
+| Set the clock automatically      | off     | see below                                                     |
 
 If you use more than one base station, add one instance per base station.
+
+### Clock of the base station
+
+The base station runs its switching times on its own clock. Its NTP sync is often switched off, then the clock
+drifts. With _Set the clock automatically_ the adapter compares the clock of the base station with ioBroker once an
+hour and sets it to the time of ioBroker when it differs by more than 30 s. Nothing is set while the base station
+syncs via NTP itself (`DEVICE.NTPSYNC`) and in the hours around the change between summer and winter time.
+ioBroker and the base station must use the same time zone. `DEVICE.DATETIME` shows the clock of the base station.
 
 ## States
 
@@ -91,6 +100,11 @@ does not deliver (e.g. unused program slots) are left untouched.
     ### **WORK IN PROGRESS**
 -->
 
+### 2.1.0 (2026-11-18)
+
+- (djlex83) Optional: sets the clock of the base station when it is more than 30 s wrong (checked every hour)
+- (djlex83) Requires Node.js 22 or newer
+
 ### 2.0.0 (2026-11-17)
 
 - (djlex83) Rewrite: one request at a time with timeout and back-off, `info.connection`
@@ -101,7 +115,6 @@ does not deliver (e.g. unused program slots) are left untouched.
 - (djlex83) Cloud credentials, network settings and codes are no longer read
 - (djlex83) Objects are extended instead of replaced (keeps history settings); state IDs and types unchanged
 - (djlex83) JSON config, current adapter-core, tests with a simulated base station, no `request`/`xml2js`
-- (djlex83) Requires Node.js 22 or newer
 
 ### 1.0.4
 

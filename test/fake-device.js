@@ -138,6 +138,10 @@ class FakeAlpha2 {
         if (top) {
             set(/^[\s\S]*$/, 'T_HEAT_VACATION', top[1]);
         }
+        const clock = /<DATETIME>([^<]*)<\/DATETIME>/.exec(body);
+        if (clock) {
+            set(/^[\s\S]*$/, 'DATETIME', clock[1]);
+        }
     }
 }
 

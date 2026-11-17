@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "alpha2",
-        "version": "2.0.0",
+        "version": "2.1.0",
         "news": {
+            "2.1.0": {
+                "en": "Optional: sets the clock of the base station when it differs from ioBroker by more than 30 s (checked every hour). Needs Node.js 22 or newer.",
+                "de": "Optional: stellt die Uhr der Basisstation, wenn sie mehr als 30 s von ioBroker abweicht (stündlich geprüft). Benötigt Node.js 22 oder neuer.",
+                "ru": "Опционально: устанавливает часы базовой станции, если они отличаются от ioBroker более чем на 30 с (проверка каждый час). Требуется Node.js 22 или новее.",
+                "pt": "Opcional: acerta o relógio da estação base quando difere do ioBroker em mais de 30 s (verificado a cada hora). Requer Node.js 22 ou mais recente.",
+                "nl": "Optioneel: zet de klok van het basisstation gelijk als deze meer dan 30 s afwijkt van ioBroker (elk uur gecontroleerd). Vereist Node.js 22 of nieuwer.",
+                "fr": "Optionnel : règle l'horloge de la station de base lorsqu'elle diffère d'ioBroker de plus de 30 s (vérifié toutes les heures). Nécessite Node.js 22 ou plus récent.",
+                "it": "Opzionale: regola l'orologio della stazione base quando differisce da ioBroker di oltre 30 s (controllato ogni ora). Richiede Node.js 22 o successivo.",
+                "es": "Opcional: ajusta el reloj de la estación base cuando difiere de ioBroker en más de 30 s (comprobado cada hora). Requiere Node.js 22 o posterior.",
+                "pl": "Opcjonalnie: ustawia zegar stacji bazowej, gdy różni się od ioBroker o ponad 30 s (sprawdzane co godzinę). Wymaga Node.js 22 lub nowszego.",
+                "uk": "Опційно: встановлює годинник базової станції, якщо він відрізняється від ioBroker більш ніж на 30 с (перевірка щогодини). Потрібен Node.js 22 або новіший.",
+                "zh-cn": "可选：当基站时钟与 ioBroker 相差超过 30 秒时自动校准（每小时检查一次）。需要 Node.js 22 或更高版本。"
+            },
             "2.0.0": {
                 "en": "Rewritten: one request at a time with timeout, info.connection, more values (party, presence, limits, firmware, errors), checked writing, no cloud data in ioBroker. Existing states keep their names and types.",
                 "de": "Neu geschrieben: immer nur eine Anfrage mit Timeout, info.connection, mehr Werte (Party, Anwesenheit, Grenzen, Firmware, Fehler), geprüftes Schreiben, keine Cloud-Daten in ioBroker. Bestehende Datenpunkte behalten Namen und Typ.",
@@ -79,18 +92,8 @@
             "uk": "Локальне керування регулятором теплої підлоги Möhlenhoff Alpha 2 через його XML API, без хмари",
             "zh-cn": "通过 XML API 本地控制 Möhlenhoff Alpha 2 地暖控制器，无需云端"
         },
-        "authors": [
-            "Eisbaeeer <eisbaeeer@gmail.com>",
-            "djlex83 <djlex83@users.noreply.github.com>"
-        ],
-        "keywords": [
-            "Möhlenhoff",
-            "Moehlenhoff",
-            "Alpha2",
-            "underfloor heating",
-            "heating",
-            "climate"
-        ],
+        "authors": ["Eisbaeeer <eisbaeeer@gmail.com>", "djlex83 <djlex83@users.noreply.github.com>"],
+        "keywords": ["Möhlenhoff", "Moehlenhoff", "Alpha2", "underfloor heating", "heating", "climate"],
         "licenseInformation": {
             "type": "free",
             "license": "MIT"
@@ -125,7 +128,8 @@
         "host": "",
         "polltime": 10000,
         "staticInterval": 30,
-        "timeout": 5000
+        "timeout": 5000,
+        "syncTime": false
     },
     "objects": [],
     "instanceObjects": [

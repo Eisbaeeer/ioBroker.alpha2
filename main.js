@@ -9,7 +9,8 @@ const utils = require('@iobroker/adapter-core');
 const { Alpha2Client } = require('./lib/client');
 const { deviceOf } = require('./lib/xml');
 const { extract, commonOf, parentsOf } = require('./lib/mapping');
-const { buildCommand, CommandError } = require('./lib/commands');
+const { buildCommand, buildTimeCommand, CommandError } = require('./lib/commands');
+const { CHECK_EVERY_MS, compareClock, describeOffset, formatDeviceTime } = require('./lib/clock');
 
 const PATH_STATIC = '/data/static.xml';
 const PATH_CYCLIC = '/data/cyclic.xml';
@@ -51,6 +52,9 @@ class Alpha2 extends utils.Adapter {
         this.reachable = false;
         this.everConnected = false;
         this.deviceId = '';
+        /** set the clock of the base station when it is wrong */
+        this.syncClock = false;
+        this.lastClockCheck = 0;
         /** target temperature limits per heat area */
         this.limits = new Map();
         /** last value written with ack per state */
@@ -73,6 +77,7 @@ class Alpha2 extends utils.Adapter {
         this.pollMs = clamp(Number(cfg.polltime) || 10000, 2000, 3600000);
         this.staticMs = clamp((Number(cfg.staticInterval) || 30) * 1000, 10000, 3600000);
         const timeout = clamp(Number(cfg.timeout) || 5000, 1000, 30000);
+        this.syncClock = cfg.syncTime === true || cfg.syncTime === 'true';
 
         if (!address) {
             this.log.error('Please enter the IP address of the Alpha2 base station in the adapter settings.');
@@ -86,7 +91,9 @@ class Alpha2 extends utils.Adapter {
         }
         this.log.info(
             `Base station ${this.client.host}:${this.client.port}: values every ${this.pollMs / 1000} s, ` +
-                `actuators and settings every ${this.staticMs / 1000} s`,
+                `actuators and settings every ${this.staticMs / 1000} s${
+                    this.syncClock ? ', clock is set when it is wrong' : ''
+                }`,
         );
 
         await this.subscribeStatesAsync('*');
@@ -140,6 +147,7 @@ class Alpha2 extends utils.Adapter {
             throw new Error('no connection configured');
         }
         const xml = await this.client.get(full ? PATH_STATIC : PATH_CYCLIC);
+        const receivedAt = Date.now();
         const values = extract(deviceOf(xml));
         if (full && !values.has('DEVICE.ID')) {
             throw new Error('static.xml contains no device ID');
@@ -147,6 +155,44 @@ class Alpha2 extends utils.Adapter {
         await this.apply(values);
         if (full) {
             this.lastStatic = Date.now();
+        }
+        if (this.syncClock && values.has('DEVICE.DATETIME')) {
+            await this.checkClock(values.get('DEVICE.DATETIME'), receivedAt);
+        }
+    }
+
+    /**
+     * Compares the clock of the base station with ioBroker once an hour and sets it if it is wrong.
+     * Does nothing while the base station syncs its clock via NTP itself. Runs inside {@link serial}.
+     *
+     * @param {unknown} deviceTime DATETIME of the base station
+     * @param {number} receivedAt time of ioBroker when the answer arrived
+     */
+    async checkClock(deviceTime, receivedAt) {
+        if (receivedAt - this.lastClockCheck < CHECK_EVERY_MS || !this.client || !this.deviceId) {
+            return;
+        }
+        this.lastClockCheck = receivedAt;
+        if (this.values.get('DEVICE.NTPSYNC') === true) {
+            this.log.debug('Clock: the base station syncs via NTP itself');
+            return;
+        }
+        const result = compareClock(deviceTime, new Date(receivedAt));
+        if (!result.set) {
+            this.log.debug(
+                `Clock: ${result.reason}${result.offset === null ? '' : ` (${describeOffset(result.offset)})`}`,
+            );
+            return;
+        }
+        // full seconds, the base station has no finer resolution
+        const time = formatDeviceTime(new Date(Math.round(Date.now() / 1000) * 1000));
+        try {
+            const cmd = buildTimeCommand(this.deviceId, time);
+            await this.client.post(PATH_CHANGES, cmd.body);
+            this.log.info(`Clock of the base station set to ${time} (was ${describeOffset(result.offset ?? 0)})`);
+        } catch (e) {
+            // tried again in an hour
+            this.log.warn(`Could not set the clock of the base station: ${e instanceof Error ? e.message : String(e)}`);
         }
     }
 

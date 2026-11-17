@@ -66,7 +66,13 @@ tests.integration(path.join(__dirname, '..'), {
                 });
 
                 await harness.changeAdapterConfig('alpha2', {
-                    native: { host: `127.0.0.1:${port}`, polltime: 2000, staticInterval: 10, timeout: 2000 },
+                    native: {
+                        host: `127.0.0.1:${port}`,
+                        polltime: 2000,
+                        staticInterval: 10,
+                        timeout: 2000,
+                        syncTime: true,
+                    },
                 });
                 await harness.startAdapterAndWait();
             });
@@ -85,6 +91,23 @@ tests.integration(path.join(__dirname, '..'), {
                 assert.equal(await val('IODEVICE.1.BATTERY'), '2');
                 assert.equal(typeof (await val('HEATAREA.1.HEATING')), 'boolean');
                 assert.equal(await val('IODEVICE.3.LOWBAT'), true);
+            });
+
+            it('sets the wrong clock of the base station once', async function () {
+                this.timeout(30000);
+                // the recorded answers carry a time from the past
+                await waitFor(async () => fake.posts.some(b => b.includes('<DATETIME>')));
+                const sent = fake.posts.filter(b => b.includes('<DATETIME>'));
+                assert.equal(sent.length, 1);
+                const time = /<DATETIME>([^<]+)<\/DATETIME>/.exec(sent[0])?.[1] ?? '';
+                assert.ok(sent[0].includes('<ID>EZR012345</ID>'), sent[0]);
+                const [d, t] = time.split('T');
+                const [y, mo, day] = d.split('-').map(Number);
+                const [h, mi, s] = t.split(':').map(Number);
+                const offset = new Date(y, mo - 1, day, h, mi, s).getTime() - Date.now();
+                assert.ok(Math.abs(offset) < 60000, `sent ${time}`);
+                await waitFor(async () => (await val('DEVICE.DATETIME')) === time);
+                assert.ok(harness.hasLog(/Clock of the base station set to/, 'info'));
             });
 
             it('keeps history settings and types of existing objects', async () => {
