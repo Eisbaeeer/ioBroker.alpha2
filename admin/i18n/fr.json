@@ -1,0 +1,11 @@
+{
+    "IP address of the base station": "Adresse IP de la station de base",
+    "e.g. 192.168.1.100 (optionally with :port)": "p. ex. 192.168.1.100 (éventuellement avec :port)",
+    "Live values every (ms)": "Valeurs en direct toutes les (ms)",
+    "temperatures, set points, pump (cyclic.xml); at least 2000": "températures, consignes, pompe (cyclic.xml) ; au moins 2000",
+    "Actuators and settings every (s)": "Actionneurs et réglages toutes les (s)",
+    "complete data (static.xml), after every change as well": "données complètes (static.xml), également après chaque modification",
+    "Timeout per request (ms)": "Délai d'attente par requête (ms)",
+    "Set the clock of the base station automatically": "Régler automatiquement l'horloge de la station de base",
+    "compares every hour and sets the time of ioBroker if the clock differs by more than 30 s; not used while the base station syncs via NTP itself": "compare toutes les heures et règle l'heure d'ioBroker si l'horloge diffère de plus de 30 s ; inactif tant que la station de base se synchronise elle-même via NTP"
+}

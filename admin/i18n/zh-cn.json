@@ -1,0 +1,11 @@
+{
+    "IP address of the base station": "基站的 IP 地址",
+    "e.g. 192.168.1.100 (optionally with :port)": "例如 192.168.1.100（可附加 :端口）",
+    "Live values every (ms)": "实时数值读取间隔（毫秒）",
+    "temperatures, set points, pump (cyclic.xml); at least 2000": "温度、设定值、水泵（cyclic.xml）；至少 2000",
+    "Actuators and settings every (s)": "执行器和设置读取间隔（秒）",
+    "complete data (static.xml), after every change as well": "完整数据（static.xml），每次更改后也会读取",
+    "Timeout per request (ms)": "每个请求的超时（毫秒）",
+    "Set the clock of the base station automatically": "自动校准基站时钟",
+    "compares every hour and sets the time of ioBroker if the clock differs by more than 30 s; not used while the base station syncs via NTP itself": "每小时比较一次，若时钟偏差超过 30 秒则设为 ioBroker 的时间；基站自行通过 NTP 同步时不执行"
+}

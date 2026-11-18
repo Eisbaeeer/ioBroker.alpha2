@@ -99,6 +99,12 @@ does not deliver (e.g. unused program slots) are left untouched.
     ### **WORK IN PROGRESS**
 -->
 
+### **WORK IN PROGRESS**
+
+- (djlex83) Settings page translated into all 11 ioBroker languages
+- (djlex83) Requires admin 7.6.20 or newer
+- (djlex83) Findings of the repository checker fixed (#80)
+
 ### 2.1.0 (2026-11-18)
 
 - (djlex83) Optional: sets the clock of the base station when it is more than 30 s wrong (checked every hour)
@@ -117,13 +123,39 @@ does not deliver (e.g. unused program slots) are left untouched.
 - (djlex83) Objects are extended instead of replaced (keeps history settings); state IDs and types unchanged
 - (djlex83) JSON config, current adapter-core, tests with a simulated base station, no `request`/`xml2js`
 
+### 1.0.4
+
+- (bigluke26) Added PUMP status issue #26
+
+### 1.0.3
+
+- (Eisbaeeer) Fixed error messages in log
+
+### 1.0.2
+
+- (oHa510) Fixed an issue if you don't use all 4/8/12 heat areas, then heat areas could get assigned to the wrong
+  heat area object in ioBroker
+- (oHa510) Expanded heat areas and heat controls to the maximum of 12
+- (oHa510) Changed heat area and heat control indexing to 1–12 (old 0–11 was very confusing)
+- (oHa510) Added support for locking controllers (kids mode)
+- (oHa510) Added support for locking set temperature (hotel mode)
+- (oHa510) Added some new objects and infos like IODEVICEs etc.
+
+### 1.0.1
+
+- (Eisbaeeer) Fixed issues
+
+### 1.0.0 (2019-06-24)
+
+- (Eisbaeeer) Fixed issue #6 (HEATAREA_NAME)
+
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2026 djlex83 <djlex83@users.noreply.github.com>
+Copyright (c) 2026 djlex83 <djlex83@users.noreply.github.com>  
 Copyright (c) 2018-2021 Eisbaeeer <eisbaeeer@gmail.com>
 
 See [LICENSE](LICENSE). Möhlenhoff and Alpha 2 are trademarks of their owners; this project is not
