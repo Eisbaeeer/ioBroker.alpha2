@@ -21,7 +21,7 @@ const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 const adapter = new utils.Adapter('alpha2');
 const request = require('request');
 const parser = require('xml2js').parseString;
-const http = require('http');   
+const http = require('node:http');   
 
 // define adapter wide vars
 var device_id;
