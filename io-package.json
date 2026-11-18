@@ -28,6 +28,19 @@
                 "pl": "Przepisany: jedno zapytanie naraz z limitem czasu, info.connection, więcej wartości (impreza, obecność, limity, firmware, błędy), sprawdzany zapis, brak danych chmury w ioBroker. Istniejące stany zachowują nazwy i typy.",
                 "uk": "Переписано: один запит за раз із тайм-аутом, info.connection, більше значень (вечірка, присутність, межі, прошивка, помилки), перевірений запис, без хмарних даних в ioBroker. Наявні стани зберігають назви та типи.",
                 "zh-cn": "重写：每次只发送一个带超时的请求，info.connection，更多数值（派对、在家、限值、固件、错误），经检查的写入，ioBroker 中不含云端数据。现有状态保留名称和类型。"
+            },
+            "1.0.0": {
+                "en": "Fixed issue #6 (HEATAREA_NAME)",
+                "de": "Issue #6 behoben (HEATAREA_NAME)",
+                "ru": "Исправлена проблема #6 (HEATAREA_NAME)",
+                "pt": "Corrigido o problema #6 (HEATAREA_NAME)",
+                "nl": "Probleem #6 opgelost (HEATAREA_NAME)",
+                "fr": "Correction du problème #6 (HEATAREA_NAME)",
+                "it": "Risolto il problema #6 (HEATAREA_NAME)",
+                "es": "Corregido el problema #6 (HEATAREA_NAME)",
+                "pl": "Naprawiono problem #6 (HEATAREA_NAME)",
+                "uk": "Виправлено проблему #6 (HEATAREA_NAME)",
+                "zh-cn": "修复问题 #6（HEATAREA_NAME）"
             }
         },
         "titleLang": {
@@ -84,7 +97,7 @@
         ],
         "globalDependencies": [
             {
-                "admin": ">=7.4.10"
+                "admin": ">=7.6.20"
             }
         ]
     },

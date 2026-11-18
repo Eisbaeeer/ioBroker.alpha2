@@ -1,17 +1,11 @@
 {
-    "i18n": false,
+    "i18n": true,
     "type": "panel",
     "items": {
         "host": {
             "type": "text",
-            "label": {
-                "en": "IP address of the base station",
-                "de": "IP-Adresse der Basisstation"
-            },
-            "help": {
-                "en": "e.g. 192.168.1.100 (optionally with :port)",
-                "de": "z. B. 192.168.1.100 (optional mit :Port)"
-            },
+            "label": "IP address of the base station",
+            "help": "e.g. 192.168.1.100 (optionally with :port)",
             "xs": 12,
             "sm": 12,
             "md": 6,
@@ -23,14 +17,8 @@
             "min": 2000,
             "max": 3600000,
             "step": 1000,
-            "label": {
-                "en": "Live values every (ms)",
-                "de": "Live-Werte alle (ms)"
-            },
-            "help": {
-                "en": "temperatures, set points, pump (cyclic.xml); at least 2000",
-                "de": "Temperaturen, Sollwerte, Pumpe (cyclic.xml); mindestens 2000"
-            },
+            "label": "Live values every (ms)",
+            "help": "temperatures, set points, pump (cyclic.xml); at least 2000",
             "newLine": true,
             "xs": 12,
             "sm": 12,
@@ -42,14 +30,8 @@
             "type": "number",
             "min": 10,
             "max": 3600,
-            "label": {
-                "en": "Actuators and settings every (s)",
-                "de": "Stellantriebe und Einstellungen alle (s)"
-            },
-            "help": {
-                "en": "complete data (static.xml), after every change as well",
-                "de": "vollständige Daten (static.xml), zusätzlich nach jeder Änderung"
-            },
+            "label": "Actuators and settings every (s)",
+            "help": "complete data (static.xml), after every change as well",
             "xs": 12,
             "sm": 12,
             "md": 4,
@@ -61,10 +43,7 @@
             "min": 1000,
             "max": 30000,
             "step": 500,
-            "label": {
-                "en": "Timeout per request (ms)",
-                "de": "Timeout je Anfrage (ms)"
-            },
+            "label": "Timeout per request (ms)",
             "xs": 12,
             "sm": 12,
             "md": 4,
@@ -73,14 +52,8 @@
         },
         "syncTime": {
             "type": "checkbox",
-            "label": {
-                "en": "Set the clock of the base station automatically",
-                "de": "Uhrzeit der Basisstation automatisch stellen"
-            },
-            "help": {
-                "en": "compares every hour and sets the time of ioBroker if the clock differs by more than 30 s; not used while the base station syncs via NTP itself",
-                "de": "vergleicht stündlich und stellt die Zeit von ioBroker ein, wenn die Uhr mehr als 30 s abweicht; ruht, solange die Basisstation selbst per NTP stellt"
-            },
+            "label": "Set the clock of the base station automatically",
+            "help": "compares every hour and sets the time of ioBroker if the clock differs by more than 30 s; not used while the base station syncs via NTP itself",
             "newLine": true,
             "xs": 12,
             "sm": 12,
