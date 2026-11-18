@@ -26,12 +26,12 @@ describe('mapping', () => {
 
     it('delivers values in the 1.x format', () => {
         assert.equal(all.get('DEVICE.ID'), 'EZR012345');
-        assert.equal(all.get('HEATAREA.1.T_ACTUAL'), 22.1);
-        assert.equal(all.get('HEATAREA.1.T_TARGET'), 19);
+        assert.equal(all.get('HEATAREA.1.T_ACTUAL'), 21.4);
+        assert.equal(all.get('HEATAREA.1.T_TARGET'), 21);
         assert.equal(all.get('HEATAREA.1.HEATAREA_MODE'), '0');
         assert.equal(all.get('HEATAREA.1.HEATAREA_NAME'), 'Room 1');
         assert.equal(all.get('IODEVICE.1.BATTERY'), '2');
-        assert.equal(all.get('IODEVICE.1.HEATAREA_NR'), '2');
+        assert.equal(all.get('IODEVICE.1.HEATAREA_NR'), '1');
         assert.equal(typeof all.get('HEATCTRL.1.ACTOR'), 'boolean');
         assert.equal(typeof all.get('HEATCTRL.1.ACTOR_PERCENT'), 'number');
         assert.equal(all.get('DEVICE.PUMP'), true);
@@ -40,8 +40,8 @@ describe('mapping', () => {
     });
 
     it('adds the new values', () => {
-        assert.equal(all.get('HEATAREA.1.T_TARGET_MIN'), 5);
-        assert.equal(all.get('HEATAREA.1.T_TARGET_MAX'), 26);
+        assert.equal(all.get('HEATAREA.1.T_TARGET_MIN'), 6);
+        assert.equal(all.get('HEATAREA.1.T_TARGET_MAX'), 28);
         assert.equal(all.get('HEATAREA.1.PARTY'), false);
         assert.equal(all.get('DEVICE.VERS_SW_STM'), '02.17');
         assert.equal(all.get('DEVICE.ERRORCOUNT'), 0);
@@ -75,8 +75,8 @@ describe('mapping', () => {
     });
 
     it('reads live values from cyclic.xml without actuators', () => {
-        assert.equal(live.get('HEATAREA.5.T_ACTUAL'), 22.8);
-        assert.equal(live.get('HEATAREA.5.T_TARGET'), 23);
+        assert.equal(live.get('HEATAREA.4.T_ACTUAL'), 19.6);
+        assert.equal(live.get('HEATAREA.4.T_TARGET'), 18);
         assert.equal(live.has('HEATAREA.1.HEATING'), false);
         assert.equal(live.has('HEATCTRL.1.ACTOR'), false);
         assert.equal(live.has('DEVICE.ID'), false);

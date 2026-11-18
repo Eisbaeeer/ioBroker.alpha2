@@ -12,7 +12,7 @@ describe('xml', () => {
         for (const name of ['static', 'cyclic', 'dynamic']) {
             const device = deviceOf(fixture(name));
             assert.equal(device.name, 'Device');
-            assert.equal(children(device, 'HEATAREA').length, 5, name);
+            assert.equal(children(device, 'HEATAREA').length, 4, name);
         }
     });
 

@@ -84,9 +84,9 @@ tests.integration(path.join(__dirname, '..'), {
             it('reads the base station and reports the connection', async function () {
                 this.timeout(30000);
                 await waitFor(async () => (await val('info.connection')) === true);
-                await waitFor(async () => (await val('HEATAREA.5.T_TARGET')) === 23);
+                await waitFor(async () => (await val('HEATAREA.4.T_TARGET')) === 18);
                 assert.equal(await val('DEVICE.ID'), 'EZR012345');
-                assert.equal(await val('HEATAREA.1.T_ACTUAL'), 22.1);
+                assert.equal(await val('HEATAREA.1.T_ACTUAL'), 21.4);
                 assert.equal(await val('HEATAREA.1.HEATAREA_MODE'), '0');
                 assert.equal(await val('IODEVICE.1.BATTERY'), '2');
                 assert.equal(typeof (await val('HEATAREA.1.HEATING')), 'boolean');
@@ -117,8 +117,8 @@ tests.integration(path.join(__dirname, '..'), {
                 const mode = await harness.objects.getObjectAsync(`${ns}.HEATAREA.1.HEATAREA_MODE`);
                 assert.equal(mode.common.type, 'string');
                 const target = await harness.objects.getObjectAsync(`${ns}.HEATAREA.1.T_TARGET`);
-                assert.equal(target.common.min, 5);
-                assert.equal(target.common.max, 26);
+                assert.equal(target.common.min, 6);
+                assert.equal(target.common.max, 28);
                 assert.equal(target.common.role, 'level.temperature');
                 const area = await harness.objects.getObjectAsync(`${ns}.HEATAREA.2`);
                 assert.equal(area.common.name, 'Room 2');
