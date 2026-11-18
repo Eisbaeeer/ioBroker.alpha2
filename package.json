@@ -1,54 +1,62 @@
 {
-  "name": "iobroker.alpha2",
-  "version": "1.0.4",
-  "description": "ioBroker Moehlenhoff Alpha2 Adapter",
-  "author": {
-    "name": "Eisbaeeer",
-    "email": "Eisbaeeer@gmail.com"
-  },
-  "contributors": [
-    {
-      "name": "Eisbaeeer",
-      "email": "Eisbaeeer@gmail.com"
+    "name": "iobroker.alpha2",
+    "version": "2.1.0",
+    "description": "Local control of the Möhlenhoff Alpha 2 underfloor heating control through its XML API",
+    "author": "Eisbaeeer <Eisbaeeer@gmail.com>",
+    "contributors": [
+        "Eisbaeeer <Eisbaeeer@gmail.com>",
+        "djlex83 <djlex83@users.noreply.github.com>"
+    ],
+    "homepage": "https://github.com/Eisbaeeer/ioBroker.alpha2",
+    "license": "MIT",
+    "keywords": [
+        "ioBroker",
+        "Möhlenhoff",
+        "Moehlenhoff",
+        "Alpha2",
+        "Alpha 2",
+        "underfloor heating",
+        "Fußbodenheizung",
+        "climate"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Eisbaeeer/ioBroker.alpha2.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Eisbaeeer/ioBroker.alpha2/issues"
+    },
+    "engines": {
+        "node": ">=22"
+    },
+    "dependencies": {
+        "@iobroker/adapter-core": "^3.4.3"
+    },
+    "devDependencies": {
+        "@alcalzone/release-script": "^5.2.1",
+        "@alcalzone/release-script-plugin-iobroker": "^5.2.0",
+        "@alcalzone/release-script-plugin-license": "^5.2.2",
+        "@iobroker/eslint-config": "^2.3.4",
+        "@iobroker/testing": "^6.3.2",
+        "mocha": "^12.0.3"
+    },
+    "main": "main.js",
+    "files": [
+        "admin/",
+        "lib/",
+        "main.js",
+        "io-package.json",
+        "LICENSE"
+    ],
+    "scripts": {
+        "test": "npm run test:unit && npm run test:package",
+        "test:unit": "mocha",
+        "test:package": "mocha test/package.js --exit",
+        "test:integration": "mocha test/integration.js --exit",
+        "lint": "eslint -c eslint.config.mjs .",
+        "release": "release-script",
+        "release-patch": "release-script patch --yes",
+        "release-minor": "release-script minor --yes",
+        "release-major": "release-script major --yes"
     }
-  ],
-  "homepage": "https://github.com/Eisbaeeer/ioBroker.alpha2",
-  "license": "MIT",
-  "keywords": [
-    "ioBroker",
-    "Alpha2"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Eisbaeeer/ioBroker.alpha2"
-  },
-  "dependencies": {
-    "xml2js": "^0.5.0",
-    "request": "^2.55.0",
-    "@iobroker/adapter-core": "^3.2.2"
-  },
-  "devDependencies": {
-    "grunt": "^1.6.3",
-    "grunt-replace": "^1.0.1",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-jscs": "^3.0.1",
-    "grunt-http": "^2.3.3",
-    "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-compress": "^1.4.3",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-exec": "^3.0.0",
-    "mocha": "^6.0.2",
-    "chai": "^4.1.2",
-    "@iobroker/testing": "^1.1.10"
-  },
-  "main": "main.js",
-  "bugs": {
-    "url": "https://github.com/Eisbaeeer/ioBroker.alpha2/issues"
-  },
-  "scripts": {
-    "test:package": "mocha test/package --exit",
-    "test:unit": "mocha test/unit --exit",
-    "test:integration": "mocha test/integration --exit"
-  },
-  "readmeFilename": "README.md"
 }

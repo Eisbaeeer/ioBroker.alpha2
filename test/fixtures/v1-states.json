@@ -1,0 +1,207 @@
+{
+    "DEVICE.ID": {
+        "type": "string",
+        "write": false,
+        "example": "DEVICE.ID"
+    },
+    "DEVICE.NAME": {
+        "type": "string",
+        "write": false,
+        "example": "DEVICE.NAME"
+    },
+    "DEVICE.TYPE": {
+        "type": "string",
+        "write": false,
+        "example": "DEVICE.TYPE"
+    },
+    "DEVICE.DATETIME": {
+        "type": "string",
+        "write": false,
+        "example": "DEVICE.DATETIME"
+    },
+    "DEVICE.TIMEZONE": {
+        "type": "string",
+        "write": false,
+        "example": "DEVICE.TIMEZONE"
+    },
+    "DEVICE.NTPSYNC": {
+        "type": "boolean",
+        "write": false,
+        "example": "DEVICE.NTPSYNC"
+    },
+    "DEVICE.T_HEAT_VACATION": {
+        "type": "number",
+        "write": true,
+        "example": "DEVICE.T_HEAT_VACATION"
+    },
+    "DEVICE.PUMP": {
+        "type": "boolean",
+        "write": false,
+        "example": "DEVICE.PUMP"
+    },
+    "DEVICE.LOCK_MODE": {
+        "type": "string",
+        "write": true,
+        "example": "DEVICE.LOCK_MODE"
+    },
+    "DEVICE.MODE": {
+        "type": "string",
+        "write": false,
+        "example": "DEVICE.MODE"
+    },
+    "VACATION.STATE": {
+        "type": "boolean",
+        "write": false,
+        "example": "VACATION.STATE"
+    },
+    "VACATION.START_DATE": {
+        "type": "string",
+        "write": true,
+        "example": "VACATION.START_DATE"
+    },
+    "VACATION.START_TIME": {
+        "type": "string",
+        "write": true,
+        "example": "VACATION.START_TIME"
+    },
+    "VACATION.END_DATE": {
+        "type": "string",
+        "write": false,
+        "example": "VACATION.END_DATE"
+    },
+    "VACATION.END_TIME": {
+        "type": "string",
+        "write": false,
+        "example": "VACATION.END_TIME"
+    },
+    "PROGRAM.#.#.START": {
+        "type": "string",
+        "write": false,
+        "example": "PROGRAM.4.1.START"
+    },
+    "PROGRAM.#.#.END": {
+        "type": "string",
+        "write": false,
+        "example": "PROGRAM.4.1.END"
+    },
+    "HEATAREA.#.HEATAREA_NAME": {
+        "type": "string",
+        "write": false,
+        "example": "HEATAREA.1.HEATAREA_NAME"
+    },
+    "HEATAREA.#.HEATAREA_MODE": {
+        "type": "string",
+        "write": true,
+        "example": "HEATAREA.1.HEATAREA_MODE"
+    },
+    "HEATAREA.#.T_ACTUAL": {
+        "type": "number",
+        "write": false,
+        "example": "HEATAREA.1.T_ACTUAL"
+    },
+    "HEATAREA.#.T_TARGET": {
+        "type": "number",
+        "write": true,
+        "example": "HEATAREA.1.T_TARGET"
+    },
+    "HEATAREA.#.PROGRAM_WEEK": {
+        "type": "string",
+        "write": true,
+        "example": "HEATAREA.1.PROGRAM_WEEK"
+    },
+    "HEATAREA.#.PROGRAM_WEEKEND": {
+        "type": "string",
+        "write": true,
+        "example": "HEATAREA.1.PROGRAM_WEEKEND"
+    },
+    "HEATAREA.#.T_HEAT_DAY": {
+        "type": "number",
+        "write": true,
+        "example": "HEATAREA.1.T_HEAT_DAY"
+    },
+    "HEATAREA.#.T_HEAT_NIGHT": {
+        "type": "number",
+        "write": true,
+        "example": "HEATAREA.1.T_HEAT_NIGHT"
+    },
+    "HEATAREA.#.T_COOL_DAY": {
+        "type": "number",
+        "write": true,
+        "example": "HEATAREA.1.T_COOL_DAY"
+    },
+    "HEATAREA.#.T_COOL_NIGHT": {
+        "type": "number",
+        "write": true,
+        "example": "HEATAREA.1.T_COOL_NIGHT"
+    },
+    "HEATAREA.#.ISLOCKED": {
+        "type": "string",
+        "write": false,
+        "example": "HEATAREA.1.ISLOCKED"
+    },
+    "HEATCTRL.#.INUSE": {
+        "type": "boolean",
+        "write": false,
+        "example": "HEATCTRL.1.INUSE"
+    },
+    "HEATCTRL.#.HEATAREA_NR": {
+        "type": "string",
+        "write": false,
+        "example": "HEATCTRL.1.HEATAREA_NR"
+    },
+    "HEATCTRL.#.ACTOR": {
+        "type": "boolean",
+        "write": false,
+        "example": "HEATCTRL.1.ACTOR"
+    },
+    "HEATCTRL.#.HEATCTRL_STATE": {
+        "type": "number",
+        "write": false,
+        "example": "HEATCTRL.1.HEATCTRL_STATE"
+    },
+    "HEATCTRL.#.ACTOR_PERCENT": {
+        "type": "number",
+        "write": false,
+        "example": "HEATCTRL.1.ACTOR_PERCENT"
+    },
+    "IODEVICE.#.IODEVICE_TYPE": {
+        "type": "string",
+        "write": false,
+        "example": "IODEVICE.1.IODEVICE_TYPE"
+    },
+    "IODEVICE.#.IODEVICE_ID": {
+        "type": "string",
+        "write": false,
+        "example": "IODEVICE.1.IODEVICE_ID"
+    },
+    "IODEVICE.#.IODEVICE_COMERROR": {
+        "type": "string",
+        "write": false,
+        "example": "IODEVICE.1.IODEVICE_COMERROR"
+    },
+    "IODEVICE.#.IODEVICE_STATE": {
+        "type": "string",
+        "write": false,
+        "example": "IODEVICE.1.IODEVICE_STATE"
+    },
+    "IODEVICE.#.HEATAREA_NR": {
+        "type": "string",
+        "write": false,
+        "example": "IODEVICE.1.HEATAREA_NR"
+    },
+    "IODEVICE.#.SIGNALSTRENGTH": {
+        "type": "string",
+        "write": false,
+        "example": "IODEVICE.1.SIGNALSTRENGTH"
+    },
+    "IODEVICE.#.BATTERY": {
+        "type": "string",
+        "write": false,
+        "example": "IODEVICE.1.BATTERY"
+    },
+    "IODEVICE.#.ISON": {
+        "type": "string",
+        "write": false,
+        "example": "IODEVICE.1.ISON"
+    }
+}

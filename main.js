@@ -1,365 +1,429 @@
-/**
- *
- * Moehlenhoff Alpha2 Adapter
- *
- *
- *  file io-package.json comments:
- *
- *
- */
-
-/* jshint -W097 */// jshint strict:false
-/*jslint node: true */
 'use strict';
 
-// you have to require the utils module and call adapter function
-const utils = require('@iobroker/adapter-core'); // Get common adapter utils
+/*
+ * ioBroker adapter for the Möhlenhoff Alpha 2 underfloor heating control (base station EZR).
+ * Reads and writes the local XML API of the base station, no cloud needed.
+ */
 
-// you have to call the adapter function and pass a options object
-// name has to be set and has to be equal to adapters folder name and main file name excluding extension
-// adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.template.0
-const adapter = new utils.Adapter('alpha2');
-const request = require('request');
-const parser = require('xml2js').parseString;
-const http = require('node:http');   
+const utils = require('@iobroker/adapter-core');
+const { Alpha2Client } = require('./lib/client');
+const { deviceOf } = require('./lib/xml');
+const { extract, commonOf, parentsOf } = require('./lib/mapping');
+const { buildCommand, buildTimeCommand, CommandError } = require('./lib/commands');
+const { CHECK_EVERY_MS, compareClock, describeOffset, formatDeviceTime } = require('./lib/clock');
 
-// define adapter wide vars
-var device_id;
+const PATH_STATIC = '/data/static.xml';
+const PATH_CYCLIC = '/data/cyclic.xml';
+const PATH_CHANGES = '/data/changes.xml';
+/** after this many failed requests in a row the base station counts as offline */
+const FAILURES_UNTIL_OFFLINE = 3;
+/** longest pause between attempts while the base station does not answer */
+const MAX_BACKOFF_MS = 5 * 60 * 1000;
+/** the base station needs a moment until a change shows up in static.xml */
+const READBACK_DELAY_MS = 2000;
+/** writable temperatures that get min/max of their heat area */
+const LIMITED_TEMPS = ['T_TARGET', 'T_HEAT_DAY', 'T_HEAT_NIGHT'];
 
-/*Variable declaration, since ES6 there are let to declare variables. Let has a more clearer definition where 
-it is available then var.The variable is available inside a block and it's childs, but not outside. 
-You can define the same variable name inside a child without produce a conflict with the variable of the parent block.*/
-let variable = 1234;
+/**
+ * @param {number} v value
+ * @param {number} min lowest
+ * @param {number} max highest
+ * @returns {number} value within min…max
+ */
+const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
-// is called when adapter shuts down - callback has to be called under any circumstances!
-adapter.on('unload', function (callback) {
-    try {
-        adapter.log.info('cleaned everything up...');
-        callback();
-    } catch (e) {
-        callback();
+class Alpha2 extends utils.Adapter {
+    /**
+     * @param {Partial<utils.AdapterOptions>} [options] adapter options
+     */
+    constructor(options = {}) {
+        super({ ...options, name: 'alpha2' });
+        this.on('ready', this.onReady.bind(this));
+        this.on('stateChange', this.onStateChange.bind(this));
+        this.on('unload', this.onUnload.bind(this));
+
+        this.client = null;
+        this.pollTimer = undefined;
+        this.stopping = false;
+        this.pollMs = 10000;
+        this.staticMs = 30000;
+        this.lastStatic = 0;
+        this.failures = 0;
+        this.reachable = false;
+        this.everConnected = false;
+        this.deviceId = '';
+        /** set the clock of the base station when it is wrong */
+        this.syncClock = false;
+        this.lastClockCheck = 0;
+        /** target temperature limits per heat area */
+        this.limits = new Map();
+        /** last value written with ack per state */
+        this.values = new Map();
+        /** objects checked in this run */
+        this.known = new Set();
+        /** channel name per heat area */
+        this.areaNames = new Map();
+        /** newest unsent value per state */
+        this.pendingWrites = new Map();
+        /** all access to the base station runs one after another */
+        this.queue = Promise.resolve();
     }
-});
 
-// is called if a subscribed object changes
-adapter.on('objectChange', function (id, obj) {
-    // Warning, obj can be null if it was deleted
-    adapter.log.debug('objectChange ' + id + ' ' + JSON.stringify(obj));
-});
+    async onReady() {
+        await this.setStateAsync('info.connection', false, true);
 
-// is called if a subscribed state changes
-adapter.on('stateChange', function (id, state) {
-    // Warning, state can be null if it was deleted
-    //adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
+        const cfg = this.config;
+        const address = String(cfg.host || '').trim();
+        this.pollMs = clamp(Number(cfg.polltime) || 10000, 2000, 3600000);
+        this.staticMs = clamp((Number(cfg.staticInterval) || 30) * 1000, 10000, 3600000);
+        const timeout = clamp(Number(cfg.timeout) || 5000, 1000, 30000);
+        this.syncClock = cfg.syncTime === true || cfg.syncTime === 'true';
 
-    // you can use the ack flag to detect if it is status (true) or command (false)
-    if (state && !state.ack) {
-        adapter.log.debug('ack is not set!');
-		adapter.log.debug('Value: ' + state.val);
-		adapter.log.debug('id: ' + id);
-		
-		// save value in var
-		var new_val = state.val;
-		
-		// Set HEATAREA values
-        for (var i = 1; i < 13; i++) //Alle möglichen HEATAREA's abprüfen..
-        {
-            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.T_TARGET') {var heatarea = i; var new_target = 'T_TARGET'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.T_HEAT_DAY') {var heatarea = i; var new_target = 'T_HEAT_DAY'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.T_HEAT_NIGHT') {var heatarea = i; var new_target = 'T_HEAT_NIGHT'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.T_COOL_DAY') {var heatarea = i; var new_target = 'T_COOL_DAY'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.T_COOL_NIGHT') {var heatarea = i; var new_target = 'T_COOL_NIGHT'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.HEATAREA_MODE') {var heatarea = i; var new_target = 'HEATAREA_MODE'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}		
-            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.PROGRAM_WEEK') {var heatarea = i;	var new_target = 'PROGRAM_WEEK'; var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.PROGRAM_WEEKEND') {var heatarea = i;var new_target = 'PROGRAM_WEEKEND';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}
-            if (id == adapter.namespace + '.' + 'HEATAREA.' + i + '.ISLOCKED') {var heatarea = i;var new_target = 'ISLOCKED';var xml_construct = '<HEATAREA nr="'+ heatarea +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></HEATAREA>';}            
+        if (!address) {
+            this.log.error('Please enter the IP address of the Alpha2 base station in the adapter settings.');
+            return;
         }
-        
-		if (id == adapter.namespace + '.' + 'DEVICE.T_HEAT_VACATION') {var new_target = 'T_HEAT_VACATION';var xml_construct = '<'+ new_target +'>'+ new_val +'</'+ new_target +'>';}
-        if (id == adapter.namespace + '.' + 'DEVICE.LOCK_MODE') {var new_target = 'LOCK_MODE';var xml_construct = '<'+ new_target +'>'+ new_val +'</'+ new_target +'>';}
-                
-		if (id == adapter.namespace + '.' + 'PROGRAM.1.1.END') {var nr = '1'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.1.1.START') {var nr = '1'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.1.2.END') {var nr = '1'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.1.2.START') {var nr = '1'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.1.3.END') {var nr = '1'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.1.3.START') {var nr = '1'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.1.4.END') {var nr = '1'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.1.4.START') {var nr = '1'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.2.1.END') {var nr = '2'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.2.1.START') {var nr = '2'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.2.2.END') {var nr = '2'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.2.2.START') {var nr = '2'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.2.3.END') {var nr = '2'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.2.3.START') {var nr = '2'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.2.4.END') {var nr = '2'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.2.4.START') {var nr = '2'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.3.1.END') {var nr = '3'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.3.1.START') {var nr = '3'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.3.2.END') {var nr = '3'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.3.2.START') {var nr = '3'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.3.3.END') {var nr = '3'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.3.3.START') {var nr = '3'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.3.4.END') {var nr = '3'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.3.4.START') {var nr = '3'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.4.1.END') {var nr = '4'; var shift = '1';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.4.1.START') {var nr = '4'; var shift = '1';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.4.2.END') {var nr = '4'; var shift = '2';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.4.2.START') {var nr = '4'; var shift = '2';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.4.3.END') {var nr = '4'; var shift = '3';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.4.3.START') {var nr = '4'; var shift = '3';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.4.4.END') {var nr = '4'; var shift = '4';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.4.4.START') {var nr = '4'; var shift = '4';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.5.5.END') {var nr = '5'; var shift = '5';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.5.5.START') {var nr = '5'; var shift = '5';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.6.6.END') {var nr = '6'; var shift = '6';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.6.6.START') {var nr = '6'; var shift = '6';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.7.7.END') {var nr = '7'; var shift = '7';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.7.7.START') {var nr = '7'; var shift = '7';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.8.8.END') {var nr = '8'; var shift = '8';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.8.8.START') {var nr = '8'; var shift = '8';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.9.9.END') {var nr = '9'; var shift = '9';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.9.9.START') {var nr = '9'; var shift = '9';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.10.10.END') {var nr = '10'; var shift = '10';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.10.10.START') {var nr = '10'; var shift = '10';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.11.11.END') {var nr = '11'; var shift = '11';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.11.11.START') {var nr = '11'; var shift = '11';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.12.12.END') {var nr = '12'; var shift = '12';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.12.12.START') {var nr = '12'; var shift = '12';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.13.13.END') {var nr = '13'; var shift = '13';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.13.13.START') {var nr = '13'; var shift = '13';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.14.14.END') {var nr = '14'; var shift = '14';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.14.14.START') {var nr = '14'; var shift = '14';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.15.15.END') {var nr = '15'; var shift = '15';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.15.15.START') {var nr = '15'; var shift = '15';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.16.16.END') {var nr = '16'; var shift = '16';var new_target = 'END';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		if (id == adapter.namespace + '.' + 'PROGRAM.16.16.START') {var nr = '16'; var shift = '16';var new_target = 'START';var xml_construct = '<PROGRAM><SHIFT_PROGRAM nr="'+ nr +'" shiftingtime="'+ shift +'"><'+ new_target +'>'+ new_val +'</'+ new_target +'></SHIFT_PROGRAM></PROGRAM>';}
-		
+        try {
+            this.client = new Alpha2Client({ address, timeout });
+        } catch (e) {
+            this.log.error(e instanceof Error ? e.message : String(e));
+            return;
+        }
+        this.log.info(
+            `Base station ${this.client.host}:${this.client.port}: values every ${this.pollMs / 1000} s, ` +
+                `actuators and settings every ${this.staticMs / 1000} s${
+                    this.syncClock ? ', clock is set when it is wrong' : ''
+                }`,
+        );
 
-		if (id == adapter.namespace + '.' + 'VACATION.START_DATE') {var new_target = 'START_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
-		if (id == adapter.namespace + '.' + 'VACATION.END_DATE') {var new_target = 'END_DATE';var xml_construct = '<VACATION><'+ new_target +'>'+ new_val +'</'+ new_target +'></VACATION>';}
-    
-        // Post DATA to DEVICE
-        var data = '<?xml version="1.0" encoding="UTF-8"?><Devices><Device><ID>'+ device_id +'</ID>'+ xml_construct +'</Device></Devices>';
-        httpPost(data);
-	}
-});
+        await this.subscribeStatesAsync('*');
+        await this.poll();
+    }
 
-// Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
-adapter.on('message', function (obj) {
-    if (typeof obj === 'object' && obj.message) {
-        if (obj.command === 'send') {
-            // e.g. send email or pushover or whatever
-            console.log('send command');
+    /**
+     * Runs a task after all earlier tasks; keeps the queue alive on errors.
+     *
+     * @template T
+     * @param {() => Promise<T>} fn task
+     * @returns {Promise<T>} result
+     */
+    serial(fn) {
+        const run = this.queue.then(fn);
+        this.queue = run.catch(() => undefined);
+        return run;
+    }
 
-            // Send response in callback if required
-            if (obj.callback) adapter.sendTo(obj.from, obj.command, 'Message received', obj.callback);
+    /**
+     * One polling step, then schedules the next one.
+     */
+    async poll() {
+        this.pollTimer = undefined;
+        if (this.stopping) {
+            return;
+        }
+        const full = Date.now() - this.lastStatic >= this.staticMs;
+        try {
+            await this.serial(() => this.refresh(full));
+            await this.onSuccess();
+        } catch (e) {
+            await this.onFailure(e);
+        }
+        if (!this.stopping) {
+            const delay = this.failures
+                ? Math.min(this.pollMs * 2 ** Math.min(this.failures - 1, 10), MAX_BACKOFF_MS)
+                : this.pollMs;
+            this.pollTimer = this.setTimeout(() => this.poll(), delay);
         }
     }
-});
 
-// is called when databases are connected and adapter received configuration.
-// start here!
-adapter.on('ready', function () {
-    main();
-});
+    /**
+     * Reads static.xml (everything) or cyclic.xml (live values) and updates the states.
+     * Must run inside {@link serial}.
+     *
+     * @param {boolean} full read static.xml
+     */
+    async refresh(full) {
+        if (!this.client) {
+            throw new Error('no connection configured');
+        }
+        const xml = await this.client.get(full ? PATH_STATIC : PATH_CYCLIC);
+        const receivedAt = Date.now();
+        const values = extract(deviceOf(xml));
+        if (full && !values.has('DEVICE.ID')) {
+            throw new Error('static.xml contains no device ID');
+        }
+        await this.apply(values);
+        if (full) {
+            this.lastStatic = Date.now();
+        }
+        if (this.syncClock && values.has('DEVICE.DATETIME')) {
+            await this.checkClock(values.get('DEVICE.DATETIME'), receivedAt);
+        }
+    }
 
-// Post Data to XML-API
-function httpPost(data) {
-	
-		// URL, die abgefragt, bzw. gesendet werden soll:
-		var options = {
-			host: adapter.config.host,
-			path: '/data/changes.xml',
-			method: 'POST'                // in der Regel: "GET"
-			};
-	
-    var req = http.request(options, function(res) {
-    adapter.log.debug("http Status: " + res.statusCode);
-    adapter.log.debug('HEADERS: ' + JSON.stringify(res.headers), (res.statusCode != 200 ? "warn" : "info")); // Header (R�ckmeldung vom Webserver)
-	 if (res.statusCode == 200) {
-		setTimeout(getXMLcyclic,5000);
-	}
-	});
-    
-    req.on('error', function(e) { // Fehler abfangen
-        adapter.log.info('ERROR: ' + e.message,"warn");
-    });
+    /**
+     * Compares the clock of the base station with ioBroker once an hour and sets it if it is wrong.
+     * Does nothing while the base station syncs its clock via NTP itself. Runs inside {@link serial}.
+     *
+     * @param {unknown} deviceTime DATETIME of the base station
+     * @param {number} receivedAt time of ioBroker when the answer arrived
+     */
+    async checkClock(deviceTime, receivedAt) {
+        if (receivedAt - this.lastClockCheck < CHECK_EVERY_MS || !this.client || !this.deviceId) {
+            return;
+        }
+        this.lastClockCheck = receivedAt;
+        if (this.values.get('DEVICE.NTPSYNC') === true) {
+            this.log.debug('Clock: the base station syncs via NTP itself');
+            return;
+        }
+        const result = compareClock(deviceTime, new Date(receivedAt));
+        if (!result.set) {
+            this.log.debug(
+                `Clock: ${result.reason}${result.offset === null ? '' : ` (${describeOffset(result.offset)})`}`,
+            );
+            return;
+        }
+        // full seconds, the base station has no finer resolution
+        const time = formatDeviceTime(new Date(Math.round(Date.now() / 1000) * 1000));
+        try {
+            const cmd = buildTimeCommand(this.deviceId, time);
+            await this.client.post(PATH_CHANGES, cmd.body);
+            this.log.info(`Clock of the base station set to ${time} (was ${describeOffset(result.offset ?? 0)})`);
+        } catch (e) {
+            // tried again in an hour
+            this.log.warn(`Could not set the clock of the base station: ${e instanceof Error ? e.message : String(e)}`);
+        }
+    }
 
-    adapter.log.debug("Data to request body: " + data);
-    // write data to request body
-    (data ? req.write(data) : adapter.log.info("Daten: keine Daten angegeben"));
-    req.end();
-}
+    /**
+     * Writes changed values with ack and keeps objects up to date.
+     *
+     * @param {Map<string, string | number | boolean>} values relative state id → value
+     */
+    async apply(values) {
+        const id = values.get('DEVICE.ID');
+        if (typeof id === 'string' && id) {
+            this.deviceId = id;
+        }
 
-// Get XML Data from API
-function getXMLcyclic() {
-		request('http://'+adapter.config.host+'/data/static.xml', function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            getTemp(body); 
-            } else { 
-        adapter.log.info("Fehler beim Herunterladen: " + error, 'error');
-            }
-            });
-}
-			
-function getTemp(xml) {
-    parser(xml, {explicitArray: false, mergeAttrs: true, explicitRoot: false}, function(err, obj) {
-        if(err) adapter.log.info('Fehler XML-Parsen: ' + err, 'error');
-        else {
-				adapter.log.debug("XMLcyclic: " + JSON.stringify(obj));
-                adapter.setState(adapter.namespace + '.' + 'DEVICE.ID', {val: obj.Device.ID, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'DEVICE.NAME', {val: obj.Device.NAME, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'DEVICE.TYPE', {val: obj.Device.TYPE, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'DEVICE.DATETIME', {val: obj.Device.DATETIME, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'DEVICE.TIMEZONE', {val: obj.Device.TIMEZONE, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'DEVICE.NTPSYNC', {val: Boolean(Number(obj.Device.NTPTIMESYNC)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'DEVICE.T_HEAT_VACATION', {val: parseFloat(obj.Device.T_HEAT_VACATION), ack: true});
-                
-                adapter.setState(adapter.namespace + '.' + 'VACATION.STATE', {val: Boolean(Number(obj.Device.VACATION.VACATION_STATE)), ack: true});
-                adapter.setState(adapter.namespace + '.' + 'VACATION.START_DATE', {val: obj.Device.VACATION.START_DATE, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'VACATION.START_TIME', {val: obj.Device.VACATION.START_TIME, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'VACATION.END_DATE', {val: obj.Device.VACATION.END_DATE, ack: true});
-                adapter.setState(adapter.namespace + '.' + 'VACATION.END_TIME', {val: obj.Device.VACATION.END_TIME, ack: true});
-
-                adapter.setState(adapter.namespace + '.' + 'DEVICE.PUMP', {val: Boolean(Number(obj.Device.PUMP_OUTPUT.PUMP_ISACTIVE)), ack: true});
-                
-                adapter.log.debug("Program lenght 0: " + obj.Device.PROGRAM.SHIFT_PROGRAM.length);
-				
-				// Fill PROGRAM objects with variable XML array lenght
-				if (obj.Device.PROGRAM.SHIFT_PROGRAM.length < 16) {
-					for (var i = 1; i < 17; i++) {
-						adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ [i] +'.'+ [i] +'.START', {val: null, ack: true});
-						adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ [i] +'.'+ [i] +'.END', {val: null, ack: true});
-					}
-				}
-					
-				for (var i = 0; i < obj.Device.PROGRAM.SHIFT_PROGRAM.length; i++) {
-					adapter.log.debug("--- for loop position: " + i);
-					adapter.log.debug("Program NR: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr);				
-					adapter.log.debug("Shiftingtime: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime);
-					adapter.log.debug("Start: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].START);
-					adapter.log.debug("End: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].END);
-					adapter.log.debug("PROGRAM: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].START);
-					adapter.log.debug("PROGRAM: " + obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].END);
-				
-					adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.START', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[i].START , ack: true});
-					adapter.setState(adapter.namespace + '.' + 'PROGRAM.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].nr +'.'+ obj.Device.PROGRAM.SHIFT_PROGRAM[i].shiftingtime +'.END', {val: obj.Device.PROGRAM.SHIFT_PROGRAM[i].END , ack: true});
-				}				
-					
-				for (var i = 0; i < obj.Device.HEATAREA.length; i++) {					
-					
-					var HeatareaNr = obj.Device.HEATAREA[i].nr; //Nummer der Heatarea auslesen
-					//adapter.log.info(JSON.stringify(obj.Device.HEATAREA));
-					//adapter.log.info(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.');
-					
-					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.HEATAREA_NAME', {val: obj.Device.HEATAREA[i].HEATAREA_NAME, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.HEATAREA_MODE', {val: obj.Device.HEATAREA[i].HEATAREA_MODE, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_ACTUAL', {val: parseFloat(obj.Device.HEATAREA[i].T_ACTUAL), ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_TARGET', {val: parseFloat(obj.Device.HEATAREA[i].T_TARGET), ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.PROGRAM_WEEK', {val: obj.Device.HEATAREA[i].PROGRAM_WEEK, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.PROGRAM_WEEKEND', {val: obj.Device.HEATAREA[i].PROGRAM_WEEKEND, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_HEAT_DAY', {val: parseFloat(obj.Device.HEATAREA[i].T_HEAT_DAY), ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_HEAT_NIGHT', {val: parseFloat(obj.Device.HEATAREA[i].T_HEAT_NIGHT), ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_COOL_DAY', {val: parseFloat(obj.Device.HEATAREA[i].T_COOL_DAY), ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.T_COOL_NIGHT', {val: parseFloat(obj.Device.HEATAREA[i].T_COOL_NIGHT), ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATAREA.'+ [HeatareaNr] +'.ISLOCKED', {val: obj.Device.HEATAREA[i].ISLOCKED, ack: true});
+        const changedLimits = new Set();
+        for (const [key, v] of values) {
+            const m = /^HEATAREA\.(\d+)\.T_TARGET_MIN$/.exec(key);
+            const max = m && values.get(`HEATAREA.${m[1]}.T_TARGET_MAX`);
+            if (m && typeof v === 'number' && typeof max === 'number' && v < max) {
+                const old = this.limits.get(m[1]);
+                if (!old || old.min !== v || old.max !== max) {
+                    this.limits.set(m[1], { min: v, max });
+                    changedLimits.add(m[1]);
                 }
-								
-				for (var i = 0; i < obj.Device.HEATCTRL.length; i++) {
-                    
-					var HeatctrlNr = obj.Device.HEATCTRL[i].nr; //Nummer des Heatctrl auslesen
-					//adapter.log.info(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.');
-					
-					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.INUSE', {val: Boolean(Number(obj.Device.HEATCTRL[i].INUSE)), ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.HEATAREA_NR', {val: obj.Device.HEATCTRL[i].HEATAREA_NR, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.ACTOR', {val: Boolean(Number(obj.Device.HEATCTRL[i].ACTOR)), ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.HEATCTRL_STATE', {val: Number(obj.Device.HEATCTRL[i].HEATCTRL_STATE), ack: true});
-					adapter.setState(adapter.namespace + '.' + 'HEATCTRL.'+ [HeatctrlNr] +'.ACTOR_PERCENT', {val: Number(obj.Device.HEATCTRL[i].ACTOR_PERCENT), ack: true});
-				}
-				
-				for (var i = 0; i < obj.Device.IODEVICE.length; i++) {
-                    
-					var IODeviceNr = obj.Device.IODEVICE[i].nr; //Nummer des Iodevice auslesen
-					//adapter.log.info(JSON.stringify(obj.Device.IODEVICE));
-					//adapter.log.info(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.');
-					
-					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_TYPE', {val: obj.Device.IODEVICE[i].IODEVICE_TYPE, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_ID', {val: obj.Device.IODEVICE[i].IODEVICE_ID, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_STATE', {val: obj.Device.IODEVICE[i].IODEVICE_STATE, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.IODEVICE_COMERROR', {val: obj.Device.IODEVICE[i].IODEVICE_COMERROR, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.HEATAREA_NR', {val: obj.Device.IODEVICE[i].HEATAREA_NR, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.SIGNALSTRENGTH', {val: obj.Device.IODEVICE[i].SIGNALSTRENGTH, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.BATTERY', {val: obj.Device.IODEVICE[i].BATTERY, ack: true});
-					adapter.setState(adapter.namespace + '.' + 'IODEVICE.'+ [IODeviceNr] +'.ISON', {val: obj.Device.IODEVICE[i].ISON, ack: true});
-				}
-			    // fill global vals
-				device_id = obj.Device.ID;
-			   
+            }
         }
-    });
-	
+
+        for (const [key, v] of values) {
+            if (this.stopping) {
+                return;
+            }
+            await this.ensureObject(key);
+            if (this.values.get(key) !== v) {
+                await this.setStateAsync(key, { val: v, ack: true });
+                this.values.set(key, v);
+            }
+            const m = /^HEATAREA\.(\d+)\.HEATAREA_NAME$/.exec(key);
+            if (m && typeof v === 'string' && v && this.areaNames.get(m[1]) !== v) {
+                await this.extendObjectAsync(`HEATAREA.${m[1]}`, { common: { name: v } });
+                this.areaNames.set(m[1], v);
+            }
+        }
+
+        for (const nr of changedLimits) {
+            const { min, max } = this.limits.get(nr);
+            for (const tag of LIMITED_TEMPS) {
+                const sid = `HEATAREA.${nr}.${tag}`;
+                if (this.known.has(sid)) {
+                    await this.extendObjectAsync(sid, { common: { min, max } });
+                }
+            }
+        }
+    }
+
+    /**
+     * Creates or updates the object of a state (and its parents) once per run.
+     * extendObject keeps settings such as history/InfluxDB and existing aliases.
+     *
+     * @param {string} id relative state id
+     */
+    async ensureObject(id) {
+        if (this.known.has(id)) {
+            return;
+        }
+        for (const p of parentsOf(id)) {
+            if (!this.known.has(p.id)) {
+                await this.setObjectNotExistsAsync(p.id, { type: p.type, common: { name: p.name }, native: {} });
+                this.known.add(p.id);
+            }
+        }
+        const common = commonOf(id);
+        if (common) {
+            await this.extendObjectAsync(id, { type: 'state', common, native: {} });
+        }
+        this.known.add(id);
+    }
+
+    /**
+     * @param {string} fullId state id
+     * @param {ioBroker.State | null | undefined} state state
+     */
+    onStateChange(fullId, state) {
+        if (!state || state.ack || this.stopping || !fullId.startsWith(`${this.namespace}.`)) {
+            return;
+        }
+        const id = fullId.slice(this.namespace.length + 1);
+        if (id.startsWith('info.')) {
+            return;
+        }
+        // a slider sends many values; only the newest one waiting for its turn is sent
+        const queued = this.pendingWrites.has(id);
+        this.pendingWrites.set(id, state.val);
+        if (!queued) {
+            this.serial(() => this.runCommand(id)).catch(e =>
+                this.log.error(`Command ${id}: ${e instanceof Error ? e.message : String(e)}`),
+            );
+        }
+    }
+
+    /**
+     * Sends the newest value of a state to the base station and reads the result back.
+     * Runs inside {@link serial}.
+     *
+     * @param {string} id relative state id
+     */
+    async runCommand(id) {
+        if (!this.pendingWrites.has(id) || this.stopping || !this.client) {
+            return;
+        }
+        const value = this.pendingWrites.get(id);
+        this.pendingWrites.delete(id);
+
+        if (!this.deviceId) {
+            try {
+                await this.refresh(true);
+            } catch {
+                // reported below as "ID not known yet"
+            }
+        }
+
+        let cmd;
+        try {
+            cmd = buildCommand(id, value, { deviceId: this.deviceId, limits: nr => this.limits.get(nr) });
+        } catch (e) {
+            if (e instanceof CommandError) {
+                this.log.warn(`Not sent: ${e.message}`);
+                await this.restore(id);
+                return;
+            }
+            throw e;
+        }
+
+        try {
+            await this.client.post(PATH_CHANGES, cmd.body);
+            this.log.info(`Sent: ${cmd.description}`);
+        } catch (e) {
+            this.log.warn(`Could not send ${cmd.description}: ${e instanceof Error ? e.message : String(e)}`);
+            await this.restore(id);
+            return;
+        }
+
+        // the next answer confirms the value with ack (or shows what the base station made of it)
+        this.values.delete(id);
+        if (this.pendingWrites.size) {
+            return; // the last command of a series reads back
+        }
+        await this.wait(READBACK_DELAY_MS);
+        if (this.stopping) {
+            return;
+        }
+        try {
+            await this.refresh(true);
+            await this.onSuccess();
+        } catch (e) {
+            await this.onFailure(e);
+        }
+    }
+
+    /**
+     * Shows the last value of the base station again after a rejected command.
+     *
+     * @param {string} id relative state id
+     */
+    async restore(id) {
+        const v = this.values.get(id);
+        if (v !== undefined) {
+            await this.setStateAsync(id, { val: v, ack: true });
+        }
+    }
+
+    /**
+     * @param {number} ms pause
+     * @returns {Promise<void>} resolves after the pause
+     */
+    wait(ms) {
+        return new Promise(resolve => {
+            this.setTimeout(() => resolve(), ms);
+        });
+    }
+
+    async onSuccess() {
+        if (this.failures >= FAILURES_UNTIL_OFFLINE) {
+            this.log.info('Base station answers again');
+        }
+        this.failures = 0;
+        this.everConnected = true;
+        if (!this.reachable) {
+            this.reachable = true;
+            await this.setStateAsync('info.connection', true, true);
+        }
+    }
+
+    /**
+     * @param {unknown} err error
+     */
+    async onFailure(err) {
+        if (this.stopping) {
+            return;
+        }
+        this.failures++;
+        const msg = err instanceof Error ? err.message : String(err);
+        if (this.failures === FAILURES_UNTIL_OFFLINE || (!this.everConnected && this.failures === 1)) {
+            this.log.warn(`Base station not reachable: ${msg}`);
+        } else {
+            this.log.debug(`Request failed (${this.failures}× in a row): ${msg}`);
+        }
+        if (this.failures >= FAILURES_UNTIL_OFFLINE && this.reachable) {
+            this.reachable = false;
+            await this.setStateAsync('info.connection', false, true);
+        }
+    }
+
+    /**
+     * @param {() => void} callback done
+     */
+    onUnload(callback) {
+        try {
+            this.stopping = true;
+            if (this.pollTimer) {
+                this.clearTimeout(this.pollTimer);
+            }
+            this.client?.close();
+            this.setState('info.connection', false, true);
+        } finally {
+            callback();
+        }
+    }
 }
-		
-function main() {
 
-    // The adapters config (in the instance object everything under the attribute "native") is accessible via
-    // adapter.config:
-    	
-	/*
-	* Interval
-	* example 
-	* setInterval(pifaceread, adapter.config.piinterval);
-	*/
-	setInterval(getXMLcyclic, adapter.config.polltime);
-	adapter.log.info('config host: ' + adapter.config.host);
-	adapter.log.info('config polltime: ' + adapter.config.polltime);
-
-
-    /**
-     *
-     *      For every state in the system there has to be also an object of type state
-     *
-     *      Here a simple template for a boolean variable named "testVariable"
-     *
-     *      Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-     *
-     */
-
-   
-    // in this template all states changes inside the adapters namespace are subscribed
-    adapter.subscribeStates('*');
-	getXMLcyclic();
-
-
-    /**
-     *   setState examples
-     *
-     *   you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-     *
-     */
-
-    // the variable testVariable is set to true as command (ack=false)
-   // adapter.setState('testVariable', ack: true});
-
-    // same thing, but the value is flagged "ack"
-    // ack should be always set to true if the value is received from or acknowledged from the target system
-  //  adapter.setState('testVariable', {val: true, ack: true});
-
-    // same thing, but the state is deleted after 30s (getState will return null afterwards)
-  //  adapter.setState('testVariable', {val: true, ack: true, expire: 30});
-
-
-
-    // examples for the checkPassword/checkGroup functions
-  //  adapter.checkPassword('admin', 'iobroker', function (res) {
-  //      console.log('check user admin pw ioboker: ' + res);
-  //  });
-
-  //  adapter.checkGroup('admin', 'admin', function (res) {
-  //      console.log('check group user admin group admin: ' + res);
-  //  });
-
-
-
+if (require.main !== module) {
+    module.exports = options => new Alpha2(options);
+} else {
+    new Alpha2();
 }
