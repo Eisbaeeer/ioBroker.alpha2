@@ -102,4 +102,4 @@ fixed issues #1
 
 ## License
 The MIT License (MIT)
-Copyright (c) 2021 Eisbaeeer eisbaeeer@gmail.com
+Copyright (c) 2021-2026 Eisbaeeer eisbaeeer@gmail.com
