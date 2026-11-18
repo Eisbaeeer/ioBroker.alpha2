@@ -1,5 +1,5 @@
 # Lint, package check, unit tests and integration tests (simulated base station) on every push and pull request.
-# Publishing to npm is not set up yet (needs an npm token of the package owner).
+# A tag vX.Y.Z (created by `npm run release`) publishes to npm with trusted publishing (no token needed).
 
 name: Test and Release
 
@@ -33,10 +33,31 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                node-version: [22.x, 24.x]
+                node-version: [22.x, 24.x, 26.x]
                 os: [ubuntu-latest, windows-latest, macos-latest]
         steps:
             - uses: ioBroker/testing-action-adapter@v1
               with:
                   node-version: ${{ matrix.node-version }}
                   os: ${{ matrix.os }}
+
+    deploy:
+        needs: [check-and-lint, adapter-tests]
+
+        if: |
+            contains(github.event.head_commit.message, '[skip ci]') == false &&
+            github.event_name == 'push' &&
+            startsWith(github.ref, 'refs/tags/v')
+
+        runs-on: ubuntu-latest
+
+        permissions:
+            contents: write
+            id-token: write
+
+        steps:
+            - uses: ioBroker/testing-action-deploy@v1
+              with:
+                  node-version: '24.x'
+                  npm-token: ${{ secrets.NPM_TOKEN }}
+                  github-token: ${{ secrets.GITHUB_TOKEN }}

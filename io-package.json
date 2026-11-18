@@ -28,42 +28,6 @@
                 "pl": "Przepisany: jedno zapytanie naraz z limitem czasu, info.connection, więcej wartości (impreza, obecność, limity, firmware, błędy), sprawdzany zapis, brak danych chmury w ioBroker. Istniejące stany zachowują nazwy i typy.",
                 "uk": "Переписано: один запит за раз із тайм-аутом, info.connection, більше значень (вечірка, присутність, межі, прошивка, помилки), перевірений запис, без хмарних даних в ioBroker. Наявні стани зберігають назви та типи.",
                 "zh-cn": "重写：每次只发送一个带超时的请求，info.connection，更多数值（派对、在家、限值、固件、错误），经检查的写入，ioBroker 中不含云端数据。现有状态保留名称和类型。"
-            },
-            "1.0.4": {
-                "en": "Added PUMP status",
-                "de": "Neues Pumpenobjekt"
-            },
-            "1.0.3": {
-                "en": "Fixed errormessages in log",
-                "de": "Fehlermeldungen im Log korrigiert"
-            },
-            "1.0.2": {
-                "en": "Fixed an issue if you don't use all 4/8/12 heataras then heatareas could get assigned to wrong heatarea object in iobroker Expanded Heatareas and Heatctrl to the maxiumum of 12 Changed Heatarea and Heatctrl indexing to 1-12 (old 0-11 was very confusing) Added support for locking controllers (kids mode) Added some new objects and infos like IODEVICEs etc.",
-                "de": "Fehler behoben, wodurch Heizkreise dem falschen Heizkreisobjekt in IOBroker zugeordnert wurden wenn nicht alle 4/8/12 Heizkreise verwendet werden Heizkreise und Schaltausgänge auf maximal 12 erweitert Index der Heizkreise und Schaltausgänge auf 1-12 geändert (zuvor 0-11 war verwirrend) Funktion zum Sperren der Regler hinzugefügt (Kindersicherung) Einige neue Objekte und Infos hinzugefügt, z.B. IODEVICEs"
-            },
-            "1.0.1": {
-                "en": "Fixed issue #6 (HEATAREA_NAME)",
-                "de": "Issue #6 korrigiert (HEATAREA_NAME)"
-            },
-            "1.0.0": {
-                "en": "Fixed issue #6 (HEATAREA_NAME)",
-                "de": "Issue #6 korrigiert (HEATAREA_NAME)"
-            },
-            "0.0.4": {
-                "en": "Added refresh after set objects",
-                "de": "Aktualisierung nach setzen von Objekten"
-            },
-            "0.0.3": {
-                "en": "Fixed issue #2",
-                "de": "Fixed issue #2"
-            },
-            "0.0.2": {
-                "en": "Fixed issue #1",
-                "de": "Fixed issue #1"
-            },
-            "0.0.1": {
-                "en": "Initial version",
-                "de": "Initiale Version"
             }
         },
         "titleLang": {

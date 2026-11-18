@@ -103,6 +103,8 @@ does not deliver (e.g. unused program slots) are left untouched.
 
 - (djlex83) Optional: sets the clock of the base station when it is more than 30 s wrong (checked every hour)
 - (djlex83) Requires Node.js 22 or newer
+- (djlex83) Tested on Node.js 22, 24 and 26; release workflow with npm trusted publishing
+- (djlex83) Roles of text, date and time states corrected (`text`, `date`); old 1.x changelog moved to `CHANGELOG_OLD.md`
 
 ### 2.0.0 (2026-11-17)
 
