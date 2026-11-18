@@ -1,0 +1,27 @@
+// Type checking of the JavaScript sources (no build): npm run check
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        // nothing is compiled, this file only configures the type check
+        "noEmit": true,
+
+        // check JS files with their JSDoc types
+        "allowJs": true,
+        "checkJs": true,
+
+        "module": "node16",
+        "moduleResolution": "node16",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+
+        "strict": true,
+        "noImplicitAny": false,
+        "useUnknownInCatchVariables": false,
+
+        "target": "es2022",
+        "lib": ["es2023"],
+        "types": ["node", "@iobroker/types"]
+    },
+    "include": ["main.js", "lib/**/*.js", "lib/**/*.d.ts"],
+    "exclude": ["node_modules/**", "test/**", "admin/**"]
+}

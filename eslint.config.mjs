@@ -7,6 +7,13 @@ export default [
         ignores: ['.dev-server/', '.vscode/', 'tmp/', 'admin/build', '*.config.mjs', 'node_modules/'],
     },
     {
+        // @typedef, @property and @type carry the types for the type check of the JS files (tsconfig.json)
+        files: ['**/*.js'],
+        rules: {
+            'jsdoc/check-tag-names': ['warn', { typed: false }],
+        },
+    },
+    {
         files: ['test/**/*.js'],
         languageOptions: {
             globals: {

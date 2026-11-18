@@ -105,6 +105,7 @@ does not deliver (e.g. unused program slots) are left untouched.
 - (djlex83) Requires admin 7.6.20 or newer
 - (djlex83) Findings of the repository checker fixed (#80)
 - (djlex83) Link to the manufacturer added to the README; a connection that breaks off during an answer is detected without the deprecated `aborted` event; contact address instead of the GitHub noreply address (#82)
+- (djlex83) Type check of the sources (`npm run check`, also in CI), `@iobroker/adapter-dev` for translations (`npm run translate`), manual review step in the release script (#83)
 
 ### 2.1.0 (2026-11-18)
 

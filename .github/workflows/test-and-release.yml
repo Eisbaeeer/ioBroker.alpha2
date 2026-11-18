@@ -25,6 +25,7 @@ jobs:
               with:
                   node-version: '24.x'
                   lint: true
+                  type-checking: true
 
     adapter-tests:
         if: contains(github.event.head_commit.message, '[skip ci]') == false
