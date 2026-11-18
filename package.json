@@ -40,6 +40,12 @@
         "@iobroker/testing": "^6.3.2",
         "@types/node": "^22.20.5"
     },
+    "overrides": {
+        "mocha": {
+            "glob": "^14.0.2",
+            "minimatch": "^11.0.1"
+        }
+    },
     "main": "main.js",
     "files": [
         "admin/",
