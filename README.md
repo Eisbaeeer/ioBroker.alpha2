@@ -2,10 +2,16 @@
 
 # ioBroker.alpha2
 
+[![NPM version](https://img.shields.io/npm/v/iobroker.alpha2.svg)](https://www.npmjs.com/package/iobroker.alpha2)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.alpha2.svg)](https://www.npmjs.com/package/iobroker.alpha2)
+![Number of Installations](https://iobroker.live/badges/alpha2-installed.svg)
+![Current version in stable repository](https://iobroker.live/badges/alpha2-stable.svg)
+[![Test and Release](https://github.com/Eisbaeeer/ioBroker.alpha2/actions/workflows/test-and-release.yml/badge.svg)](https://github.com/Eisbaeeer/ioBroker.alpha2/actions/workflows/test-and-release.yml)
+
 Local control of the **[Möhlenhoff](https://www.moehlenhoff.de) Alpha 2** underfloor heating control (base station EZR) in ioBroker.
 The adapter talks to the XML API of the base station in your network. No cloud account is needed.
 
-Version 2.0.0 is a rewrite. **It is a drop-in update for 1.x**: the adapter name, all state IDs and their
+Version 2 is a rewrite. **It is a drop-in update for 1.x**: the adapter name, all state IDs and their
 types stay the same, so aliases, scripts, visualisations and history (InfluxDB, SQL, History) keep working.
 
 ## What is new in 2.0
@@ -28,7 +34,19 @@ types stay the same, so aliases, scripts, visualisations and history (InfluxDB, 
 - **Nothing secret in ioBroker:** cloud credentials, network settings, the expert code and the lock codes of
   the room units are never read into states.
 - Writable temperatures get `min`/`max` of their heat area, so sliders in visualisations have the right range.
-- No dependencies besides `@iobroker/adapter-core`; Admin 5+ settings page (JSON config).
+- No dependencies besides `@iobroker/adapter-core`; settings page as JSON config in all 11 ioBroker languages.
+
+## Requirements
+
+- Alpha 2 base station with network connection, reachable from ioBroker (the XML API needs no login)
+- Node.js 22 or newer
+- js-controller 6.0.11 or newer, Admin 7.6.20 or newer
+
+## Installation
+
+Install the adapter in the admin under _Adapters_. The discovery adapter finds Alpha 2 base stations in the
+network and proposes this adapter (from the release of `iobroker.discovery` after 5.3.0). Otherwise create an
+instance and enter the IP address of the base station in its settings.
 
 ## Settings
 
@@ -41,6 +59,15 @@ types stay the same, so aliases, scripts, visualisations and history (InfluxDB, 
 | Set the clock automatically      | off     | see below                                                     |
 
 If you use more than one base station, add one instance per base station.
+
+### Only one program at a time
+
+The base station answers only one request at a time. Other scripts, adapters or tools that query it at the same
+time can make requests fail (`aborted`) on both sides. Let this adapter be the only one that polls the base station
+and use its states in scripts. A separate script that sets the clock of the base station is not needed any more
+(see below). Opening the web interface of the base station now and then is fine: a single failed request is only
+logged at debug level and repeated with the next poll; a warning and `info.connection` = `false` follow only after
+three failures in a row.
 
 ### Clock of the base station
 
@@ -92,6 +119,21 @@ Install the new version over the old one; the instance and its settings stay. Ob
 replaced, so custom settings such as history logging stay as they are. States of 1.x that the base station
 does not deliver (e.g. unused program slots) are left untouched.
 
+## Development
+
+| Command                               | What it does                                                                              |
+| ------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `npm test`                            | unit tests and package tests                                                              |
+| `npm run test:integration`            | starts the adapter in a test ioBroker against a simulated base station                    |
+| `npm run check`                       | type check of the JavaScript sources with their JSDoc types (`tsconfig.json`)             |
+| `npm run lint`                        | ESLint and Prettier                                                                       |
+| `npm run translate`                   | translates new texts of `io-package.json` and `admin/i18n/en.json` into all languages     |
+| `node tools/read-device.js <address>` | reads a base station once and prints the states the adapter would create; sends nothing   |
+| `npm run release`                     | new version with changelog and tag; GitHub Actions publish it to npm (trusted publishing) |
+
+The integration tests need a path without spaces. The tests use an invented base station
+(`test/fixtures`), no data of a real installation.
+
 ## Changelog
 
 <!--
@@ -106,6 +148,7 @@ does not deliver (e.g. unused program slots) are left untouched.
 - (djlex83) Findings of the repository checker fixed (#80)
 - (djlex83) Link to the manufacturer added to the README; a connection that breaks off during an answer is detected without the deprecated `aborted` event; contact address instead of the GitHub noreply address (#82)
 - (djlex83) Type check of the sources (`npm run check`, also in CI), `@iobroker/adapter-dev` for translations (`npm run translate`), manual review step in the release script (#83)
+- (djlex83) README: badges, requirements, installation with discovery, note on other programs polling the base station, development
 
 ### 2.1.0 (2026-11-18)
 
