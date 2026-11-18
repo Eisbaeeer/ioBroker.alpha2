@@ -21,3 +21,6 @@ $RECYCLE.BIN/
 # =========================
 # Operating System Files
 # =========================
+
+#ignore .commitinfo created by ioBroker release script
+.commitinfo
