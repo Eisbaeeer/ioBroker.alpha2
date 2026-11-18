@@ -65,7 +65,7 @@ class Alpha2 extends utils.Adapter {
         this.areaNames = new Map();
         /** newest unsent value per state */
         this.pendingWrites = new Map();
-        /** all access to the base station runs one after another */
+        /** @type {Promise<unknown>} all access to the base station runs one after another */
         this.queue = Promise.resolve();
     }
 
