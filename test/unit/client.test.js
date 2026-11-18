@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('node:assert/strict');
+const http = require('node:http');
 const { Alpha2Client, parseAddress } = require('../../lib/client');
 const { FakeAlpha2 } = require('../fake-device');
 
@@ -68,5 +69,28 @@ describe('client', () => {
             fake.down = true;
             await assert.rejects(client.get('/data/cyclic.xml'));
         });
+    });
+
+    it('rejects an answer that breaks off and goes on with the next request', async () => {
+        let cut = true;
+        const server = http.createServer((req, res) => {
+            if (!cut) {
+                res.end('<Devices></Devices>');
+                return;
+            }
+            res.writeHead(200, { 'Content-Type': 'text/xml', 'Content-Length': 1000 });
+            res.write('<Devices><Device>');
+            setTimeout(() => res.socket?.destroy(), 20);
+        });
+        await new Promise(r => server.listen(0, '127.0.0.1', () => r(undefined)));
+        const client = new Alpha2Client({ address: `127.0.0.1:${server.address().port}`, timeout: 2000 });
+        try {
+            await assert.rejects(client.get('/data/cyclic.xml'), /aborted/);
+            cut = false;
+            assert.equal(await client.get('/data/cyclic.xml'), '<Devices></Devices>');
+        } finally {
+            client.close();
+            await new Promise(r => server.close(() => r(undefined)));
+        }
     });
 });
