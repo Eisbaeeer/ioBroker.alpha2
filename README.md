@@ -104,7 +104,7 @@ does not deliver (e.g. unused program slots) are left untouched.
 - (djlex83) Settings page translated into all 11 ioBroker languages
 - (djlex83) Requires admin 7.6.20 or newer
 - (djlex83) Findings of the repository checker fixed (#80)
-- (djlex83) Link to the manufacturer added to the README; a connection that breaks off during an answer is detected without the deprecated `aborted` event (#82)
+- (djlex83) Link to the manufacturer added to the README; a connection that breaks off during an answer is detected without the deprecated `aborted` event; contact address instead of the GitHub noreply address (#82)
 
 ### 2.1.0 (2026-11-18)
 
@@ -156,7 +156,7 @@ does not deliver (e.g. unused program slots) are left untouched.
 
 The MIT License (MIT)
 
-Copyright (c) 2026 djlex83 <djlex83@users.noreply.github.com>  
+Copyright (c) 2026 djlex83 <dj-lex@gmx.de>  
 Copyright (c) 2018-2021 Eisbaeeer <eisbaeeer@gmail.com>
 
 See [LICENSE](LICENSE). Möhlenhoff and Alpha 2 are trademarks of their owners; this project is not
