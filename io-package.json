@@ -69,7 +69,7 @@
             "uk": "Локальне керування регулятором теплої підлоги Möhlenhoff Alpha 2 через його XML API, без хмари",
             "zh-cn": "通过 XML API 本地控制 Möhlenhoff Alpha 2 地暖控制器，无需云端"
         },
-        "authors": ["Eisbaeeer <eisbaeeer@gmail.com>", "djlex83 <djlex83@users.noreply.github.com>"],
+        "authors": ["Eisbaeeer <eisbaeeer@gmail.com>", "djlex83 <dj-lex@gmx.de>"],
         "keywords": ["Möhlenhoff", "Moehlenhoff", "Alpha2", "underfloor heating", "heating", "climate"],
         "licenseInformation": {
             "type": "free",

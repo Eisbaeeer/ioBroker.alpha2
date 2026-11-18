@@ -2,7 +2,7 @@
 
 # ioBroker.alpha2
 
-Local control of the **Möhlenhoff Alpha 2** underfloor heating control (base station EZR) in ioBroker.
+Local control of the **[Möhlenhoff](https://www.moehlenhoff.de) Alpha 2** underfloor heating control (base station EZR) in ioBroker.
 The adapter talks to the XML API of the base station in your network. No cloud account is needed.
 
 Version 2.0.0 is a rewrite. **It is a drop-in update for 1.x**: the adapter name, all state IDs and their
@@ -104,6 +104,7 @@ does not deliver (e.g. unused program slots) are left untouched.
 - (djlex83) Settings page translated into all 11 ioBroker languages
 - (djlex83) Requires admin 7.6.20 or newer
 - (djlex83) Findings of the repository checker fixed (#80)
+- (djlex83) Link to the manufacturer added to the README; a connection that breaks off during an answer is detected without the deprecated `aborted` event; contact address instead of the GitHub noreply address (#82)
 
 ### 2.1.0 (2026-11-18)
 
@@ -155,7 +156,7 @@ does not deliver (e.g. unused program slots) are left untouched.
 
 The MIT License (MIT)
 
-Copyright (c) 2026 djlex83 <djlex83@users.noreply.github.com>  
+Copyright (c) 2026 djlex83 <dj-lex@gmx.de>  
 Copyright (c) 2018-2021 Eisbaeeer <eisbaeeer@gmail.com>
 
 See [LICENSE](LICENSE). Möhlenhoff and Alpha 2 are trademarks of their owners; this project is not
