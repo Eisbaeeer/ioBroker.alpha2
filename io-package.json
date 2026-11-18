@@ -104,7 +104,7 @@
         "extIcon": "https://raw.githubusercontent.com/Eisbaeeer/ioBroker.alpha2/master/admin/mh-logo.png",
         "readme": "https://github.com/Eisbaeeer/ioBroker.alpha2/blob/master/README.md",
         "loglevel": "info",
-        "tier": 3,
+        "tier": 2,
         "mode": "daemon",
         "type": "climate-control",
         "compact": true,

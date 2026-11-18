@@ -115,21 +115,7 @@ does not deliver (e.g. unused program slots) are left untouched.
 - (djlex83) Objects are extended instead of replaced (keeps history settings); state IDs and types unchanged
 - (djlex83) JSON config, current adapter-core, tests with a simulated base station, no `request`/`xml2js`
 
-### 1.0.4
-
-- (bigluke26) Added PUMP status issue #26
-
-### 1.0.3
-
-- (Eisbaeeer) Fixed error messages in log
-
-### 1.0.2
-
-- (oHa510) Heat areas and actuators up to 12, indexing 1–12, child lock, hotel mode, room units
-
-### 1.0.1 and older
-
-- (Eisbaeeer) Initial versions
+[Older changelogs can be found there](CHANGELOG_OLD.md)
 
 ## License
 

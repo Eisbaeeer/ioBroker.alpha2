@@ -6,3 +6,6 @@ tmp/
 .dev-server/
 *.tgz
 Thumbs.db
+
+# .commitinfo created by the ioBroker release script
+.commitinfo
