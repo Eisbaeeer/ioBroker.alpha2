@@ -44,9 +44,9 @@ types stay the same, so aliases, scripts, visualisations and history (InfluxDB, 
 
 ## Installation
 
-Install the adapter in the admin under _Adapters_. The discovery adapter finds Alpha 2 base stations in the
-network and proposes this adapter (from the release of `iobroker.discovery` after 5.3.0). Otherwise create an
-instance and enter the IP address of the base station in its settings.
+Install the adapter in the admin under _Adapters_. The discovery adapter (`iobroker.discovery` 5.4.1 or newer)
+finds Alpha 2 base stations in the network and proposes this adapter. Otherwise create an instance and enter the
+IP address of the base station in its settings.
 
 ## Settings
 
@@ -148,7 +148,7 @@ The integration tests need a path without spaces. The tests use an invented base
 - (djlex83) Findings of the repository checker fixed (#80)
 - (djlex83) Link to the manufacturer added to the README; a connection that breaks off during an answer is detected without the deprecated `aborted` event; contact address instead of the GitHub noreply address (#82)
 - (djlex83) Type check of the sources (`npm run check`, also in CI), `@iobroker/adapter-dev` for translations (`npm run translate`), manual review step in the release script (#83)
-- (djlex83) README: badges, requirements, installation with discovery, note on other programs polling the base station, development
+- (djlex83) README: badges, requirements, installation with discovery (`iobroker.discovery` 5.4.1 or newer), note on other programs polling the base station, development
 
 ### 2.1.0 (2026-11-18)
 
